@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       jobNo: 'X2004611',
-      dataObj: ''
+      dataObj: {}
     }
   },
   created() {
