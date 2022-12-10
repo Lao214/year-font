@@ -1,7 +1,7 @@
 <template>
   <div class="view">
     <div class="header">
-      <h3>年度报告</h3>
+      <h2>年度学习报告</h2>
     </div>
     <div class="fixed-hine" v-if="showFixedHint">
       <span>向上滑，查看年度报告</span>
@@ -53,14 +53,13 @@ export default {
       beforeSlideIndex: 0,
       thisActiveIndex: 0,
       swiperOption: {
-        effect: "fade", // 淡入
+      //  effect: "fade", 
         direction: "vertical", //垂直切换选项
-        speed: 0, // 切换速度
+        speed: 9, // 切换速度
         height: window.innerHeight, // 高
         width: window.innerWidth, //宽
         autoplay: false,
         pagination:'.swiper-pagination',
-        initialSlide:1,
         on:{
           slideChange:()=>{
             let swiper = this.$refs.mySwiper.swiper;
@@ -87,7 +86,7 @@ export default {
     getData(){
         dataApi.getDataByJobNo(this.jobNo).then(res=>{
             this.dataObj=res.data.data.data
-            console.log(res.data.data.data);
+            // console.log(res.data.data.data);
         })
     }
   }
@@ -114,7 +113,16 @@ export default {
   touch-action: none;
 }
 .page01{
-  background: url(../assets/01.png);
+  background: url(../assets/01.png) no-repeat;
+  background-size: 100% 100%;
+}
+.page02{
+  background: url(../assets/02.png) no-repeat;
+  background-size: 100% 100%;
+}
+.page03{
+  background: url(../assets/03.png) no-repeat;
+  background-size: 100% 100%;
 }
 .header{
   position: fixed;
@@ -125,8 +133,8 @@ export default {
   left: 0;
   right: 0;
 }
-h3{
-  font-size: 16px;
+h2{
+  font-size: 30px;
   text-align: center;
   color: #fff;
   font-weight: 600;
@@ -149,11 +157,13 @@ h3{
     height: 100%;
 }
 .text-detail-box {
-      margin-top: 300px;
-      margin-left: 50px;
+    margin-top: 300px;
+    margin-left: 50px;
 }
 p {
-      font-size: 20px;
-       line-height: 40px;
+    font-size: 25px;
+    line-height: 40px;
+    font-weight: 600;
+    color: azure;
  }
 </style>
