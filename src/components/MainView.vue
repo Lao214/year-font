@@ -6,21 +6,22 @@
     <div class="fixed-hine" v-if="showFixedHint">
       <span>向上滑，查看年度报告</span>
     </div>
-    <div class="recommendPage">
+    <div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
-          <div class="detail-page">
+            <page-one></page-one>
+          <!-- <div class="detail-page">
             <div class="text-detail-box textOne" v-show="textOne">
               <p>时光总是偷偷流逝</p>
               <p>转眼间一年又过去了</p>
               <p>这一年你又有多少收获呢</p>
             </div>
-          </div>      
+          </div>       -->
         </swiper-slide>
         <swiper-slide class="page02">
           <div class="detail-page">
             <div class="text-detail-box textTwo" v-show="textTwo">
-              <p>您今年共看了{{dataObj.courses}}门课程</p>
+              <p>您今年共看了<span style="font-size: 2.7rem;color: rgb(42, 91, 165);">{{dataObj.courses}}</span>门课程</p>
             </div>
           </div>
         </swiper-slide>
@@ -41,10 +42,11 @@
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import dataApi from '@/api/data'
+import PageOne from './PageOne.vue'
 
 export default {
   name: 'app',
-  components:{swiper,swiperSlide},
+  components:{swiper,swiperSlide,PageOne},
    data() {
     return {
       textOne:true,
@@ -69,6 +71,7 @@ export default {
             let slideIndex = swiper.activeIndex;
             this.thisActiveIndex = slideIndex;
             // console.log(slideIndex);
+            console.log(this.beforeSlideIndex);
             if(slideIndex==0){
                 this.textOne=true
             }else{
@@ -115,7 +118,7 @@ export default {
 
 <style scoped>
 .view{
-   width: 100%; 
+    width: 100%; 
     height: 100%; 
     position: absolute; 
     left: 0; 
@@ -125,13 +128,13 @@ export default {
  .swiper-slide{
   width: 100%;
   /* line-height: 200px; */
-  background: yellowgreen;
+  background: #fff;
   color: #000;
   font-size: 16px;
-  text-align: center;
+  /* text-align: center; */
   touch-action: none;
 }
-.page01{
+/* .page01{
   background: url(../assets/01.png) no-repeat;
   background-size: 100% 100%;
 }
@@ -142,7 +145,7 @@ export default {
 .page03{
   background: url(../assets/03.png) no-repeat;
   background-size: 100% 100%;
-}
+} */
 .header{
   position: fixed;
   z-index: 10;
@@ -155,7 +158,7 @@ export default {
 h2{
   font-size: 30px;
   text-align: center;
-  color: #fff;
+  color: black;
   font-weight: 600;
 }
 .fixed-hint{
@@ -183,7 +186,7 @@ p {
     font-size: 25px;
     line-height: 10px;
     font-weight: 600;
-    color: azure;
+    color: black;
  }
  .textOne{
      animation: fadenum 2s linear;
