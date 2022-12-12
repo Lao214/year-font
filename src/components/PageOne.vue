@@ -101,7 +101,7 @@ export default {
 
 .dialogText {
     position: relative;
-    padding: 50px;
+    padding: 20px;
     background-color: var(--color1);
     border-radius: 11px;
     /* 投影 */
