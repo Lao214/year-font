@@ -32,7 +32,6 @@ export default {
   }
 .container {
   display: inline-block;
-  margin: 0 auto;
   padding-top: 70px;
   padding-left: 21px;
   padding-right: 21px;
@@ -184,8 +183,51 @@ export default {
   animation:slide-in-blurred-tl .6s cubic-bezier(.23,1.000,.32,1.000) both 6.8s;
   z-index: 98;
 }
+
 @keyframes slide-in-blurred-tl{
   0%{transform:translate(-1000px,-1000px) skew(80deg,10deg);transform-origin:100% 0;filter:blur(40px);opacity:0}
   100%{transform:translate(0,0) skew(0deg,0deg);transform-origin:50% 50%;filter:blur(0);opacity:1}
-  }
+}
+
+@media screen and (min-height: 360px) and (max-height: 590px) {
+    .imggundam{
+    width: 60px;
+    height: 60px;
+    padding-top: 30px;
+    margin-left: -200px;
+    animation:slide-in-blurred-tl .6s cubic-bezier(.23,1.000,.32,1.000) both 6.8s;
+    z-index: 98;
+    }
+    .dialog{
+    width: 60vw;
+    animation:text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both 7.3s;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    margin-left: 80px;
+    font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+    z-index: 99;
+    }
+    .flip-horizontal-top{
+    font-size: 1rem;
+    animation:roll-in-left .6s ease-out both 4.7s;
+    text-align: start;
+    font-weight: 600;
+    margin: 0;
+    }
+    .flip-horizontal-top2{
+      font-size: 1rem;
+      animation:roll-in-left .6s ease-out both 5.5s;
+      text-align: start;
+      font-weight: 600;
+      margin: 0;
+    }
+    .slide-in-blurred-top{
+      font-size: 1rem;
+      animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both 6s;
+      text-align: start;
+      font-weight: 600;
+      margin: 0;
+    }
+}
 </style>
