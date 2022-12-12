@@ -10,7 +10,7 @@
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
           <div class="detail-page">
-            <div class="text-detail-box">
+            <div class="text-detail-box textOne" v-show="textOne">
               <p>时光总是偷偷流逝</p>
               <p>转眼间一年又过去了</p>
               <p>这一年你又有多少收获呢</p>
@@ -19,14 +19,14 @@
         </swiper-slide>
         <swiper-slide class="page02">
           <div class="detail-page">
-            <div class="text-detail-box">
+            <div class="text-detail-box textTwo" v-show="textTwo">
               <p>您今年共看了{{dataObj.courses}}门课程</p>
             </div>
           </div>
         </swiper-slide>
         <swiper-slide class="page03">
           <div class="detail-page">
-            <div class="text-detail-box">
+            <div class="text-detail-box textThree" v-show="textThree">
               <p>您的学分是{{dataObj.credit}}分</p>
             </div>
           </div>
@@ -47,6 +47,9 @@ export default {
   components:{swiper,swiperSlide},
    data() {
     return {
+      textOne:true,
+      textTwo:true,
+      textThree:true,
       jobNo:'X2004611',
       dataObj:'',
       showFixedHint: false,
@@ -65,6 +68,22 @@ export default {
             let swiper = this.$refs.mySwiper.swiper;
             let slideIndex = swiper.activeIndex;
             this.thisActiveIndex = slideIndex;
+            // console.log(slideIndex);
+            if(slideIndex==0){
+                this.textOne=true
+            }else{
+                this.textOne=false
+            }
+             if(slideIndex==1){
+                this.textTwo=true
+            }else{
+                this.textTwo=false
+            }
+            if(slideIndex==2){
+                this.textThree=true
+            }else{
+                this.textThree=false
+            }
           }
         }
       }
@@ -157,13 +176,30 @@ h2{
     height: 100%;
 }
 .text-detail-box {
-    margin-top: 300px;
+    margin-top: 200px;
     margin-left: 50px;
 }
 p {
     font-size: 25px;
-    line-height: 40px;
+    line-height: 10px;
     font-weight: 600;
     color: azure;
+ }
+ .textOne{
+     animation: fadenum 2s linear;
+ }
+ .textTwo{
+     animation: fadenum 2s linear;
+ }
+ .textThree{
+     animation: fadenum 2s linear;
+ }
+ @keyframes fadenum {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
  }
 </style>
