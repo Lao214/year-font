@@ -3,9 +3,7 @@
     <div class="header">
       <h2>年度学习报告</h2>
     </div>
-    <div class="fixed-hine" v-if="showFixedHint">
-      <span>向上滑，查看年度报告</span>
-    </div>
+    <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
@@ -54,13 +52,18 @@ export default {
       textThree:true,
       jobNo:'X2004611',
       dataObj:'',
-      showFixedHint: false,
+      showFixedHint: true,
       beforeSlideIndex: 0,
       thisActiveIndex: 0,
       swiperOption: {
       //  effect: "fade", 
-        direction: "vertical", //垂直切换选项
-        speed: 9, // 切换速度
+      autoplay: {
+        delay: 6000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+        },
+        direction: "horizontal", //垂直切换选项
+        speed: 3, // 切换速度
         height: window.innerHeight, // 高
         width: window.innerWidth, //宽
         autoplay: false,
@@ -71,7 +74,7 @@ export default {
             let slideIndex = swiper.activeIndex;
             this.thisActiveIndex = slideIndex;
             // console.log(slideIndex);
-            console.log(this.beforeSlideIndex);
+            // console.log(this.beforeSlideIndex);
             if(slideIndex==0){
                 this.textOne=true
             }else{
@@ -162,15 +165,16 @@ h2{
   font-weight: 600;
 }
 .fixed-hint{
-  position: fixed;
+    position: absolute;
     z-index: 10;
-    padding-top: 60px;
-    bottom: 10%;
+    padding-top:  10px;
+    bottom: 0%;
+    color: rgb(42, 91, 165);
     left: 50%;
     transform: translateX(-50%);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    animation: fixedHintAnimation 1s linear infinite;
+    /* animation: fixedHintAnimation 1s linear infinite; */
 }
 .detail-page{
   position: relative;

@@ -14,15 +14,15 @@
 
 <script>
 export default {
-
+    
 }
 </script>
 
 <style>
-  @keyframes slide-right{
+  /* @keyframes slide-right{
     0%{transform:translateX(0)}
   100%{transform:translateX(100px)}
-  }
+  } */
   body{
     background: rgb(255, 255, 255);
     background-size: cover;
@@ -36,15 +36,15 @@ export default {
   padding-left: 21px;
   padding-right: 21px;
 }
-@keyframes typing {
+/* @keyframes typing {
   from { width: 0 }
   to { width: 31ch; border-right: .15em solid rgb(255, 255, 255); }
 }
 @keyframes typing2 {
   from { width: 0 ; border-right: .15em solid rgb(42, 91, 165); }
   to { width: 31ch; border-right: .15em solid rgb(42, 91, 165); }
-}
-.typed-out{
+} */
+/* .typed-out{
     overflow: hidden;
     border-right: .15em solid rgb(42, 91, 165);
     white-space: nowrap;
@@ -52,25 +52,25 @@ export default {
     font-weight: 600;
     width: 0;
     animation: typing 2.4s steps(31) forwards;
-}
-.typed-out2{
+} */
+/* .typed-out2{
     overflow: hidden;
-    /* border-right: .15em solid rgb(42, 91, 165); */
+ border-right: .15em solid rgb(42, 91, 165); 
     white-space: nowrap;
     font-size: 1.1rem;
     font-weight: 600;
     width: 0;
     animation: typing2 2.4s steps(31) forwards 2.3s;
-    /* animation: sprinkle-bling 1s steps(2) infinite 5.5s; */
-}
-@keyframes roll-in-left{
+    animation: sprinkle-bling 1s steps(2) infinite 5.5s; 
+} */
+/* @keyframes roll-in-left{
   0%{transform:translateX(-800px) rotate(-540deg);opacity:0}
   100%{transform:translateX(0) rotate(0deg);opacity:1}
-}
+} */
 
 .flip-horizontal-top{
   font-size: 1.2rem;
-  animation:roll-in-left .6s ease-out both 4.7s;
+  /* animation:roll-in-left .6s ease-out both 4.7s; */
   text-align: start;
   font-weight: 600;
 }
@@ -82,14 +82,14 @@ export default {
 }
 .slide-in-blurred-top{
   font-size: 1.2rem;
-  animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both 6s;
+  /* animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both 6s; */
   text-align: start;
   font-weight: 600;
 }
-@keyframes slide-in-blurred-top{
+/* @keyframes slide-in-blurred-top{
   0%{transform:translateY(-1000px) scaleY(2.5) scaleX(.2);transform-origin:50% 0;filter:blur(40px);opacity:0}
 100%{transform:translateY(0) scaleY(1) scaleX(1);transform-origin:50% 50%;filter:blur(0);opacity:1}
-}
+} */
 
 :root {
     --border-color: #7591AD;
@@ -106,7 +106,7 @@ export default {
     /* 投影 */
     box-shadow: 20px 20px var(--color2);
     /* 动画效果 50%的时候向上移动20px */
-    animation: animate1 4s ease-in-out infinite;
+    /* animation: animate1 4s ease-in-out infinite; */
 }
 
 /* 实现底部横线与圆点 */
@@ -140,26 +140,26 @@ export default {
     animation: animate3 4s ease-in-out infinite;
 }
 
-@keyframes animate1 {
-    /* 初始化和结束状态为默认 */
+/* @keyframes animate1 {
+  
     50% {
         transform: translateY(-20px);
     }
 }
 
 @keyframes animate2 {
-    /* 初始化和结束状态为默认 */
+   
     50% {
         transform: translateY(-10px);
     }
 }
 
 @keyframes animate3 {
-    /* 初始化和结束状态为默认 */
+ 
     50% {
         transform: translateY(-15px);
     }
-}
+} */
 .dialog{
   width: 60vw;
   animation:text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both 7.3s;
@@ -170,10 +170,10 @@ export default {
   font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
   z-index: 99;
 }
-@keyframes text-focus-in{
+/* @keyframes text-focus-in{
   0%{filter:blur(12px);opacity:0}
 100%{filter:blur(0);opacity:1}
-}
+} */
 
 .imggundam{
   width: 100px;
@@ -184,10 +184,10 @@ export default {
   z-index: 98;
 }
 
-@keyframes slide-in-blurred-tl{
+/* @keyframes slide-in-blurred-tl{
   0%{transform:translate(-1000px,-1000px) skew(80deg,10deg);transform-origin:100% 0;filter:blur(40px);opacity:0}
   100%{transform:translate(0,0) skew(0deg,0deg);transform-origin:50% 50%;filter:blur(0);opacity:1}
-}
+} */
 
 @media screen and (min-height: 360px) and (max-height: 590px) {
     .imggundam{
