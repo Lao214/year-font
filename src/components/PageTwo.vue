@@ -79,6 +79,9 @@ export default {
      margin-top: 150px;
      touch-action: none; */
 }
+。childSwiper{
+    font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+}
 .one{
   background: url('../assets/bg.jpg');
 }
