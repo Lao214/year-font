@@ -1,10 +1,9 @@
 <template>
    <div class="container">
-    <div class="typed-out">时间总是偷偷流逝,转眼间一年又过去</div>
-    <div class="typed-out2">这一年你收获了多少？让我们一起看看</div>
-    <p class="flip-horizontal-top">今年您一共获得<a style="font-size: 2.7rem;color: rgb(42, 91, 165);">32.5</a>个学分</p>
-    <p class="flip-horizontal-top2">观看了<a style="font-size: 2.1rem;color: rgb(42, 91, 165);">38</a>门课程</p>
-    <p class="slide-in-blurred-top">参与<a style="font-size: 1.7rem;color: rgb(42, 91, 165);">26</a>次直播</p>
+    <p class="typed-out">时间总是偷偷流逝 转眼间一年又过去<br>今年你收获了多少 让我们一起看看吧</p>
+    <p class="flip-horizontal-top">今年您一共获得<span style="font-size: 2.1rem;color: rgb(42, 91, 165);">32.5</span>个学分</p>
+    <p class="flip-horizontal-top2">观看了<span style="font-size: 1.9rem;color: rgb(42, 91, 165);">38</span>门课程</p>
+    <p class="slide-in-blurred-top">参与<span style="font-size: 1.7rem;color: rgb(42, 91, 165);">26</span>次直播</p>
     <div class="dialog">
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
     </div>
@@ -14,7 +13,20 @@
 
 <script>
 export default {
-    
+  props: {
+    one: {
+      type: Number,
+      default: 0
+    },
+  },
+  data() {
+      return {
+        thisIndex: this.one
+      }
+  },
+  created() {
+    console.log('this is a prop :' + this.thisIndex)
+  }
 }
 </script>
 
@@ -31,7 +43,6 @@ export default {
     /* font-family: 'Trebuchet MS', sans-serif;  */
   }
 .container {
-  display: inline-block;
   padding-top: 70px;
   padding-left: 21px;
   padding-right: 21px;
@@ -44,25 +55,17 @@ export default {
   from { width: 0 ; border-right: .15em solid rgb(42, 91, 165); }
   to { width: 31ch; border-right: .15em solid rgb(42, 91, 165); }
 } */
-/* .typed-out{
-    overflow: hidden;
-    border-right: .15em solid rgb(42, 91, 165);
-    white-space: nowrap;
-    font-size: 1.1rem;
+.typed-out{
+    /* overflow: hidden; */
+    /* border-right: .15em solid rgb(42, 91, 165); */
+    /* white-space: nowrap; */
+    font-size: 1rem;
     font-weight: 600;
-    width: 0;
-    animation: typing 2.4s steps(31) forwards;
-} */
-/* .typed-out2{
-    overflow: hidden;
- border-right: .15em solid rgb(42, 91, 165); 
-    white-space: nowrap;
-    font-size: 1.1rem;
-    font-weight: 600;
-    width: 0;
-    animation: typing2 2.4s steps(31) forwards 2.3s;
-    animation: sprinkle-bling 1s steps(2) infinite 5.5s; 
-} */
+    margin: 7px;
+    /* width: 0; */
+    /* text-align: center; */
+    /* animation: typing 2.4s steps(31) forwards; */
+}
 /* @keyframes roll-in-left{
   0%{transform:translateX(-800px) rotate(-540deg);opacity:0}
   100%{transform:translateX(0) rotate(0deg);opacity:1}

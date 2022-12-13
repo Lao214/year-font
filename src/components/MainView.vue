@@ -7,7 +7,7 @@
     <div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
-            <page-one></page-one>
+            <page-one :one="thisActiveIndex"></page-one>
           <!-- <div class="detail-page">
             <div class="text-detail-box textOne" v-show="textOne">
               <p>时光总是偷偷流逝</p>
