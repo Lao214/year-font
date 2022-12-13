@@ -1,7 +1,7 @@
 <template>
   <div class="view">
     <div class="header">
-      <h2>年度学习报告</h2>
+      <!-- <h2>年度学习报告</h2> -->
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <div>
@@ -24,17 +24,18 @@
           </div>
         </swiper-slide>
         <swiper-slide class="page03">
-          <div class="detail-page">
+          <!-- <div class="detail-page">
             <div class="text-detail-box textThree" v-show="textThree">
               <p>您的学分是{{dataObj.credit}}分</p>
             </div>
-          </div>
+          </div> -->
+          <page-three :three="thisActiveIndex"></page-three>
         </swiper-slide>
          <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
-    <audio controls="controls" autoplay loop>
-        <source src="../assets/music.mp3">
+    <audio id="audio" controls="controls" autoplay loop>
+      <source src="../assets/music.mp3">
     </audio>
   </div>
 </template>
@@ -44,10 +45,11 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import dataApi from '@/api/data'
 import PageOne from './PageOne.vue'
+import PageThree from './PageThree.vue'
 
 export default {
   name: 'app',
-  components:{swiper,swiperSlide,PageOne},
+  components:{swiper,swiperSlide,PageOne,PageThree},
    data() {
     return {
       textOne:true,
@@ -116,6 +118,11 @@ export default {
             this.dataObj=res.data.data.data
             // console.log(res.data.data.data);
         })
+    },
+    autoplay() {
+      let music = document.getElementById("audio")
+      console.log(music)
+      music.play() //没有就播放 
     }
   }
 }
