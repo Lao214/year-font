@@ -4,7 +4,7 @@
       <!-- <h2>年度学习报告</h2> -->
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
-    <div style="z-index: 999;width: 100%;height: 100%;">
+    <div v-if="!jobNo" style="z-index: 999;width: 100%;height: 100%;">
       <job-no-input :job-no="jobNo"></job-no-input>
     </div>
     <div>
