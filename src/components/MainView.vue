@@ -20,11 +20,12 @@
           </div>       -->
         </swiper-slide>
         <swiper-slide class="page02">
-          <div class="detail-page">
+            <!-- <page-two></page-two> -->
+          <!-- <div class="detail-page">
             <div class="text-detail-box textTwo" v-show="textTwo">
               <p>您今年共看了<span style="font-size: 2.7rem;color: rgb(42, 91, 165);">{{dataObj.courses}}</span>门课程</p>
             </div>
-          </div>
+          </div> -->
         </swiper-slide>
         <swiper-slide class="page03">
           <!-- <div class="detail-page">
@@ -37,9 +38,9 @@
          <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
-    <audio id="audio" controls="controls" autoplay loop>
+    <!-- <audio id="audio" controls="controls" autoplay loop>
         <source src="../assets/music.mp3">
-    </audio>
+    </audio> -->
   </div>
 </template>
 
@@ -48,12 +49,13 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import dataApi from '@/api/data'
 import PageOne from './PageOne.vue'
+import pageTwo from './PageTwo.vue'
 import PageThree from './PageThree.vue'
 import JobNoInput from './jobNoInput.vue'
 
 export default {
   name: 'app',
-  components:{swiper,swiperSlide,PageOne,PageThree,JobNoInput},
+  components:{swiper,swiperSlide,PageOne,pageTwo,PageThree,JobNoInput},
    data() {
     return {
       textOne:true,
@@ -70,11 +72,11 @@ export default {
        // speed: 3,  切换速度
         height: window.innerHeight, // 高
         width: window.innerWidth, //宽
-        autoplay: {
-            delay:5000,
-            disableOnInteraction:false,
-             stopOnLastSlide: true,
-            },
+        // autoplay: {
+        //     delay:5000,
+        //     disableOnInteraction:false,
+        //     stopOnLastSlide: true,
+        //     },
         pagination:'.swiper-pagination',
         on:{
           slideChange:()=>{
