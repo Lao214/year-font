@@ -20,7 +20,7 @@
           </div>       -->
         </swiper-slide>
         <swiper-slide class="page02">
-            <!-- <page-two></page-two> -->
+            <page-two></page-two>
           <!-- <div class="detail-page">
             <div class="text-detail-box textTwo" v-show="textTwo">
               <p>您今年共看了<span style="font-size: 2.7rem;color: rgb(42, 91, 165);">{{dataObj.courses}}</span>门课程</p>
