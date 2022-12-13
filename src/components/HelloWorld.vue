@@ -1,158 +1,83 @@
 <template>
-  <div class="view">
-    <div class="header">
-      <h3>年度报告</h3>
-    </div>
-    <div class="fixed-hine" v-if="showFixedHint">
-      <span>向上滑，查看年度报告</span>
-    </div>
-    <div class="recommendPage">
-      <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide class="page01">
-          <div class="detail-page">
-            <div class="text-detail-box">
-              <p>时光总是偷偷流逝</p>
-              <p>转眼间一年又过去了</p>
-              <p>这一年你又有多少收获呢</p>
-            </div>
-          </div>      
-        </swiper-slide>
-        <swiper-slide class="page02">
-          <div class="detail-page">
-            <div class="text-detail-box">
-              <p>您今年共看了{{dataObj.courses}}门课程</p>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide class="page03">
-          <div class="detail-page">
-            <div class="text-detail-box">
-              <p>您的学分是{{dataObj.credit}}分</p>
-            </div>
-          </div>
-        </swiper-slide>
-         <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
+  <div id="page">
+    <!-- 截图区域 -->
+    <div class="content" ref="imageDom">这里是丰富的网页内容...</div>
+    <!-- 点击调用方法获取截图 -->
+    <button class="btn" @click="getPrintScreen">获取截图</button>
+    <div class="img-box">
+      <h2>截图结果:</h2>
+      <!-- 通过img标签把获取到的截图呈现出来 -->
+      <img :src="imgUrl" alt="" />
     </div>
   </div>
 </template>
 
 <script>
-import {swiper,swiperSlide} from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
-import dataApi from '@/api/data'
+// 引入 html2canvas
+import html2canvas from "html2canvas";
 
 export default {
-  name: 'app',
-  components:{swiper,swiperSlide},
-   data() {
+  name: "Screenshot",
+  data() {
     return {
-      jobNo:'X2004611',
-      dataObj:'',
-      showFixedHint: false,
-      beforeSlideIndex: 0,
-      thisActiveIndex: 0,
-      swiperOption: {
-        effect: "fade", // 淡入
-        direction: "vertical", //垂直切换选项
-        speed: 0, // 切换速度
-        height: window.innerHeight, // 高
-        width: window.innerWidth, //宽
-        autoplay: false,
-        pagination:'.swiper-pagination',
-        initialSlide:1,
-        on:{
-          slideChange:()=>{
-            let swiper = this.$refs.mySwiper.swiper;
-            let slideIndex = swiper.activeIndex;
-            this.thisActiveIndex = slideIndex;
-          }
-        }
-      }
+      imgUrl: null, //截图地址
+    };
+  },
+  methods: {
+    //获取截图方法
+    getPrintScreen() {
+      html2canvas(this.$refs.imageDom,
+      {
+        useCORS: true, //图片跨域，开启跨域配置
+        logging: false,//日志开关，便于查看html2canvas的内部执行流程
+        taintTest: true,//是否在渲染前测试图片
+      }).then(canvas => {
+        // 转成图片，生成图片地址
+        let imgUrl = canvas.toDataURL("image/png"); //可将 canvas 转为 base64 格式
+        let eleLink = document.createElement("a");
+        eleLink.href = imgUrl; // 转换后的图片地址
+        eleLink.download = "名称";
+        document.body.appendChild(eleLink);
+        eleLink.click();
+        document.body.removeChild(eleLink);
+      });
     }
   },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper;
-    }
-  },
-  mounted(){
-    // console.log("swiper",this.swiper)
-    this.swiper.slideTo(0,1000,false)
-  },
-  created() {
-    this.getData()
-  },
-  methods:{
-    getData(){
-        dataApi.getDataByJobNo(this.jobNo).then(res=>{
-            this.dataObj=res.data.data.data
-            console.log(res.data.data.data);
-        })
-    }
-  }
-}
+};
 </script>
 
-<style scoped>
-.view{
-   width: 100%; 
-    height: 100%; 
-    position: absolute; 
-    left: 0; 
-    top: 0;
-    overflow: hidden;
-}
- .swiper-slide{
-  width: 100%;
-  /* line-height: 200px; */
-  background: #C02C38;
-  color: #000;
-  font-size: 16px;
-  text-align: center;
-  touch-action: none;
-}
-.page01{
-  background: url(../assets/01.png);
-}
-.header{
-  position: fixed;
-  z-index: 10;
-  display: block;
-  line-height: 46px;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-h3{
-  font-size: 16px;
-  text-align: center;
-  color: #fff;
-  font-weight: 600;
-}
-.fixed-hint{
-  position: fixed;
-    z-index: 10;
-    padding-top: 60px;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    font-weight: 600;
-    animation: fixedHintAnimation 1s linear infinite;
-}
-.detail-page{
-  position: relative;
+
+<!-- 本demo样式代码（不重要） -->
+<style>
+.content {
+    height: 30%;
+    font-size: 26px;
+    font-family: Source Han Sans CN;
+    color: rgb(245, 245, 245);
+    text-align: center;
+    line-height: 200px;
+    background-color: rgb(243, 161, 152);
+  }
+  .btn {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80vw;
+    height: 11.733vw;
+    background: #79c76f;
+    border-radius: 2vw;
+    border: none;
+    font-size: 4.8vw;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 11.733vw;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 30px 0 20px 40px;
+  }
+#page {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
 }
-.text-detail-box {
-      margin-top: 300px;
-      margin-left: 50px;
-}
-p {
-      font-size: 20px;
-       line-height: 40px;
- }
 </style>
