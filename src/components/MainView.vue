@@ -4,6 +4,9 @@
       <!-- <h2>年度学习报告</h2> -->
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
+    <div style="z-index: 999;width: 100%;height: 100%;">
+      <job-no-input :job-no="jobNo"></job-no-input>
+    </div>
     <div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
@@ -35,7 +38,7 @@
       </swiper>
     </div>
     <audio id="audio" controls="controls" autoplay loop>
-      <source src="../assets/music.mp3">
+        <source src="../assets/music.mp3">
     </audio>
   </div>
 </template>
@@ -46,10 +49,11 @@ import 'swiper/dist/css/swiper.css'
 import dataApi from '@/api/data'
 import PageOne from './PageOne.vue'
 import PageThree from './PageThree.vue'
+import JobNoInput from './jobNoInput.vue'
 
 export default {
   name: 'app',
-  components:{swiper,swiperSlide,PageOne,PageThree},
+  components:{swiper,swiperSlide,PageOne,PageThree,JobNoInput},
    data() {
     return {
       textOne:true,

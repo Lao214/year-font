@@ -30,11 +30,7 @@ export default {
 }
 </script>
 
-<style>
-  /* @keyframes slide-right{
-    0%{transform:translateX(0)}
-  100%{transform:translateX(100px)}
-  } */
+<style scoped>
   body{
     background: rgb(255, 255, 255);
     background-size: cover;
