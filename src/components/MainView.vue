@@ -57,16 +57,15 @@ export default {
       thisActiveIndex: 0,
       swiperOption: {
       //  effect: "fade", 
-      autoplay: {
-        delay: 6000,
-        stopOnLastSlide: false,
-        disableOnInteraction: true,
-        },
         direction: "horizontal", //垂直切换选项
-        speed: 3, // 切换速度
+       // speed: 3,  切换速度
         height: window.innerHeight, // 高
         width: window.innerWidth, //宽
-        autoplay: false,
+        autoplay: {
+            delay:5000,
+            disableOnInteraction:false,
+             stopOnLastSlide: true,
+            },
         pagination:'.swiper-pagination',
         on:{
           slideChange:()=>{
