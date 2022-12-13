@@ -8,6 +8,17 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
+  <style>
+        /* // 安卓 */
+        body {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        /* //IOS */
+        i:focus, a:focus, input:focus, p:focus, div:focus {
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          /* // -webkit-user- modify: read-write-plaintext-only; // 这个会出现输入图标，不需要 */
+        }
+  </style>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
