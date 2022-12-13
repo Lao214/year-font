@@ -33,6 +33,9 @@
          <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
+    <audio controls="controls" autoplay loop>
+        <source src="../assets/music.mp3">
+    </audio>
   </div>
 </template>
 
@@ -102,6 +105,7 @@ export default {
   mounted(){
     // console.log("swiper",this.swiper)
     this.swiper.slideTo(0,1000,false)
+    // this.$refs.audio.src=require('../assets/music.mp3')
   },
   created() {
     this.getData()
