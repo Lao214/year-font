@@ -1,14 +1,17 @@
 <template>
   <div id="page">
     <!-- 截图区域 -->
-    <div class="content" ref="imageDom">这里是丰富的网页内容...</div>
+    <div class="content" ref="imageDom">
+      这里是丰富的网页内容...
+    </div>
+    <!-- 截图区域2 -->
     <!-- 点击调用方法获取截图 -->
     <button class="btn" @click="getPrintScreen">获取截图</button>
-    <div class="img-box">
-      <h2>截图结果:</h2>
+    <!-- <div class="img-box"> -->
+      <!-- <h2>截图结果:</h2> -->
       <!-- 通过img标签把获取到的截图呈现出来 -->
-      <img :src="imgUrl" alt="" />
-    </div>
+      <!-- <img :src="imgUrl" alt="" /> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -48,7 +51,7 @@ export default {
 
 
 <!-- 本demo样式代码（不重要） -->
-<style>
+<style scoped>
 .content {
     height: 30%;
     font-size: 26px;

@@ -20,12 +20,8 @@ export default {
 }
 </script>
 
-<style>
-  /* @keyframes slide-right{
-    0%{transform:translateX(0)}
-  100%{transform:translateX(100px)}
-  } */
-  .body{
+<style scoped>
+.body{
      background: url('../assets/bg.jpg');
     /* background: rgb(255, 255, 255); */
     background-size: cover;
@@ -41,37 +37,6 @@ export default {
   /* background: url('../assets/bg.jpg');
   background-size: 100%; */
 }
-/* @keyframes typing {
-  from { width: 0 }
-  to { width: 31ch; border-right: .15em solid rgb(255, 255, 255); }
-}
-@keyframes typing2 {
-  from { width: 0 ; border-right: .15em solid rgb(42, 91, 165); }
-  to { width: 31ch; border-right: .15em solid rgb(42, 91, 165); }
-} */
-/* .typed-out{
-    overflow: hidden;
-    border-right: .15em solid rgb(42, 91, 165);
-    white-space: nowrap;
-    font-size: 1.1rem;
-    font-weight: 600;
-    width: 0;
-    animation: typing 2.4s steps(31) forwards;
-} */
-/* .typed-out2{
-    overflow: hidden;
- border-right: .15em solid rgb(42, 91, 165); 
-    white-space: nowrap;
-    font-size: 1.1rem;
-    font-weight: 600;
-    width: 0;
-    animation: typing2 2.4s steps(31) forwards 2.3s;
-    animation: sprinkle-bling 1s steps(2) infinite 5.5s; 
-} */
-/* @keyframes roll-in-left{
-  0%{transform:translateX(-800px) rotate(-540deg);opacity:0}
-  100%{transform:translateX(0) rotate(0deg);opacity:1}
-} */
 
 .flip-horizontal-top{
   font-size: 1.2rem;
@@ -106,10 +71,10 @@ export default {
 .dialogText {
     position: relative;
     padding: 20px;
-    background-color: var(--color1);
+    background-color: #ECE5CE;
     border-radius: 11px;
     /* 投影 */
-    box-shadow: 20px 20px var(--color2);
+    box-shadow: 20px 20px #83af9b;
     /* 动画效果 50%的时候向上移动20px */
     /* animation: animate1 4s ease-in-out infinite; */
 }
@@ -121,10 +86,10 @@ export default {
     content: '';
     height: 5px;
     left: 0px;
-    background-color: var(--color1);
+    background-color: #ECE5CE;
     border-radius: 11px;
     /* 投影 */
-    box-shadow: 20px 20px var(--color2);
+    box-shadow: 20px 20px #83af9b;
 }
 
 /* 单独定义底部横线的样式，宽度为50px */
@@ -145,7 +110,7 @@ export default {
     animation: animate3 4s ease-in-out infinite;
 }
 
-/* @keyframes animate1 {
+@keyframes animate1 {
   
     50% {
         transform: translateY(-20px);
@@ -164,7 +129,7 @@ export default {
     50% {
         transform: translateY(-15px);
     }
-} */
+}
 .dialog{
   width: 60vw;
   animation:text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both 7.3s;
@@ -175,10 +140,7 @@ export default {
   font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
   z-index: 99;
 }
-/* @keyframes text-focus-in{
-  0%{filter:blur(12px);opacity:0}
-100%{filter:blur(0);opacity:1}
-} */
+
 
 .imggundam{
   width: 100px;
