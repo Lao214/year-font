@@ -56,13 +56,13 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 import dataApi from "@/api/data";
 import PageOne from "./PageOne.vue";
-import pageTwo from "./PageTwo.vue";
+import PageTwo from "./PageTwo.vue"
 import PageThree from "./PageThree.vue";
 import JobNoInput from "./jobNoInput.vue";
 
 export default {
   name: "app",
-  components: { swiper, swiperSlide, PageOne, pageTwo, PageThree, JobNoInput },
+  components: { swiper, swiperSlide, PageOne, PageTwo, PageThree, JobNoInput },
   data() {
     return {
       textOne: true,
