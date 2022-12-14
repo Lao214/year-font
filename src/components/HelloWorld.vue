@@ -1,62 +1,88 @@
 <template>
-  <div style="color:#fff">
-    <div class="icon-button right">
-  <!--截屏按钮图标-->
-      <button class="iconfont icon-iconcut" @click="screenShot">下载</button>
+  <div id="page">
+    <!-- 截图区域 -->
+    <div class="content" ref="imageDom">
+      这里是丰富的网页内容...
     </div>
+    <!-- 截图区域2 -->
+    <!-- 点击调用方法获取截图 -->
+    <button class="btn" @click="getPrintScreen">获取截图</button>
+    <!-- <div class="img-box"> -->
+      <!-- <h2>截图结果:</h2> -->
+      <!-- 通过img标签把获取到的截图呈现出来 -->
+      <!-- <img :src="imgUrl" alt="" /> -->
+    <!-- </div> -->
   </div>
-  </template>
-  
-  <script>
-  import html2canvas from "html2canvas";
-  export default {
-      // components:{swiper,swiperSlide},
-      data(){
-          return{
-            imgUrl: null //截图地址
-          }
-      },
-      methods: {
-        //截图
-        screenShot() {
-          //获取页面dom
-          //这里的html标签是获取页面最大的dom元素；根据实际业务场景自行更改
-          const el = document.querySelector('html');
-          html2canvas(el, {allowTaint: true}).then((canvas)=> {
-            //document.body.appendChild(canvas)  页面布局会乱
-            //转换base64
-            const capture = canvas.toDataURL('image/png');
-            //下载浏览器弹出下载信息的属性
-            const saveInfo = {
-            //导出文件格式自己定义，我这里用的是时间作为文件名
-              'download': `1.png`,
-              'href': capture
-            };
-            //下载，浏览器弹出下载文件提示
-            this.downloadFile(saveInfo);
-          
-            //调用保存接口 如果需要后台保存，放开注释
-        /*   uploadImage({capture:capture}).then(res => {
-              if (res.code == 200) {
-                this.$message.success("截取成功！")
-              }
-            });*/
-          })
-        },
-        //下载截图
-        downloadFile(saveInfo) {
-          const element = document.createElement('a');
-          element.style.display = 'none';
-          for (const key in saveInfo) {
-            element.setAttribute(key, saveInfo[key]);
-          }
-          document.body.appendChild(element);
-          element.click();
-          setTimeout(() => {
-            document.body.removeChild(element);
-          }, 300)
-        }
-      }
-  
+</template>
+
+<script>
+// 引入 html2canvas
+import html2canvas from "html2canvas";
+
+export default {
+  name: "Screenshot",
+  data() {
+    return {
+      imgUrl: null, //截图地址
+    };
+  },
+  methods: {
+    //获取截图方法
+    getPrintScreen() {
+      html2canvas(this.$refs.imageDom,
+      {
+        imageTimeout: 15000, //newline
+        scale:3, //newline
+        useCORS: true, //图片跨域，开启跨域配置
+        logging: false,//日志开关，便于查看html2canvas的内部执行流程
+        taintTest: false,//是否在渲染前测试图片
+      }).then(canvas => {
+        // 转成图片，生成图片地址
+        let imgUrl = canvas.toDataURL("image/png",1); //可将 canvas 转为 base64 格式
+        let eleLink = document.createElement("a");
+        eleLink.href = imgUrl; // 转换后的图片地址
+        eleLink.download = "名称";
+        document.body.appendChild(eleLink);
+        eleLink.click();
+        document.body.removeChild(eleLink);
+      });
+    }
+  },
+};
+</script>
+
+
+<!-- 本demo样式代码（不重要） -->
+<style scoped>
+.content {
+    height: 30%;
+    font-size: 26px;
+    font-family: Source Han Sans CN;
+    color: rgb(245, 245, 245);
+    text-align: center;
+    line-height: 200px;
+    background-color: rgb(243, 161, 152);
   }
-  </script>
+  .btn {
+    display: block;
+    width: 80vw;
+    height: 11.733vw;
+    background: #79c76f;
+    border-radius: 2vw;
+    border: none;
+    font-size: 4.8vw;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 11.733vw;
+    letter-spacing: 4px;
+    text-align: center;
+    margin: 30px 0 20px 40px;
+  }
+#page {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+</style>
