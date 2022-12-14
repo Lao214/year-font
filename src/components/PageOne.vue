@@ -79,7 +79,7 @@ export default {
     /* 投影 */
     box-shadow: 20px 20px #83af9b;
     /* 动画效果 50%的时候向上移动20px */
-    /* animation: animate1 4s ease-in-out infinite; */
+    animation: animate1 4s ease-in-out infinite;
 }
 
 /* 实现底部横线与圆点 */
@@ -149,7 +149,7 @@ export default {
   width: 100px;
   height: 100px;
   padding-top: 30px;
-  margin-left: -200px;
+  /* margin-left: -200px; */
   animation:slide-in-blurred-tl .6s cubic-bezier(.23,1.000,.32,1.000) both 6.8s;
   z-index: 98;
 }
@@ -164,7 +164,7 @@ export default {
     width: 60px;
     height: 60px;
     padding-top: 30px;
-    margin-left: -200px;
+    /* margin-left: -200px; */
     animation:slide-in-blurred-tl .6s cubic-bezier(.23,1.000,.32,1.000) both 6.8s;
     z-index: 98;
     }
