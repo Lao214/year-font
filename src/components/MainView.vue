@@ -117,6 +117,10 @@ export default {
     // console.log("swiper",this.swiper)
     this.swiper.slideTo(0,1000,false)
     // this.$refs.audio.src=require('../assets/music.mp3')
+
+    document.addEventListener('WeixinJSBridgeReady', function() {
+   document.getElementById('audios').play()
+})
   },
   created() {
     this.getData()
