@@ -89,6 +89,7 @@ export default {
     content: '';
     height: 5px;
     left: 0px;
+    font-weight: 600;
     background-color: #ECE5CE;
     border-radius: 11px;
     /* 投影 */

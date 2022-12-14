@@ -1,13 +1,17 @@
 <template>
   <div class="body">
-  <input type="checkbox" id="search_btn" hidden>
-    <label for="search_btn" class="search-btn">
-        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-        <a class="btn">愿望清单</a>
-    </label>
-    <label for="search_btn" class="close-btn">
-        <i class="fa fa-close" aria-hidden="true"></i>
-    </label>
+    <div class="mask">
+    </div>
+    <input type="checkbox" id="search_btn" hidden>
+        <label for="search_btn" class="search-btn" style="margin-right: 17px;">
+            <a class="btn">新年学习清单</a>
+        </label>
+        <label class="imgCreate">
+            <a class="btn">生成海报</a>
+        </label>
+        <label for="search_btn" class="close-btn">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </label>
     <div class="container">
         <div class="shell">
             <details >
@@ -99,21 +103,84 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('../assets/bg.jpg');
+    background-size: cover;
+    width: 100%;
 }
+.mask {
+     /* 100%窗口高度 */
+     position: absolute;
+     width: 100%;
+     height: 100vh;
+    background-color: rgba(36, 36, 36, 0.669);
+    z-index: 99;
+}   
 /* 搜索按钮 */
 .search-btn{
     /* 相对定位 */
     position: relative;
-    z-index: 1;
-    width: 80px;
+    z-index: 100;
+    width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    border-radius: 7%;
+    top: 320px;
+    border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
-    background: linear-gradient(200deg,#6e86ee,#453c90);
+    color: #fff;
+    background-color: #f1c40f;
+    text-shadow:
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0);
+    box-shadow: 0px 15px 0px 0px #f39c12;
+    transition: all .5s;
 }
+.search-btn:hover {
+        background-color: #fcdc5e;
+}
+.search-btn:active {
+    transform: translate(0,4px);
+    box-shadow: 0px 1px 0px 0px #f39c12;
+}
+
+.imgCreate {
+        /* 相对定位 */
+    position: relative;
+    z-index: 100;
+    width: 100px;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    top: 320px;
+    border-radius: 7px;
+    /* 鼠标移入变小手 */
+    cursor: pointer;
+        color: #fff;
+        background-color: #f1c40f;
+        text-shadow:
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0),
+        -2px 2px 2px rgb(209, 132, 0);
+        box-shadow: 0px 15px 0px 0px #f39c12;
+        transition: all .5s;
+    }
+
+    .imgCreate:hover {
+        background-color: #fcdc5e;
+    }
+    .imgCreate:active {
+        transform: translate(0,4px);
+        box-shadow: 0px 1px 0px 0px #f39c12;
+    }
+
 .search-btn .fa{
     color: #fff;
     font-size: 22px;
@@ -122,13 +189,14 @@ export default {
 .close-btn{
     /* 绝对定位 */
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0%;
+    left: 5%;
     z-index: 1;
     font-size: 25px;
     color: #fff;
     cursor: pointer;
     display: none;
+    z-index: 101;
 }
 .container{
     /* 固定定位 */
@@ -139,11 +207,12 @@ export default {
     justify-content: center;
     align-items: center;
     /* 渐变背景 */
-    background: linear-gradient(200deg,#6e86ee,#453c90);
+    background: linear-gradient(170deg,#2a95f8,#003ea8);
     /* 将元素剪切为一个圆形(30px表示圆的半径, 50% 50%表示圆心的位置) */
     clip-path: circle(0px at 50% 50%);
     /* 设置过渡 */
     transition: 0.4s;
+    z-index: 100;
 }
 .search-box{
     /* 默认宽度为0(隐藏) */
@@ -242,7 +311,7 @@ export default {
   details>summary {
     position: relative;
     margin-top: 0.25em;
-    color: #99e;
+    color: rgb(109, 153, 233);
     padding: 0.1em .5em .2em;
     background-color: #444;
   }
@@ -252,7 +321,7 @@ export default {
     margin-right: 0.5em;
   }
   details[open]>summary {
-    background-color: #66e;
+    background-color: rgb(14, 76, 190);
   }
   details[open]>summary::before {
     content: '曰';
