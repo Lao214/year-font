@@ -2,6 +2,9 @@
   <div class="view">
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
+      <audio id="audio" controls="controls" autoplay loop>
+        <source src="../assets/music.mp3">
+    </audio>
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <div v-if="!jobNo" style="z-index: 999;width: 100%;height: 100%;">
