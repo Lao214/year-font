@@ -121,6 +121,13 @@ export default {
     document.addEventListener('WeixinJSBridgeReady', function() {
    document.getElementById('audio').play()
    console.log("自动播放调用了");
+   document.addEventListener('touchstart', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+    }
+    audioAutoPlay();
+});
 })
   },
   created() {
