@@ -119,7 +119,8 @@ export default {
     // this.$refs.audio.src=require('../assets/music.mp3')
 
     document.addEventListener('WeixinJSBridgeReady', function() {
-   document.getElementById('audios').play()
+   document.getElementById('audio').play()
+   console.log("自动播放调用了");
 })
   },
   created() {
