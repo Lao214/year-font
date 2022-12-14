@@ -1,8 +1,8 @@
 <template>
   <div class="body">
    <div class="container">
-    <div class="typed-out">时间总是偷偷流逝,转眼间一年又过去</div>
-    <div class="typed-out2">这一年你收获了多少？让我们一起看看</div>
+    <!-- <div class="typed-out">时间总是偷偷流逝,转眼间一年又过去</div>
+    <div class="typed-out2">这一年你收获了多少？让我们一起看看</div> -->
     <p class="flip-horizontal-top">今年您一共获得<a style="font-size: 2.7rem;color: rgb(255,215,0);">32.5</a>个学分</p>
     <p class="flip-horizontal-top2">观看了<a style="font-size: 2.1rem;color: rgb(255,215,0);">38</a>门课程</p>
     <p class="slide-in-blurred-top">参与<a style="font-size: 1.7rem;color: rgb(255,215,0);">26</a>次直播</p>

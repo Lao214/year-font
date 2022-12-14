@@ -35,7 +35,7 @@
           </div> -->
           <page-three :three="thisActiveIndex"></page-three>
         </swiper-slide>
-         <div class="swiper-pagination" slot="pagination"></div>
+         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
     </div>
     <!-- <audio id="audio" controls="controls" autoplay loop>
