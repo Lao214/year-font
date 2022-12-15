@@ -1,8 +1,7 @@
 <template>
   <div class="body">
     <div class="mask">
-        <div class="childSwiper">
-            <div ref="imageDom">
+        <div class="childSwiper" ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one"><a class="one">超级达人</a></swiper-slide>
                     <swiper-slide class="two"><img class="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
@@ -12,7 +11,6 @@
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
                     <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
                 </swiper>
-            </div>
         </div>
     </div>
     <input type="checkbox" id="search_btn" hidden>

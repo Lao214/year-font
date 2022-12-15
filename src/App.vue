@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <PictureView></PictureView>
-    <!-- <main-view></main-view> -->
+    <!-- <PictureView></PictureView> -->
+    <main-view></main-view>
     <!-- <hello-world></hello-world> -->
   </div>
 </template>
