@@ -156,7 +156,7 @@ export default {
     createImage() {
         let node = document.getElementById('test');
         let that = this
-        domtoimage.toPng(node,{scale:3,width:node.offsetWidth,height:node.offsetHeight})
+        domtoimage.toPng(node,{scale:4,width:node.offsetWidth,height:node.offsetHeight})
           .then(function (dataUrl) {
               console.log(dataUrl)
               that.dataUrl = dataUrl
