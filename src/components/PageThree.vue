@@ -118,15 +118,13 @@ export default {
               revEl: '.swiper-button-prev'
             }
         },
-        options: {
-          quality: 1.0,
-          height: '1000px',
-          width: '640px'
-        }
+        browser: ''
       }
   },
   created() {
     console.log('this is a prop :' + this.thisIndex)
+    this.browser = this.getBrowser()
+    console.log(this.browser)
   },
   methods: {
     //获取截图方法
@@ -162,16 +160,69 @@ export default {
           img.onload = function(){//图片加载完，再draw 和 toDataURL
           canvas.getContext('2d').drawImage(img,0,0)
           base64 = canvas.toDataURL("image/png")
-          let eleLink = document.createElement("a")
-          eleLink.href = base64 // 转换后的图片地址
-          var event = new MouseEvent("click"); // 创建一个单击事件
-          eleLink.download = "photo.png"; // 设置图片名
-          document.body.appendChild(eleLink)
-          eleLink.click()
-          document.body.removeChild(eleLink)
-          // FileSaver.saveAs(base64, 'a.jpeg')
-          console.log(base64)
+
+          if(this.browser === 'MQQBrowser' ) {
+              //另一种下载方式-支持QQ浏览器
+              let eleLink = document.createElement("a")
+              eleLink.href = base64 // 转换后的图片地址
+              var event = new MouseEvent("click"); // 创建一个单击事件
+              eleLink.download = "photo.png"; // 设置图片名
+              document.body.appendChild(eleLink)
+              eleLink.click()
+              document.body.removeChild(eleLink)
+              //另一种下载方式-支持QQ浏览器
           }
+          else {
+            FileSaver.saveAs(base64, 'a.jpeg')
+            console.log(base64)
+          }
+          }
+    },
+    getBrowser() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+      // console.log("loginuserAgent:", userAgent)
+      //判断是否Opera浏览器
+      if (userAgent.indexOf("Opera") > -1) {
+        return "Opera"
+      }
+      //判断是否是QQ浏览器
+      else if (userAgent.indexOf("MQQBrowser") > -1) {
+        return "MQQBrowser"
+      }
+      //判断是否Edge浏览器
+      else if (userAgent.indexOf("Edg") > -1){
+        return 'Edge'
+      }
+      //判断是否Firefox浏览器
+      else if (userAgent.indexOf("Firefox") > -1) {
+        return "firefox";
+      }
+    
+      //判断是否Chrome浏览器
+      else if (userAgent.indexOf("Chrome") > -1){
+        return "Chrome";
+      }
+
+      //判断是否Chrome浏览器
+      else if (userAgent.indexOf("360SE") > -1){
+        return "360SE";
+      }
+    
+      //判断是否Safari浏览器
+      else if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+      }
+      //判断是否IE浏览器
+      else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+        return "IE";
+      }
+      else if ( userAgent.indexOf("Trident") > -1){
+        return "IE";
+      }
+      // else{
+      //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
+      //   return arr;
+      // }
     }
   }
 }
