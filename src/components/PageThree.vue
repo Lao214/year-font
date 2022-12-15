@@ -1,16 +1,18 @@
 <template>
   <div class="body">
     <div class="mask">
-        <div class="childSwiper" ref="imageDom">
+        <div class="childSwiper">
+            <div ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
-                    <swiper-slide class="one"><a class="one">超级达人</a></swiper-slide>
-                    <swiper-slide class="two"><img class="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="three"><img class="three" src="../assets/1131671065021_.pic.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="four"><img class="four" src="../assets/1141671065042_.pic.jpg" alt=""></swiper-slide>
+                    <swiper-slide class="one">超级达人asides</swiper-slide>
+                    <swiper-slide class="two">深爱的</swiper-slide>
+                    <swiper-slide class="three">深爱的时代啊是的</swiper-slide>
+                    <swiper-slide class="four">1223</swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
                     <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
                 </swiper>
+            </div>
         </div>
     </div>
     <input type="checkbox" id="search_btn" hidden>
@@ -396,8 +398,8 @@ export default {
     }
 
 .one{
-  height: 510px;
-  width: auto;
+  /* height: 510px;
+  width: auto; */
   text-align: center;
   background-color: #f39c12;
 }
