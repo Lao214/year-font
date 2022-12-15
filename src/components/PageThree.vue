@@ -12,6 +12,7 @@
        </swiper>
     </div>
     <button class="imgCreate" @click="getPrintScreen">获取截图</button>
+    <button class="btn" @click="getPrintScreen">获取截图</button>
   </div>
 </template>
 
