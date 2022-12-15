@@ -6,7 +6,7 @@
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
                     <swiper-slide class="two"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="three"><img src="../assets/1111671064919_.pic.jpg" alt=""></swiper-slide>
+                    <swiper-slide class="three"><img src="../assets/bg.jpg" alt=""></swiper-slide>
                     <swiper-slide class="four"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
@@ -17,7 +17,7 @@
     </div>
     <input type="checkbox" id="search_btn" hidden>
         <label for="search_btn" class="search-btn" style="margin-right: 17px;">
-            <a class="btn" @click="getPrintScreen">新年学习清单</a>
+            <a class="btn">新年学习清单</a>
         </label>
         <label class="imgCreate">
             <a class="btn" @click="createImage">生成海报</a>
@@ -118,6 +118,11 @@ export default {
               nextEl: '.swiper-button-next',
               revEl: '.swiper-button-prev'
             }
+        },
+        options: {
+          quality: 1.0,
+          height: '1000px',
+          width: '640px'
         }
       }
   },
@@ -151,11 +156,11 @@ export default {
     createImage() {
             let node = document.getElementById('test');
             let that = this
-            domtoimage.toPng(node)
+            domtoimage.toBlob(node)
                 .then(function (dataUrl) {
                     console.log(dataUrl)
                     that.dataUrl = dataUrl
-                    FileSaver.saveAs(dataUrl, 'a.png');
+                    FileSaver.saveAs(dataUrl, 'a.jpeg');
                 })
                 .catch(function (error) {
                     console.error('生成失败', error);
