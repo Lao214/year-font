@@ -12,4 +12,5 @@ export default {
       method: 'get', // 提交方式
     })
   },
+
 }

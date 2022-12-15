@@ -2,7 +2,7 @@
   <div class="body">
     <div class="mask">
         <div class="childSwiper">
-            <div ref="imageDom">
+            <div id="test" ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
                     <swiper-slide class="two"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
@@ -17,10 +17,10 @@
     </div>
     <input type="checkbox" id="search_btn" hidden>
         <label for="search_btn" class="search-btn" style="margin-right: 17px;">
-            <a class="btn">新年学习清单</a>
+            <a class="btn" @click="getPrintScreen">新年学习清单</a>
         </label>
         <label class="imgCreate">
-            <a class="btn" @click="getPrintScreen">生成海报</a>
+            <a class="btn" @click="createImage">生成海报</a>
         </label>
         <label for="search_btn" class="close-btn">
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -94,6 +94,7 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
+import domtoimage from 'dom-to-image'
 
 export default {
   props: {
@@ -146,7 +147,20 @@ export default {
         eleLink.click();
         document.body.removeChild(eleLink);
       })
-    }
+    },
+    createImage() {
+            let node = document.getElementById('test');
+            let that = this
+            domtoimage.toPng(node)
+                .then(function (dataUrl) {
+                    console.log(dataUrl)
+                    that.dataUrl = dataUrl
+                    FileSaver.saveAs(dataUrl, 'a.png');
+                })
+                .catch(function (error) {
+                    console.error('生成失败', error);
+                })
+        }
   }
 }
 </script>

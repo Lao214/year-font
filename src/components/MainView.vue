@@ -83,7 +83,7 @@ export default {
         //     delay:5000,
         //     disableOnInteraction:false,
         //     stopOnLastSlide: true,
-        //     },
+        // },
         pagination: ".swiper-pagination",
         on: {
           slideChange: () => {
