@@ -3,7 +3,7 @@
     <div class="childSwiper" ref="imageDom">
        <swiper :options="swiperOption" ref="mySwiper" >
          <swiper-slide class="one">12312312312</swiper-slide>
-         <swiper-slide class="two">12312312</swiper-slide>
+         <swiper-slide class="two">2</swiper-slide>
          <swiper-slide class="three">3</swiper-slide>
          <swiper-slide class="four">4</swiper-slide>
          <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -11,8 +11,7 @@
          <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
        </swiper>
     </div>
-    <a class="imgCreate" @click="getPrintScreen">生成海报</a>
-    <!-- <button class="btn" @click="getPrintScreen">获取截图</button> -->
+    <button class="imgCreate" @click="getPrintScreen">获取截图</button>
   </div>
 </template>
 
@@ -67,24 +66,41 @@ export default {
 </script>
 
 <style scoped>
+
 .body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0; 
+    top: 0;
+}
+.swiper-slide{
+    width: 320px;
+    height: 600px;
+    touch-action: none;
+    background: green;
+     /* position: relative;
+     margin-left: 100px;
+     margin-top: 150px;
+     touch-action: none; */
+}
+.childSwiper{
+    font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+}
+.one{
   background: url('../assets/bg.jpg');
-  /* background-size: cover; */
-  width: 100%;
-  height: 100vh;
-  /* padding: 50px; */
 }
 
 .imgCreate {
-    /* 相对定位 */
+        /* 相对定位 */
     position: absolute;
     z-index: 100;
     width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    bottom:10%;
-    left: 40%;
+    top: 80%;
+    left: 10%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -108,16 +124,5 @@ export default {
         transform: translate(0,4px);
         box-shadow: 0px 1px 0px 0px #f39c12;
     }
-.swiper-slide{
-    width: 320px;
-    height: 600px;
-    touch-action: none;
-    background: rgb(178, 199, 18);
-}
-.childSwiper{
-    font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
-}
-.one{
-  /* background: url(../assets/1111671064919_.pic.jpg); */
-}
+
 </style>
