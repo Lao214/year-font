@@ -4,7 +4,7 @@
         <div class="childSwiper">
             <div ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
-                    <swiper-slide class="one"><img class="one" src="../assets/1111671064919_.pic.jpg" alt=""></swiper-slide>
+                    <swiper-slide class="one"><a class="one">超级达人</a></swiper-slide>
                     <swiper-slide class="two"><img class="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
                     <swiper-slide class="three"><img class="three" src="../assets/1131671065021_.pic.jpg" alt=""></swiper-slide>
                     <swiper-slide class="four"><img class="four" src="../assets/1141671065042_.pic.jpg" alt=""></swiper-slide>
@@ -178,7 +178,7 @@ export default {
     height: 37px;
     line-height: 37px;
     text-align: center;
-    top: 320px;
+    top: 270px;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -210,7 +210,7 @@ export default {
     height: 37px;
     line-height: 37px;
     text-align: center;
-    top: 320px;
+    top: 270px;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -397,24 +397,25 @@ export default {
     }
 
 .one{
-  height: 600px;
+  height: 510px;
   width: auto;
   text-align: center;
+  background-color: #f39c12;
 }
 .two{
-  height: 600px;
+  height: 510px;
   text-align: center;
 }
 .three{
-  height: 600px;
+  height: 510px;
   text-align: center;
 }
 .four{
-  height: 600px;
+  height: 510px;
   text-align: center;
 }
 .childSwiper {
     padding: 40px 20px;
-    height: 77%;
+    height: 71%;
 }
 </style>
