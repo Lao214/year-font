@@ -3,7 +3,7 @@
     <div class="childSwiper" ref="imageDom">
        <swiper :options="swiperOption" ref="mySwiper" >
          <swiper-slide class="one">12312312312</swiper-slide>
-         <swiper-slide class="two"><img src="../assets/1111671064919_.pic.jpg"></swiper-slide>
+         <swiper-slide class="two">12312312</swiper-slide>
          <swiper-slide class="three">3</swiper-slide>
          <swiper-slide class="four">4</swiper-slide>
          <!-- <div class="swiper-pagination" slot="pagination"></div> -->
@@ -69,7 +69,7 @@ export default {
 <style scoped>
 .body{
   background: url('../assets/bg.jpg');
-  background-size: cover;
+  /* background-size: cover; */
   width: 100%;
   height: 100vh;
   /* padding: 50px; */
