@@ -6,7 +6,7 @@
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
                     <swiper-slide class="two"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="three"><img id="two" src="../assets/bg.jpg" alt=""></swiper-slide>
+                    <swiper-slide class="three"><img src="../assets/bg.jpg" alt=""></swiper-slide>
                     <swiper-slide class="four"><img id="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
@@ -94,7 +94,6 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
-import domtoimage from 'dom-to-image'
 
 export default {
   props: {
@@ -145,8 +144,6 @@ export default {
         let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
         let eleLink = document.createElement("a");
         eleLink.href = imgUrl; // 转换后的图片地址
-        // eleLink.download = "名称.png";
-        FileSaver.saveAs(imgUrl,'ak.png')
         console.log(imgUrl)
         document.body.appendChild(eleLink);
         eleLink.click();
@@ -154,32 +151,25 @@ export default {
       })
     },
     createImage() {
-        // let node = document.getElementById('test');
-        // let that = this
-        // domtoimage.toPng(node,{scale:4,width:node.offsetWidth,height:node.offsetHeight})
-        //   .then(function (dataUrl) {
-        //       console.log(dataUrl)
-        //       that.dataUrl = dataUrl
-        //       FileSaver.saveAs(dataUrl, 'a.jpeg');
-        //   })
-        //   .catch(function (error) {
-        //       console.error('生成失败', error);
-        //   })
           var canvas = document.createElement("canvas")
           canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
           var img = document.getElementById("two")//创建新的图片对象
-          console.log(img)
+          // console.log(img)
           var base64 = '' ;//base64 
-          // img.src = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg';
-          console.log(img.width)
-          console.log(img.height)
           img.setAttribute("crossOrigin",'Anonymous')
           canvas.width = img.width;
           canvas.height = img.height;
           img.onload = function(){//图片加载完，再draw 和 toDataURL
-          canvas.getContext('2d').drawImage(img,0,0);
-          base64 = canvas.toDataURL("image/png"); 
-          FileSaver.saveAs(base64, 'a.jpeg');
+          canvas.getContext('2d').drawImage(img,0,0)
+          base64 = canvas.toDataURL("image/png")
+          let eleLink = document.createElement("a")
+          eleLink.href = base64 // 转换后的图片地址
+          var event = new MouseEvent("click"); // 创建一个单击事件
+          eleLink.download = "photo.png"; // 设置图片名
+          document.body.appendChild(eleLink)
+          eleLink.click()
+          document.body.removeChild(eleLink)
+          // FileSaver.saveAs(base64, 'a.jpeg')
           console.log(base64)
           }
     }

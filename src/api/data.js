@@ -12,5 +12,11 @@ export default {
       method: 'get', // 提交方式
     })
   },
-
+  downLoadIma(jsonStr) {
+    return request({
+      url: '/down/uploadImage',
+      method: 'post',
+      data: jsonStr
+    })
+  }
 }
