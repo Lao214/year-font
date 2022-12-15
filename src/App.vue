@@ -2,8 +2,8 @@
   <div id="app">
 
     <!-- <PageThree></PageThree> -->
-    <main-view></main-view>
-    <!-- <hello-world></hello-world> -->
+    <!-- <main-view></main-view> -->
+    <hello-world></hello-world>
   </div>
 </template>
 
