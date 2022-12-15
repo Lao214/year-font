@@ -44,7 +44,6 @@ export default {
       html2canvas(this.$refs.imageDom,
       {
         imageTimeout: 15000, //newline
-        // scale:2, //newline
         dpi: 300, // 处理模糊问题
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程

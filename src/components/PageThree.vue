@@ -90,10 +90,10 @@
 </template>
 
 <script>
-import html2canvas from "html2canvas"
-import FileSaver from 'file-saver'
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import html2canvas from "html2canvas"
+import FileSaver from 'file-saver'
 
 export default {
   props: {
@@ -129,22 +129,22 @@ export default {
       html2canvas(this.$refs.imageDom,
       {
         imageTimeout: 15000, //newline
-        // dpi: 300, // 处理模糊问题
-        scale: 2, //newline
+        // scale: 3, //newline
+        dpi:300,
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程
         taintTest: true,//是否在渲染前测试图片
       }).then(canvas => {
         // 转成图片，生成图片地址
-        let imgUrl = canvas.toDataURL("image/png", 1.0); //可将 canvas 转为 base64 格式
+        let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
         let eleLink = document.createElement("a");
         eleLink.href = imgUrl; // 转换后的图片地址
         // eleLink.download = "名称.png";
-        FileSaver.saveAs(imgUrl, 'your report')
+        FileSaver.saveAs(imgUrl,'ak.png')
         document.body.appendChild(eleLink);
         eleLink.click();
         document.body.removeChild(eleLink);
-      });
+      },300)
     }
   }
 }
@@ -156,8 +156,6 @@ export default {
     height: 100vh;
     /* 弹性布局 水平+垂直居中 */
     /* display: flex; */
-    justify-content: center;
-    align-items: center;
     background: url('../assets/bg.jpg');
     background-size: cover;
     width: 100%;
@@ -420,5 +418,6 @@ export default {
 .childSwiper {
     padding: 40px 20px;
     height: 71%;
+    font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
 }
 </style>
