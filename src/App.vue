@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <!-- <PictureView></PictureView> -->
+    <!-- <PageThree></PageThree> -->
     <main-view></main-view>
     <!-- <hello-world></hello-world> -->
   </div>
@@ -10,14 +10,14 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import MainView from './components/MainView.vue'
-import PictureView from './components/PictureView.vue';
+import PageThree from './components/PageThree.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     MainView,
-    PictureView
+    PageThree
 }
 }
 </script>
