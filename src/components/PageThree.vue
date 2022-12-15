@@ -155,7 +155,7 @@ export default {
     /* 100%窗口高度 */
     height: 100vh;
     /* 弹性布局 水平+垂直居中 */
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     background: url('../assets/bg.jpg');
@@ -173,13 +173,14 @@ export default {
 /* 搜索按钮 */
 .search-btn{
     /* 相对定位 */
-    position: relative;
+    position: absolute;
     z-index: 100;
     width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    top: 270px;
+    bottom:10%;
+    left: 20%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -205,13 +206,14 @@ export default {
 
 .imgCreate {
         /* 相对定位 */
-    position: relative;
+    position: absolute;
     z-index: 100;
     width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    top: 270px;
+    bottom:10%;
+    left: 50%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
