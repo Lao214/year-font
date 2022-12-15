@@ -154,17 +154,17 @@ export default {
       })
     },
     createImage() {
-            let node = document.getElementById('test');
-            let that = this
-            domtoimage.toBlob(node)
-                .then(function (dataUrl) {
-                    console.log(dataUrl)
-                    that.dataUrl = dataUrl
-                    FileSaver.saveAs(dataUrl, 'a.jpeg');
-                })
-                .catch(function (error) {
-                    console.error('生成失败', error);
-                })
+        let node = document.getElementById('test');
+        let that = this
+        domtoimage.toPng(node,{scale:3,width:node.offsetWidth,height:node.offsetHeight})
+          .then(function (dataUrl) {
+              console.log(dataUrl)
+              that.dataUrl = dataUrl
+              FileSaver.saveAs(dataUrl, 'a.jpeg');
+          })
+          .catch(function (error) {
+              console.error('生成失败', error);
+          })
         }
   }
 }
