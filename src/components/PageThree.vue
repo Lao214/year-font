@@ -138,8 +138,8 @@ export default {
         let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
         let eleLink = document.createElement("a");
         eleLink.href = imgUrl; // 转换后的图片地址
-        eleLink.download = "名称.png";
-        // FileSaver.saveAs(imgUrl, 'your-report')
+        // eleLink.download = "名称.png";
+        FileSaver.saveAs(imgUrl, 'your-report')
         document.body.appendChild(eleLink);
         eleLink.click();
         document.body.removeChild(eleLink);
