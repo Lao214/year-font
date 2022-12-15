@@ -18,6 +18,7 @@
 <script>
 // 引入 html2canvas
 import html2canvas from "html2canvas";
+import FileSaver from 'file-saver'
 
 export default {
   name: "Screenshot",
@@ -41,7 +42,8 @@ export default {
         let imgUrl = canvas.toDataURL("image/png",1.0); //可将 canvas 转为 base64 格式
         let eleLink = document.createElement("a");
         eleLink.href = imgUrl; // 转换后的图片地址
-        eleLink.download = "名称";
+        // eleLink.download = "名称"
+        FileSaver.saveAs(imgUrl, 'sss.png')
         document.body.appendChild(eleLink);
         eleLink.click();
         document.body.removeChild(eleLink);
