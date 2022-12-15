@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <main-view></main-view>
+    <PictureView></PictureView>
+    <!-- <main-view></main-view> -->
     <!-- <hello-world></hello-world> -->
   </div>
 </template>
@@ -10,13 +10,15 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import MainView from './components/MainView.vue'
+import PictureView from './components/PictureView.vue';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    MainView
-  }
+    MainView,
+    PictureView
+}
 }
 </script>
 
