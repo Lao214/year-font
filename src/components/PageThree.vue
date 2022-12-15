@@ -11,7 +11,6 @@
          <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
        </swiper>
     </div>
-    <button class="imgCreate" @click="getPrintScreen">获取截图</button>
     <button class="btn" @click="getPrintScreen">获取截图</button>
   </div>
 </template>
@@ -91,39 +90,4 @@ export default {
 .one{
   background: url('../assets/bg.jpg');
 }
-
-.imgCreate {
-        /* 相对定位 */
-    position: absolute;
-    z-index: 100;
-    width: 100px;
-    height: 37px;
-    line-height: 37px;
-    text-align: center;
-    top: 80%;
-    left: 10%;
-    border-radius: 7px;
-    /* 鼠标移入变小手 */
-    cursor: pointer;
-        color: #fff;
-        background-color: #f1c40f;
-        text-shadow:
-        -2px 2px 2px rgb(209, 132, 0),
-        -2px 2px 2px rgb(209, 132, 0),
-        -2px 2px 2px rgb(209, 132, 0),
-        -2px 2px 2px rgb(209, 132, 0),
-        -2px 2px 2px rgb(209, 132, 0),
-        -2px 2px 2px rgb(209, 132, 0);
-        box-shadow: 0px 15px 0px 0px #f39c12;
-        transition: all .5s;
-    }
-
-    .imgCreate:hover {
-        background-color: #fcdc5e;
-    }
-    .imgCreate:active {
-        transform: translate(0,4px);
-        box-shadow: 0px 1px 0px 0px #f39c12;
-    }
-
 </style>
