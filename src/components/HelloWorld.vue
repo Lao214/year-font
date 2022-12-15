@@ -7,11 +7,11 @@
     <!-- 截图区域2 -->
     <!-- 点击调用方法获取截图 -->
     <button class="btn" @click="getPrintScreen">获取截图</button>
-    <!-- <div class="img-box"> -->
-      <!-- <h2>截图结果:</h2> -->
+    <div class="img-box">
+      <h2>截图结果:</h2>
       <!-- 通过img标签把获取到的截图呈现出来 -->
-      <!-- <img :src="imgUrl" alt="" /> -->
-    <!-- </div> -->
+      <img :src="imgUrl" alt="" />
+    </div>
   </div>
 </template>
 
