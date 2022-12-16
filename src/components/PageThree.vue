@@ -20,7 +20,7 @@
             <a class="btn">新年学习清单</a>
         </label>
         <label class="imgCreate">
-            <a class="btn" @click="createImage">生成海报</a>
+            <a class="btn" @click="getImageAccordingToBrowser()">生成海报</a>
         </label>
         <label for="search_btn" class="close-btn">
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -128,12 +128,19 @@ export default {
     console.log(this.browser)
   },
   methods: {
+    getImageAccordingToBrowser(){
+      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser') {
+        this.getPrintScreen(this.browser)
+      } else {
+        this.createImage(this.browser)
+      }
+    },
     //获取截图方法
-    getPrintScreen() {
+    getPrintScreen(browser) {
       html2canvas(this.$refs.imageDom,
       {
         imageTimeout: 15000, //newline
-        // scale: 3, //newline
+        scale: 3, //newline
         dpi:300,
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程
@@ -142,65 +149,22 @@ export default {
         // 转成图片，生成图片地址
         let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
         let eleLink = document.createElement("a");
-        eleLink.href = imgUrl; // 转换后的图片地址
-        console.log(imgUrl)
+        eleLink.href = imgUrl // 转换后的图片地址
+        eleLink.download = browser + 'canvas'
         document.body.appendChild(eleLink);
-        eleLink.click();
+        eleLink.click()
         document.body.removeChild(eleLink);
       })
     },
-    // createImage() {
-    //       var canvas = document.createElement("canvas")
-    //       canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
-    //       var img = document.getElementById("two")//创建新的图片对象
-    //       // console.log(img)
-    //       var base64 = '' ;//base64 
-    //       img.setAttribute("crossOrigin",'Anonymous')
-    //       console.log()
-    //       canvas.width = img.width;
-    //       canvas.height = img.height;
-    //       img.onload = function(){//图片加载完，再draw 和 toDataURL
-    //       canvas.getContext('2d').drawImage(img,0,0)
-    //       base64 = canvas.toDataURL("image/png")
-
-    //       if(this.browser === 'MQQBrowser') {
-    //           //另一种下载方式-支持QQ浏览器
-    //           let eleLink = document.createElement("a")
-    //           eleLink.href = base64 // 转换后的图片地址
-    //           var event = new MouseEvent("click"); // 创建一个单击事件
-    //           eleLink.download = "photo.png"; // 设置图片名
-    //           document.body.appendChild(eleLink)
-    //           eleLink.click()
-    //           document.body.removeChild(eleLink)
-    //           //另一种下载方式-支持QQ浏览器
-    //       }
-    //       else {
-    //         FileSaver.saveAs(base64, 'a.jpeg')
-    //         console.log(base64)
-    //       } 
-    //       }
-    // },
-    createImage() {
+    createImage(browser) {
       let node = document.getElementById('test');
       let that = this
       domtoimage.toPng(node,{scale:3,width:node.offsetWidth,height:node.offsetHeight})
         .then(function (dataUrl) {
           console.log(dataUrl)
           that.dataUrl = dataUrl
-          if(that.browser === 'MQQBrowser') {
-              //另一种下载方式-支持QQ浏览器
-              let eleLink = document.createElement("a")
-              eleLink.href = base64 // 转换后的图片地址
-              var event = new MouseEvent('click'); // 创建一个单击事件
-              eleLink.download = that.browser+'poster.png'; // 设置图片名
-              document.body.appendChild(eleLink)
-              eleLink.click()
-              document.body.removeChild(eleLink)
-              //另一种下载方式-支持QQ浏览器
-          } else{
             // console.log(this.browser)
-            FileSaver.saveAs(dataUrl, that.browser+'poster.png')
-          }
+            FileSaver.saveAs(dataUrl, browser+'poster.png')
         })
         .catch(function (error) {
           console.error('生成失败', error);
@@ -208,7 +172,7 @@ export default {
     },
     getBrowser() {
       var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-      // console.log("loginuserAgent:", userAgent)
+      console.log("loginuserAgent:", userAgent)
       //判断是否Opera浏览器
       if (userAgent.indexOf("Opera") > -1) {
         return "Opera"
