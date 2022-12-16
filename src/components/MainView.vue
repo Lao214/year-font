@@ -17,7 +17,7 @@
     <div>
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
-          <page-one :one="thisActiveIndex"></page-one>
+          <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
           <!-- <div class="detail-page">
             <div class="text-detail-box textOne" v-show="textOne">
               <p>时光总是偷偷流逝</p>
@@ -76,7 +76,7 @@ export default {
       textOne: true,
       textTwo: true,
       textThree: true,
-      jobNo: "X2004611",
+      jobNo: "F1000781",
       dataObj: "",
       showFixedHint: true,
       beforeSlideIndex: 0,
@@ -142,7 +142,7 @@ export default {
     getData() {
       dataApi.getDataByJobNo(this.jobNo).then((res) => {
         this.dataObj = res.data.data.data;
-        // console.log(res.data.data.data);
+        console.log(res.data.data.data);
       });
     },
     change1() {
