@@ -12,7 +12,7 @@
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <div v-if="!jobNo" style="z-index: 999; width: 100%; height: 100%">
-      <job-no-input :job-no="jobNo"></job-no-input>
+      <job-no-input :job-no="jobNo"  @inputJobNo="inputJobNo"></job-no-input>
     </div>
     <div>
       <swiper :options="swiperOption" ref="mySwiper">
@@ -61,6 +61,7 @@
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 import dataApi from "@/api/data";
+import viewApi from "@/api/view";
 import PageOne from "./PageOne.vue";
 import PageTwo from "./PageTwo.vue"
 import PageThree from "./PageThree.vue";
@@ -76,7 +77,7 @@ export default {
       textOne: true,
       textTwo: true,
       textThree: true,
-      jobNo: "F1000781",
+      jobNo: "",
       dataObj: "",
       showFixedHint: true,
       beforeSlideIndex: 0,
@@ -127,23 +128,26 @@ export default {
   },
   mounted() {
     // console.log("swiper",this.swiper)
-    this.swiper.slideTo(0, 1000, false);
+    this.swiper.slideTo(0, 1000, false)
     // this.$refs.audio.src=require('../assets/music.mp3')
 
     document.addEventListener("WeixinJSBridgeReady", function () {
-      document.getElementById("audio").play();
+      document.getElementById("audio").play()
       //    console.log("自动播放调用了");
-    });
+    })
   },
   created() {
-    this.getData();
+    if (this.jobNo) {
+      this.getData()
+    }
   },
   methods: {
     getData() {
       dataApi.getDataByJobNo(this.jobNo).then((res) => {
-        this.dataObj = res.data.data.data;
-        console.log(res.data.data.data);
-      });
+        this.dataObj = res.data.data.data
+        console.log(res.data.data.data)
+        this.sendViewRecords()
+      })
     },
     change1() {
       this.$refs.on.style.display = "block";
@@ -155,6 +159,24 @@ export default {
       this.$refs.off.style.display = "block";
       this.$refs.audio.pause()
     },
+    inputJobNo(jobNo) {
+      // console.log('传过来了' + jobNo)
+      if (jobNo) {
+        this.jobNo = jobNo
+        this.getData()
+      }
+    },
+    sendViewRecords() {
+      if (this.jobNo) {
+        let viewData ={
+          jobNo: this.jobNo
+        }
+        viewApi.view(viewData).then(res =>{
+          
+        })
+      }
+    }
+
   },
 };
 </script>

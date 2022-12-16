@@ -7,6 +7,10 @@
         <i class="fa fa-edit"></i>
       </a>
     </div>
+    <!-- <div class="paopao">
+        <div class="bubble"></div>
+        <div class="shadow"></div>
+    </div> -->
   </div>
 </template>
 
@@ -24,11 +28,11 @@ export default {
       }
   },
   created() {
-    console.log('this is a prop :' + this.thisJobNo)
+    // console.log('this is a prop :' + this.thisJobNo)
   },
   methods: {
     sumbit() {
-      console.log('this is a input :' + this.thisJobNo)
+      this.$emit('inputJobNo',this.thisJobNo)
     }
   }
 }
@@ -47,16 +51,16 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffdcdc;
+    background: linear-gradient(170deg,#8cc8ff,#2c79ff);
   }
 
   .shell {
     position: relative;
     width: 1000px;
     padding: 33px;
-    background-color: #ff7575;
+    background-color: #75b8ff;
     border-radius: 20px;
-    box-shadow: 0 10px 50px #ff7575,0 0 0 20px #fff;
+    box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
 
   .shell input {
@@ -100,9 +104,9 @@ export default {
     position: relative;
     width: 750px;
     padding: 33px;
-    background-color: #ff7575;
+    background-color: #75b8ff;
     border-radius: 20px;
-    box-shadow: 0 10px 50px #ff7575,0 0 0 20px #fff;
+    box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
 }
 @media screen and (min-width: 590px) and (max-width: 859px) {
@@ -110,9 +114,9 @@ export default {
     position: relative;
     width: 480px;
     padding: 30px;
-    background-color: #ff7575;
+    background-color: #75b8ff;
     border-radius: 20px;
-    box-shadow: 0 10px 50px #ff7575,0 0 0 20px #fff;
+    box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
   .shell input {
     width: 80%;
@@ -138,9 +142,9 @@ export default {
     position: relative;
     width: 270px;
     padding: 30px;
-    background-color: #ff7575;
+    background-color: #75b8ff;
     border-radius: 20px;
-    box-shadow: 0 10px 50px #ff7575,0 0 0 20px #fff;
+    box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
   .shell input {
     width: 80%;
@@ -170,9 +174,9 @@ export default {
     position: relative;
     width: 190px;
     padding: 20px;
-    background-color: #ff7575;
+    background-color: #75b8ff;
     border-radius: 20px;
-    box-shadow: 0 10px 50px #ff7575,0 0 0 20px #fff;
+    box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
   .shell input {
     width: 80%;

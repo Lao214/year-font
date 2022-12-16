@@ -5,9 +5,17 @@
             <div id="test" ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
-                    <swiper-slide><div><img class="two" src="../assets/1121671064941_.pic.jpg" alt=""></div></swiper-slide>
-                    <swiper-slide class="three"><img class="three" src="../assets/bg.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="four"><img class="four" id="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
+                    <swiper-slide>
+                      <div>
+                        <img class="poster" src="../assets/1121671064941_.pic.jpg" alt="">
+                      </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="poster" src="../assets/bg.jpg" alt="">
+                    </swiper-slide>
+                    <swiper-slide>
+                      <img class="poster" src="../assets/1121671064941_.pic.jpg" alt="">
+                    </swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
                     <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
@@ -473,19 +481,7 @@ export default {
   text-align: center;
   background-color: #f39c12;
 }
-.two{
-  height: 510px;
-  max-width: 100%;
-  display: block;
-  margin: auto;
-}
-.three{
-  height: 510px;
-  max-width: 100%;
-  display: block;
-  margin: auto;
-}
-.four{
+.poster{
   height: 510px;
   max-width: 100%;
   display: block;

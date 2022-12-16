@@ -147,7 +147,10 @@ export default {
     }
 }
 
-@keyframes text-focus-in{0%{filter:blur(12px);opacity:0}100%{filter:blur(0);opacity:1}}
+@keyframes text-focus-in{
+  0%{filter:blur(12px);opacity:0}
+  100%{filter:blur(0);opacity:1}
+}
 .dialog{
   width: 60vw;
   /* animation:text-focus-in 1s cubic-bezier(.55,.085,.68,.53) both 7.3s; */

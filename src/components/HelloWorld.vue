@@ -121,7 +121,7 @@ export default {
       }
   },
   created() {
-    console.log('this is a prop :' + this.thisIndex)
+    // console.log('this is a prop :' + this.thisIndex)
   },
   methods: {
     //获取截图方法
