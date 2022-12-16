@@ -5,9 +5,9 @@
             <div id="test" ref="imageDom">
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
-                    <swiper-slide class="two"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="three"><img src="../assets/bg.jpg" alt=""></swiper-slide>
-                    <swiper-slide class="four"><img id="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
+                    <swiper-slide><div><img class="two" src="../assets/1121671064941_.pic.jpg" alt=""></div></swiper-slide>
+                    <swiper-slide class="three"><img class="three" src="../assets/bg.jpg" alt=""></swiper-slide>
+                    <swiper-slide class="four"><img class="four" id="two" src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
                     <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
@@ -94,6 +94,7 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
+import domtoimage from 'dom-to-image'
 
 export default {
   props: {
@@ -148,35 +149,62 @@ export default {
         document.body.removeChild(eleLink);
       })
     },
-    createImage() {
-          var canvas = document.createElement("canvas")
-          canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
-          var img = document.getElementById("two")//创建新的图片对象
-          // console.log(img)
-          var base64 = '' ;//base64 
-          img.setAttribute("crossOrigin",'Anonymous')
-          canvas.width = img.width;
-          canvas.height = img.height;
-          img.onload = function(){//图片加载完，再draw 和 toDataURL
-          canvas.getContext('2d').drawImage(img,0,0)
-          base64 = canvas.toDataURL("image/png")
+    // createImage() {
+    //       var canvas = document.createElement("canvas")
+    //       canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
+    //       var img = document.getElementById("two")//创建新的图片对象
+    //       // console.log(img)
+    //       var base64 = '' ;//base64 
+    //       img.setAttribute("crossOrigin",'Anonymous')
+    //       console.log()
+    //       canvas.width = img.width;
+    //       canvas.height = img.height;
+    //       img.onload = function(){//图片加载完，再draw 和 toDataURL
+    //       canvas.getContext('2d').drawImage(img,0,0)
+    //       base64 = canvas.toDataURL("image/png")
 
-          if(this.browser === 'MQQBrowser' ) {
+    //       if(this.browser === 'MQQBrowser') {
+    //           //另一种下载方式-支持QQ浏览器
+    //           let eleLink = document.createElement("a")
+    //           eleLink.href = base64 // 转换后的图片地址
+    //           var event = new MouseEvent("click"); // 创建一个单击事件
+    //           eleLink.download = "photo.png"; // 设置图片名
+    //           document.body.appendChild(eleLink)
+    //           eleLink.click()
+    //           document.body.removeChild(eleLink)
+    //           //另一种下载方式-支持QQ浏览器
+    //       }
+    //       else {
+    //         FileSaver.saveAs(base64, 'a.jpeg')
+    //         console.log(base64)
+    //       } 
+    //       }
+    // },
+    createImage() {
+      let node = document.getElementById('test');
+      let that = this
+      domtoimage.toPng(node,{scale:3,width:node.offsetWidth,height:node.offsetHeight})
+        .then(function (dataUrl) {
+          console.log(dataUrl)
+          that.dataUrl = dataUrl
+          if(that.browser === 'MQQBrowser') {
               //另一种下载方式-支持QQ浏览器
               let eleLink = document.createElement("a")
               eleLink.href = base64 // 转换后的图片地址
-              var event = new MouseEvent("click"); // 创建一个单击事件
-              eleLink.download = "photo.png"; // 设置图片名
+              var event = new MouseEvent('click'); // 创建一个单击事件
+              eleLink.download = that.browser+'poster.png'; // 设置图片名
               document.body.appendChild(eleLink)
               eleLink.click()
               document.body.removeChild(eleLink)
               //另一种下载方式-支持QQ浏览器
+          } else{
+            // console.log(this.browser)
+            FileSaver.saveAs(dataUrl, that.browser+'poster.png')
           }
-          else {
-            FileSaver.saveAs(base64, 'a.jpeg')
-            console.log(base64)
-          }
-          }
+        })
+        .catch(function (error) {
+          console.error('生成失败', error);
+        })
     },
     getBrowser() {
       var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
@@ -255,7 +283,7 @@ export default {
     height: 37px;
     line-height: 37px;
     text-align: center;
-    bottom:10%;
+    bottom:15%;
     left: 20%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
@@ -288,7 +316,7 @@ export default {
     height: 37px;
     line-height: 37px;
     text-align: center;
-    bottom:10%;
+    bottom:15%;
     left: 50%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
@@ -483,18 +511,21 @@ export default {
 }
 .two{
   height: 510px;
-  width: auto;
-  text-align: center;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 .three{
   height: 510px;
-  width: auto;
-  text-align: center;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 .four{
   height: 510px;
-  width: auto;
-  text-align: center;
+  max-width: 100%;
+  display: block;
+  margin: auto;
 }
 .childSwiper {
     padding: 40px 20px;
