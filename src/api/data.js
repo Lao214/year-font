@@ -1,7 +1,7 @@
 import request from '@/utils/ request'
 
 // 常量
-const api_name = '/year/reportData'
+const api_name = '/year/AnnualStudyChecklist'
 
 export default {
    // 列表
