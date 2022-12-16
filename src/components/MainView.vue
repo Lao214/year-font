@@ -150,10 +150,11 @@ export default {
       dataApi.getDataByJobNo(this.jobNo).then((res) => {
         this.dataObj = res.data.data.data
         console.log(res.data.data.data)
-        if (!this.dataObj) {
-          alert('找不到员工')
+        if (this.dataObj) {
+          this.sendViewRecords()
+        } else if (!this.dataObj) {
+          alert('找不到您的成绩单，请确认工号是否正确。')
         }
-        this.sendViewRecords()
       })
     },
     change1() {
