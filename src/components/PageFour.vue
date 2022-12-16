@@ -1,20 +1,16 @@
 <template>
    <div class="body">
    <div class="container">
-    <p class="flip-horizontal-top">不知不觉，我们已经相伴<a style="font-size: 2.7rem;color: rgb(255,215,0);">398</a>天</p>
-    <p class="flip-horizontal-top2">
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">2021</a>年
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">10</a>月
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">14</a>日
-    </p>
-    <p class="slide-in-blurred-top">你出现在我的世界，遇见你很幸运</p>
+    <p class="flip-horizontal-top">你喜欢用<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.device}}</a>登陆富学宝典学习</p>
+    <p class="flip-horizontal-top">你今年学习最用功的是<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.mon}}</a>月，超越了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.rate2}}%</a>的小伙伴</p>
+    <p class="flip-horizontal-top">你喜欢在<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.time}}:00</a>开始你的学习！</p>
   </div>
   </div>
 </template>
 
 <script>
 export default {
-
+props:['dataObj']
 }
 </script>
 
@@ -30,8 +26,12 @@ export default {
   padding-top: 70px;
   padding-left: 21px;
   padding-right: 21px;
+}
+.flip-horizontal-top{
   color: white;
   font-size: 1.2rem;
+  /* animation:roll-in-left .6s ease-out both 4.7s; */
+  text-align: start;
   font-weight: 600;
 }
 </style>

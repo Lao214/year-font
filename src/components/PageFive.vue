@@ -1,20 +1,17 @@
 <template>
     <div class="body">
    <div class="container">
-    <p class="flip-horizontal-top">不知不觉，我们已经相伴<a style="font-size: 2.7rem;color: rgb(255,215,0);">398</a>天</p>
-    <p class="flip-horizontal-top2">
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">2021</a>年
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">10</a>月
-        <a style="font-size: 2.1rem;color: rgb(255,215,0);">14</a>日
-    </p>
-    <p class="slide-in-blurred-top">你出现在我的世界，遇见你很幸运</p>
+    <p class="flip-horizontal-top">今年你在富学宝典上累计考试了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.examcount}}</a>次</p>
+    <p class="slide-in-blurred-top">其中一次通过考试的课程数有<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.coursenumF}}</a>门<span v-if="dataObj.coursenumF!==0">，超越了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.rate5}}%</a>的小伙伴</span></p>
+    <p class="slide-in-blurred-top" v-if="dataObj.coursenumF!==0">为好学不倦的你点赞👍～</p>
+    <p class="slide-in-blurred-top" v-else>请继续坚持，不懈努力💪</p>
   </div>
   </div>
 </template>
 
 <script>
 export default {
-
+props:['dataObj']
 }
 </script>
 

@@ -27,7 +27,7 @@
           </div>       -->
         </swiper-slide>
         <swiper-slide class="page02">
-          <page-two></page-two>
+          <page-two :dataObj="dataObj"></page-two>
           <!-- <div class="detail-page">
             <div class="text-detail-box textTwo" v-show="textTwo">
               <p>您今年共看了<span style="font-size: 2.7rem;color: rgb(42, 91, 165);">{{dataObj.courses}}</span>门课程</p>
@@ -40,13 +40,13 @@
               <p>您的学分是{{dataObj.credit}}分</p>
             </div>
           </div> -->
-          <page-three :three="thisActiveIndex"></page-three>
+          <page-three :three="thisActiveIndex" :dataObj="dataObj"></page-three>
         </swiper-slide>
         <swiper-slide class="page04">
-          <page-four></page-four>
+          <page-four :dataObj="dataObj"></page-four>
         </swiper-slide>
         <swiper-slide class="page05">
-          <page-five></page-five>
+          <page-five :dataObj="dataObj"></page-five>
         </swiper-slide>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>

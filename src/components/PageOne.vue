@@ -1,11 +1,10 @@
 <template>
   <div class="body">
    <div class="container">
-    <!-- <div class="typed-out">时间总是偷偷流逝,转眼间一年又过去</div>
-    <div class="typed-out2">这一年你收获了多少？让我们一起看看</div> -->
-    <p class="flip-horizontal-top">今年您一共获得<a style="font-size: 2.7rem;color: rgb(255,215,0);">{{dataObj.creditvalue}}</a>个学分</p>
-    <p class="flip-horizontal-top2">观看了<a style="font-size: 2.1rem;color: rgb(255,215,0);">38</a>门课程</p>
-    <p class="slide-in-blurred-top">参与<a style="font-size: 1.7rem;color: rgb(255,215,0);">26</a>次直播</p>
+    <p class="flip-horizontal-top">亲爱的<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.stuName
+}}</a>小伙伴</p>
+    <p class="flip-horizontal-top2">2022年即将过去，感谢您与富士康科技集团携手走过<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.hyear}}</a>年！</p>
+    <p class="flip-horizontal-top2">2022年，你在富学宝典平台上的总学习天数达到了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.studate}}</a>天，赶快来开启专属于你的年度学习报告吧～</p>
     <div class="dialog">
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
     </div>
