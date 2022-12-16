@@ -12,11 +12,11 @@
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <transition appear>
-    <div v-if="!jobNo" style="position: absolute;z-index: 999; width: 100%; height: 100%">
+    <div v-if="!dataObj" style="position: absolute;z-index: 999; width: 100%; height: 100%">
       <job-no-input :job-no="jobNo"  @inputJobNo="inputJobNo"></job-no-input>
     </div>
     </transition>
-    <div v-if="jobNo">
+    <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
           <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
@@ -126,11 +126,13 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    },
+    }
   },
   mounted() {
     // console.log("swiper",this.swiper)
-    this.swiper.slideTo(0, 1000, false)
+    if(this.jobNo) { 
+      this.swiper.slideTo(0, 1000, false)
+    }
     // this.$refs.audio.src=require('../assets/music.mp3')
 
     document.addEventListener("WeixinJSBridgeReady", function () {
@@ -148,6 +150,9 @@ export default {
       dataApi.getDataByJobNo(this.jobNo).then((res) => {
         this.dataObj = res.data.data.data
         console.log(res.data.data.data)
+        if (!this.dataObj) {
+          alert('找不到员工')
+        }
         this.sendViewRecords()
       })
     },
@@ -162,7 +167,6 @@ export default {
       this.$refs.audio.pause()
     },
     inputJobNo(jobNo) {
-      // console.log('传过来了' + jobNo)
       if (jobNo) {
         this.jobNo = jobNo
         this.getData()
