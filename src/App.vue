@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- <home></home> -->
     <!-- <PageThree></PageThree> -->
     <main-view></main-view>
     <!-- <hello-world></hello-world> -->
@@ -10,13 +11,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import MainView from './components/MainView.vue'
 import PageThree from './components/PageThree.vue';
+import Home from './components/Home.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     MainView,
-    PageThree
+    PageThree,
+    Home
 }
 }
 </script>

@@ -42,6 +42,12 @@
           </div> -->
           <page-three :three="thisActiveIndex"></page-three>
         </swiper-slide>
+        <swiper-slide class="page04">
+          <page-four></page-four>
+        </swiper-slide>
+        <swiper-slide class="page05">
+          <page-five></page-five>
+        </swiper-slide>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
     </div>
@@ -59,10 +65,12 @@ import PageOne from "./PageOne.vue";
 import PageTwo from "./PageTwo.vue"
 import PageThree from "./PageThree.vue";
 import JobNoInput from "./jobNoInput.vue";
+import PageFour from './PageFour.vue';
+import PageFive from './PageFive.vue';
 
 export default {
   name: "app",
-  components: { swiper, swiperSlide, PageOne, PageTwo, PageThree, JobNoInput },
+  components: { swiper, swiperSlide, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
   data() {
     return {
       textOne: true,
