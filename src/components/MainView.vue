@@ -11,10 +11,12 @@
       </div>
     </div>
     <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
-    <div v-if="!jobNo" style="z-index: 999; width: 100%; height: 100%">
+    <transition appear>
+    <div v-if="!jobNo" style="position: absolute;z-index: 999; width: 100%; height: 100%">
       <job-no-input :job-no="jobNo"  @inputJobNo="inputJobNo"></job-no-input>
     </div>
-    <div>
+    </transition>
+    <div v-if="jobNo">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="page01">
           <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
@@ -277,5 +279,23 @@ p {
   100% {
     opacity: 1;
   }
+}
+
+@keyframes input {
+  0% {
+    transform: translateY(-1000px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.come {
+  animation: input .7s ;
+}
+.v-enter-active {
+  animation: input .7s ;
+}
+.v-leave-active {
+  animation: input .7s reverse;
 }
 </style>
