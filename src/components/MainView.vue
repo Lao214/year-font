@@ -76,9 +76,6 @@ export default {
   components: { swiper, swiperSlide, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
   data() {
     return {
-      textOne: true,
-      textTwo: true,
-      textThree: true,
       jobNo: "",
       dataObj: "",
       showFixedHint: true,
@@ -103,21 +100,6 @@ export default {
             this.thisActiveIndex = slideIndex;
             // console.log(slideIndex);
             // console.log(this.beforeSlideIndex);
-            if (slideIndex == 0) {
-              this.textOne = true;
-            } else {
-              this.textOne = false;
-            }
-            if (slideIndex == 1) {
-              this.textTwo = true;
-            } else {
-              this.textTwo = false;
-            }
-            if (slideIndex == 2) {
-              this.textThree = true;
-            } else {
-              this.textThree = false;
-            }
           },
         },
       },
