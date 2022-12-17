@@ -8,12 +8,14 @@
           </div>
         </div>
     <input type="checkbox" id="search_btn" hidden>
+      <div class="thebtn">
         <label for="search_btn" class="search-btn" style="margin-right: 17px;">
             <a class="btn">新年学习清单</a>
         </label>
         <label class="imgCreate">
             <a class="btn" @click="getImageAccordingToBrowser()">生成海报</a>
         </label>
+      </div>
         <label for="search_btn" class="close-btn">
             <i class="fa fa-close" aria-hidden="true"></i>
         </label>
@@ -222,17 +224,21 @@ export default {
     background-size: cover;
     width: 100%;
 } 
+.thebtn {
+  position: absolute;
+  bottom:15%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 /* 搜索按钮 */
 .search-btn{
     /* 相对定位 */
-    position: absolute;
     z-index: 100;
     width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    bottom:15%;
-    left: 20%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -257,15 +263,12 @@ export default {
 }
 
 .imgCreate {
-        /* 相对定位 */
-    position: absolute;
+    /* 相对定位 */
     z-index: 100;
     width: 100px;
     height: 37px;
     line-height: 37px;
     text-align: center;
-    bottom:15%;
-    left: 50%;
     border-radius: 7px;
     /* 鼠标移入变小手 */
     cursor: pointer;
@@ -453,8 +456,6 @@ export default {
 .poster{
   height: 100%;
   width: 100%;
-  margin: auto;
-  display: block;
   /* margin: auto; */
   /* border: #003ea8 7px solid; */
 }
@@ -473,10 +474,52 @@ export default {
   animation: faguang .8s linear;
 }
 .childSwiper {
+    position: absolute;
     padding: 40px 20px;
     height: 71%;
-    position: absolute;
     font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+}
+
+@media screen and (min-height: 635px) and (max-height: 700px) {
+  .poster{
+    height: 470px;
+    width: 100%;
+  }
+  .childSwiper {
+      position: absolute;
+      padding: 40px 20px;
+      height: 71%;
+      left: 10%;
+      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+  }
+}
+
+@media screen and (min-height: 570px) and (max-height: 634px) {
+  .poster{
+    height: 410px;
+    width: 100%;
+  }
+  .childSwiper {
+      position: absolute;
+      padding: 40px 20px;
+      height: 71%;
+      left: 15%;
+      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+  }
+}
+
+@media screen and (min-height: 300px) and (max-height: 569px) {
+  .poster{
+    height: 310px;
+    width: 100%;
+  }
+  .childSwiper {
+      position: absolute;
+      padding: 40px 20px;
+      height: 71%;
+      left: 20%;
+      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
+  }
 }
 
 </style>
