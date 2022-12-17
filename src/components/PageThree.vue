@@ -218,7 +218,8 @@ export default {
     height: 100vh;
     /* 弹性布局 水平+垂直居中 */
     /* display: flex; */
-    background-image: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771);
+    /* background-image: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771); */
+    background: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771);
     background-size: cover;
     background-repeat:no-repeat;
 	  background-attachment:fixed;
