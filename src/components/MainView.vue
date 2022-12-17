@@ -42,13 +42,13 @@
               <p>您的学分是{{dataObj.credit}}分</p>
             </div>
           </div> -->
-          <page-three :three="thisActiveIndex" :dataObj="dataObj"></page-three>
-        </swiper-slide>
-        <swiper-slide class="page04">
           <page-four :dataObj="dataObj"></page-four>
         </swiper-slide>
-        <swiper-slide class="page05">
+        <swiper-slide class="page04">
           <page-five :dataObj="dataObj"></page-five>
+        </swiper-slide>
+        <swiper-slide class="page05">
+          <page-three :three="thisActiveIndex" :dataObj="dataObj"></page-three>
         </swiper-slide>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>

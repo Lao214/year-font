@@ -1,28 +1,12 @@
 <template>
   <div class="body">
-    <div class="mask">
         <div class="childSwiper">
+          <div class="shadow">
             <div id="test" ref="imageDom">
-                <swiper :options="swiperOption" ref="mySwiper" >
-                    <swiper-slide class="one">超级达人asides</swiper-slide>
-                    <swiper-slide>
-                      <div>
-                        <img class="poster" src="../assets/1121671064941_.pic.jpg" alt="">
-                      </div>
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="poster" src="../assets/bg.jpg" alt="">
-                    </swiper-slide>
-                    <swiper-slide>
-                      <img class="poster" src="../assets/1121671064941_.pic.jpg" alt="">
-                    </swiper-slide>
-                    <!-- <div class="swiper-pagination" slot="pagination"></div> -->
-                    <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
-                    <div class="swiper-button-next" slot="button-next"> <i class="el-icon-caret-right"></i></div> -->
-                </swiper>
+                <img class="poster" src="../assets/poster.jpg" alt="" loading="lazy">
             </div>
+          </div>
         </div>
-    </div>
     <input type="checkbox" id="search_btn" hidden>
         <label for="search_btn" class="search-btn" style="margin-right: 17px;">
             <a class="btn">新年学习清单</a>
@@ -234,18 +218,13 @@ export default {
     height: 100vh;
     /* 弹性布局 水平+垂直居中 */
     /* display: flex; */
-    background: url('../assets/bg.jpg');
+    background-image: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771);
     background-size: cover;
+    background-repeat:no-repeat;
+	  background-attachment:fixed;
+	  background-position:center; 
     width: 100%;
-}
-.mask {
-     /* 100%窗口高度 */
-     position: absolute;
-     width: 100%;
-     height: 100vh;
-    background-color: rgba(36, 36, 36, 0.669);
-    z-index: 99;
-}   
+} 
 /* 搜索按钮 */
 .search-btn{
     /* 相对定位 */
@@ -474,22 +453,33 @@ export default {
         height: 87vh;
         width: 100%;
     }
-
-.one{
-  height: 510px;
-  width: auto;
-  text-align: center;
-  background-color: #f39c12;
-}
 .poster{
-  height: 510px;
-  max-width: 100%;
-  display: block;
+  height: 100%;
+  width: 100%;
   margin: auto;
+  display: block;
+  /* margin: auto; */
+  /* border: #003ea8 7px solid; */
+}
+@keyframes faguang {
+  from{
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 1px #f1c40f;
+  }to {
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 45px #f1c40f;
+  }
+}
+.shadow {
+  letter-spacing: 0.25em;
+  box-shadow: 0 0 45px #f1c40f;
+  animation: faguang .8s linear;
 }
 .childSwiper {
     padding: 40px 20px;
     height: 71%;
+    position: absolute;
     font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
 }
+
 </style>

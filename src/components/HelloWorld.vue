@@ -6,7 +6,7 @@
                 <swiper :options="swiperOption" ref="mySwiper" >
                     <swiper-slide class="one">超级达人asides</swiper-slide>
                     <swiper-slide class="two">深爱的</swiper-slide>
-                    <swiper-slide class="three"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide>
+                    <!-- <swiper-slide class="three"><img src="../assets/1121671064941_.pic.jpg" alt=""></swiper-slide> -->
                     <swiper-slide class="four">1223</swiper-slide>
                     <!-- <div class="swiper-pagination" slot="pagination"></div> -->
                     <!-- <div class="swiper-button-prev" slot="button-prev"> <i class="el-icon-caret-left"></i> </div>
