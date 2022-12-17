@@ -24,11 +24,14 @@ props:['dataObj']
   }
 .container {
   display: inline-block;
-  padding-top: 70px;
+  padding-top: 90px;
   padding-left: 21px;
   padding-right: 21px;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
+}
+.container p{
+  /* line-height: 25px; */
 }
 </style>

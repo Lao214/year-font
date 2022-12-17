@@ -29,12 +29,9 @@ export default {
   padding-left: 21px;
   padding-right: 21px;
 }
-.container p{
-  line-height: 15px;
-}
 .flip-horizontal-top{
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   /* animation:roll-in-left .6s ease-out both 4.7s; */
   text-align: start;
   font-weight: 600;
