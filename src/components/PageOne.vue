@@ -157,7 +157,7 @@ export default {
   margin-left: 100px;
   font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
   z-index: 99;
-  animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .5s
+  animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .7s
 }
 
 @media screen and (min-height: 360px) and (max-height: 590px) {
@@ -168,7 +168,7 @@ export default {
     margin-left: 80px;
     font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
     z-index: 99;
-    animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .5s
+    animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .7s
     }
     .flip-horizontal-top{
     font-size: 1rem;
@@ -213,7 +213,7 @@ export default {
   --other-color: rgb(219, 169, 108);
   position: absolute;
   bottom: 20%;
-  animation:bounce-in-top 1.1s both
+  animation:bounce-in-top 1.1s both .2s
 }
 @media screen and (min-height: 700px) and (max-height: 800px) {
   .lion {
@@ -226,7 +226,7 @@ export default {
     --other-color: rgb(219, 169, 108);
     position: absolute;
     bottom: 30%;
-    animation:bounce-in-top 1.1s both
+    animation:bounce-in-top 1.1s both .2s
   }
 }
 
@@ -241,7 +241,7 @@ export default {
     --other-color: rgb(219, 169, 108);
     position: absolute;
     bottom: 40%;
-    animation:bounce-in-top 1.1s both
+    animation:bounce-in-top 1.1s both .2s
   }
 }
 
@@ -256,7 +256,7 @@ export default {
     --other-color: rgb(219, 169, 108);
     position: absolute;
     bottom: 50%;
-    animation:bounce-in-top 1.1s both
+    animation:bounce-in-top 1.1s both .2s
   }
 }
 @media screen and (min-height: 1001px){
@@ -270,7 +270,7 @@ export default {
     --other-color: rgb(219, 169, 108);
     position: absolute;
     bottom: 65%;
-    animation:bounce-in-top 1.1s both
+    animation:bounce-in-top 1.1s both .2s
   }
 }
 .head {
