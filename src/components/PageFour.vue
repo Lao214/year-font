@@ -16,7 +16,7 @@ props:['dataObj']
 
 <style scoped>
 .body{
-    background: url('../assets/bg.jpg');
+    background: url('../assets/bg4.jpg');
     background-size: cover;
     width: 100%;
     height: 100vh;

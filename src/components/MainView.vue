@@ -2,9 +2,9 @@
   <div class="view">
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
-      <audio ref="audio" autoplay loop dis>
+      <!-- <audio ref="audio" autoplay loop dis>
         <source src="../assets/music.mp3" />
-      </audio>
+      </audio> -->
       <div class="music-icon">
         <i ref="off" class="fa fa-bell-slash fa-lg" @click="change1" style="display: block"></i>
         <i ref="on" class="fa fa-bell fa-lg" @click="change2" style="display: none"></i>
@@ -18,6 +18,9 @@
     </transition>
     <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
+        <swiper-slide class="home">
+          <home></home>
+        </swiper-slide>
         <swiper-slide class="page01">
           <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
           <!-- <div class="detail-page">
@@ -70,13 +73,14 @@ import PageThree from "./PageThree.vue";
 import JobNoInput from "./jobNoInput.vue";
 import PageFour from './PageFour.vue';
 import PageFive from './PageFive.vue';
+import Home from './Home.vue';
 
 export default {
   name: "app",
-  components: { swiper, swiperSlide, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
+  components: { swiper, swiperSlide,Home, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
   data() {
-    return {
-      jobNo: "",
+   return {
+      jobNo: "11850",
       dataObj: "",
       showFixedHint: true,
       beforeSlideIndex: 0,
