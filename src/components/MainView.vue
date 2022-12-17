@@ -301,6 +301,6 @@ p {
   animation: input .7s ;
 }
 .v-leave-active {
-  animation: input .7s reverse;
+  animation: input .5s reverse;
 }
 </style>
