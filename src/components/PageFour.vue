@@ -30,7 +30,6 @@ props:['dataObj']
 .flip-horizontal-top{
   color: white;
   font-size: 1.2rem;
-  /* animation:roll-in-left .6s ease-out both 4.7s; */
   text-align: start;
   font-weight: 600;
 }

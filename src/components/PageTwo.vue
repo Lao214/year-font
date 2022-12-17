@@ -25,9 +25,12 @@ export default {
   }
 .container {
   /* display: inline-block; */
-  padding-top: 78px;
+  padding-top: 84px;
   padding-left: 21px;
   padding-right: 21px;
+}
+.container p{
+  line-height: 15px;
 }
 .flip-horizontal-top{
   color: white;
