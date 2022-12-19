@@ -5,9 +5,9 @@
 }}</a>小伙伴</p>
     <p class="flip-horizontal-top2">2022年即将过去，感谢您与富士康科技集团携手走过<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.hyear}}</a>年！</p>
     <p class="flip-horizontal-top2">这一年，你在富学宝典平台上的总学习天数达到了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.studate}}</a>天，赶快来开启专属于你的年度学习报告吧～</p>
-    <div class="dialog">
+    <!-- <div class="dialog">
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
-    </div>
+    </div> -->
     <img src="../assets/peacock.png" class="imggundam" alt="">
   </div>
   </div>
@@ -194,8 +194,9 @@ export default {
 }
    
 .imggundam {
-  width: 156px;
-  height: 120px;
+  margin-top: 47px;
+  width: 338px;
+  height: 260px;
   animation:bounce-in-top 1.1s both .2s
 }
 @media screen and (min-height: 700px) and (max-height: 800px) {
