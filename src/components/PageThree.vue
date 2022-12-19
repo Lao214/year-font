@@ -3,13 +3,13 @@
         <div class="childSwiper">
           <div class="shadow">
             <div id="test" ref="imageDom">
-              <div class="zhengshu">
+              <!-- <div class="zhengshu"> -->
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
                   <!-- <section class="random-bg"> -->
-                  <div class="winner-wrap">
+                  <div id="wrap" class="winner-wrap">
                     <div class="border"></div>
                     <div class="medal-box"><i class="fas fa-medal"></i></div>
-                    <h1>Your KeyWord 2022</h1>
+                    <h1>YourKeyWord 2022</h1>
                     <h2>闻鸡起舞</h2>
                     <h2>日积月累</h2>
                     <h2>游刃有余</h2>
@@ -17,7 +17,7 @@
                     <div class="right-ribbon"></div>
                     <div class="left-ribbon"></div>
                   </div>
-              </div>
+              <!-- </div> -->
               <img class="poster" src="../assets/poster.jpg" alt="" loading="lazy">
             </div>
           </div>
@@ -166,14 +166,19 @@ export default {
       })
     },
     createImage(browser) {
-      let node = document.getElementById('test');
+      let warp = document.getElementById('wrap')
+      warp.className = 'winner-wrap2'
+      let node = document.getElementById('test')
+      // console.log(node.offsetHeight)
+      // console.log(node.offsetWidth)
       let that = this
-      domtoimage.toPng(node,{scale:3,width:node.offsetWidth,height:node.offsetHeight})
+      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight})
         .then(function (dataUrl) {
           console.log(dataUrl)
           that.dataUrl = dataUrl
             // console.log(this.browser)
-            FileSaver.saveAs(dataUrl, browser+'poster.png')
+            FileSaver.saveAs(dataUrl, browser+'poster')
+            warp.className = 'winner-wrap'
         })
         .catch(function (error) {
           console.error('生成失败', error);
@@ -230,7 +235,7 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap'); */
 .body{
     /* 100%窗口高度 */
     height: 100vh;
@@ -492,7 +497,7 @@ export default {
 .childSwiper {
     position: absolute;
     padding: 40px 20px;
-    height: 71%;
+    height: 100%;
     font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
 }
 
@@ -500,14 +505,15 @@ export default {
 .winner-wrap{
   position:absolute;
   max-width:210px;
-  min-height:90px;
+  height:160px;
   background:#b21f66;
-  margin:13% 13%;
+  margin:13% 17% 0 12%;
   /* position:relative; */
   padding:1rem 2rem 5.5rem 2rem;
   font-family: 'Lato', sans-serif;
   text-align:center;
 }
+
 .border{
   position:absolute;
   width:90%;
@@ -518,12 +524,12 @@ export default {
   margin:auto;
 }
 .medal-box{
-  width:30px;
-  height:30px;
+  width:25px;
+  height:20px;
   /* background:#fe346e; */
   color:#ffbd69;
   border-radius:50px;
-  line-height:40px;
+  line-height:30px;
   font-size:1.7rem;
   margin:.4rem auto 0rem;
 }
@@ -536,20 +542,22 @@ export default {
 }
 .winner-wrap h2{
   color:#fff;
-  font-size:0.9rem;
+  font-size:1.4rem;
   font-weight:400;
   text-transform:uppercase;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 .winner-ribbon{
   width:100%;
-  height:50px;
+  height:30px;
   background:#ffbd69;
   text-align:center;
   font-family: 'Bebas Neue', cursive;
-  font-size:2.8rem;
+  font-size:1.6rem;
   color:#fe346e;
   position:absolute;
-  bottom:45px;
+  bottom:30px;
   left:0;
   z-index:99;
   box-shadow:0 10px 15px -7px rgba(0,0,0,0.2)
@@ -559,9 +567,9 @@ export default {
   height:0;
   position:absolute;
   right:-35px;
-  bottom:30px;
-  border-top:24px solid #E0B05C;
-  border-bottom:24px solid #E0B05C;
+  bottom:25px;
+  border-top:12px solid #E0B05C;
+  border-bottom:12px solid #E0B05C;
   border-left:10px solid #E0B05C;
   border-right:25px solid transparent;
   transition:all ease .3s;
@@ -571,301 +579,45 @@ export default {
   height:0;
   position:absolute;
   left:-35px;
-  bottom:30px;
-  border-top:24px solid #E0B05C;
-  border-bottom:24px solid #E0B05C;
+  bottom:25px;
+  border-top:12px solid #E0B05C;
+  border-bottom:12px solid #E0B05C;
   border-left:25px solid transparent;
   border-right:10px solid #E0B05C;
   transition:all ease .3s;
 }
+/** 证书 **/
 
-@media screen and (min-height: 635px) and (max-height: 700px) {
-  .poster{
-    height: 470px;
-    width: 100%;
-  }
-  .childSwiper {
-      position: absolute;
-      padding: 40px 20px;
-      height: 71%;
-      left: 10%;
-      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
-  }
+/** 证书 打印 **/
 
-  /** 证书 **/
-.winner-wrap{
+.winner-wrap2{
   position:absolute;
-  max-width:170px;
-  height:130px;
+  max-width:190px;
+  height:170px;
   background:#b21f66;
-  margin:14% 17% 0% 11%;
+  margin:2% 12% 0% 6%;
   /* position:relative; */
-  padding:1rem 1rem 4.5rem 1rem;
+  padding:1rem 2rem 5.5rem 2rem;
   font-family: 'Lato', sans-serif;
   text-align:center;
 }
-.border{
-  position:absolute;
-  width:90%;
-  height:90%;
-  border:1px solid rgba(255, 189, 105, 0.4);
-  left:0; right:0;
-  top:0; bottom:0;
-  margin:auto;
-}
-.medal-box{
-  width:25px;
-  height:25px;
-  /* background:#fe346e; */
-  color:#ffbd69;
-  border-radius:50px;
-  line-height:30px;
-  font-size:1.4rem;
-  margin:.4rem auto 0rem;
-}
-.winner-wrap h1{
-  color:rgba(255, 189, 105, 0.95);
-  font-size:0.9rem;
-  font-weight:400;
-  text-transform:uppercase;
-  /* margin-bottom:1rem; */
-}
-.winner-wrap h2{
+.winner-wrap2 h2{
   color:#fff;
-  font-size:0.7rem;
+  font-size:1.5rem;
   font-weight:400;
   text-transform:uppercase;
-}
-.winner-ribbon{
-  width:100%;
-  height:25px;
-  background:#ffbd69;
-  text-align:center;
-  font-family: 'Bebas Neue', cursive;
-  font-size:1.4rem;
-  color:#fe346e;
-  position:absolute;
-  bottom:20px;
-  left:0;
-  z-index:99;
-  box-shadow:0 10px 15px -7px rgba(0,0,0,0.2)
-}
-.right-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  right:-35px;
-  bottom:10px;
-  border-top:11px solid #E0B05C;
-  border-bottom:11px solid #E0B05C;
-  border-left:10px solid #E0B05C;
-  border-right:25px solid transparent;
-  transition:all ease .3s;
-}
-.left-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  left:-35px;
-  bottom:10px;
-  border-top:11px solid #E0B05C;
-  border-bottom:11px solid #E0B05C;
-  border-left:25px solid transparent;
-  border-right:10px solid #E0B05C;
-  transition:all ease .3s;
-}
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-@media screen and (min-height: 570px) and (max-height: 634px) {
-  .poster{
-    height: 410px;
-    width: 100%;
-  }
-  .childSwiper {
-      position: absolute;
-      padding: 40px 20px;
-      height: 71%;
-      left: 15%;
-      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
-  }
-   /** 证书 **/
-.winner-wrap{
-  position:absolute;
-  max-width:170px;
-  height:100px;
-  background:#b21f66;
-  margin:14% 17% 0% 11%;
-  /* position:relative; */
-  padding:1rem 1rem 4.5rem 1rem;
-  font-family: 'Lato', sans-serif;
-  text-align:center;
-}
-.border{
-  position:absolute;
-  width:90%;
-  height:90%;
-  border:1px solid rgba(255, 189, 105, 0.4);
-  left:0; right:0;
-  top:0; bottom:0;
-  margin:auto;
-}
-.medal-box{
-  width:20px;
-  height:20px;
-  /* background:#fe346e; */
-  color:#ffbd69;
-  border-radius:50px;
-  line-height:20px;
+.winner-wrap2 h1{
+  color:rgba(255, 189, 105, 0.95);
   font-size:1rem;
-  margin:.2rem auto 0rem;
-}
-.winner-wrap h1{
-  color:rgba(255, 189, 105, 0.95);
-  font-size:0.7rem;
   font-weight:400;
   text-transform:uppercase;
   /* margin-bottom:1rem; */
 }
-.winner-wrap h2{
-  color:#fff;
-  font-size:0.6rem;
-  font-weight:400;
-  text-transform:uppercase;
-}
-.winner-ribbon{
-  width:100%;
-  height:20px;
-  background:#ffbd69;
-  text-align:center;
-  font-family: 'Bebas Neue', cursive;
-  font-size:1.1rem;
-  color:#fe346e;
-  position:absolute;
-  bottom:15px;
-  left:0;
-  z-index:99;
-  box-shadow:0 10px 15px -7px rgba(0,0,0,0.2)
-}
-.right-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  right:-35px;
-  bottom:10px;
-  border-top:7px solid #E0B05C;
-  border-bottom:7px solid #E0B05C;
-  border-left:10px solid #E0B05C;
-  border-right:25px solid transparent;
-  transition:all ease .3s;
-}
-.left-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  left:-35px;
-  bottom:10px;
-  border-top:7px solid #E0B05C;
-  border-bottom:7px solid #E0B05C;
-  border-left:25px solid transparent;
-  border-right:10px solid #E0B05C;
-  transition:all ease .3s;
-}
-}
 
-@media screen and (min-height: 300px) and (max-height: 569px) {
-  .poster{
-    height: 310px;
-    width: 100%;
-  }
-  .childSwiper {
-      position: absolute;
-      padding: 40px 20px;
-      height: 71%;
-      left: 20%;
-      font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
-  }
-     /** 证书 **/
-.winner-wrap{
-  position:absolute;
-  max-width:170px;
-  height:90px;
-  background:#b21f66;
-  margin:11% 17% 0% 9%;
-  /* position:relative; */
-  padding:1rem 1rem 2.7rem 1rem;
-  font-family: 'Lato', sans-serif;
-  text-align:center;
-}
-.border{
-  position:absolute;
-  width:90%;
-  height:90%;
-  border:1px solid rgba(255, 189, 105, 0.4);
-  left:0; right:0;
-  top:0; bottom:0;
-  margin:auto;
-}
-.medal-box{
-  width:0px;
-  height:0px;
-  /* background:#fe346e; */
-  color:#ffbd69;
-  border-radius:50px;
-  line-height:0px;
-  font-size:0rem;
-  margin:0rem auto -0.7rem;
-}
-.winner-wrap h1{
-  color:rgba(255, 189, 105, 0.95);
-  font-size:0.6rem;
-  font-weight:500;
-  text-transform:uppercase;
-  /* margin-bottom:1rem; */
-}
-.winner-wrap h2{
-  color:#fff;
-  font-size:0.5rem;
-  font-weight:400;
-  text-transform:uppercase;
-}
-.winner-ribbon{
-  width:100%;
-  height:12px;
-  background:#ffbd69;
-  text-align:center;
-  font-family: 'Bebas Neue', cursive;
-  font-size:0.7rem;
-  color:#fe346e;
-  position:absolute;
-  bottom:10px;
-  left:0;
-  z-index:99;
-  box-shadow:0 10px 15px -7px rgba(0,0,0,0.2)
-}
-.right-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  right:-35px;
-  bottom:5px;
-  border-top:5px solid #E0B05C;
-  border-bottom:5px solid #E0B05C;
-  border-left:10px solid #E0B05C;
-  border-right:25px solid transparent;
-  transition:all ease .3s;
-}
-.left-ribbon{
-  width:0;
-  height:0;
-  position:absolute;
-  left:-35px;
-  bottom:5px;
-  border-top:5px solid #E0B05C;
-  border-bottom:5px solid #E0B05C;
-  border-left:25px solid transparent;
-  border-right:10px solid #E0B05C;
-  transition:all ease .3s;
-}
-}
 
+/** 证书 打印 **/
 </style>
