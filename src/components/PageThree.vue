@@ -166,8 +166,8 @@ export default {
       })
     },
     createImage(browser) {
-      // let warp = document.getElementById('wrap')
-      // warp.className = 'winner-wrap2'
+      let warp = document.getElementById('wrap')
+      warp.className = 'winner-wrap2'
       let node = document.getElementById('test')
       // console.log(node.offsetHeight)
       // console.log(node.offsetWidth)
@@ -178,6 +178,7 @@ export default {
           that.dataUrl = dataUrl
             // console.log(this.browser)
             FileSaver.saveAs(dataUrl, browser+'poster')
+            warp.className = 'winner-wrap'
         })
         .catch(function (error) {
           console.error('生成失败', error);
