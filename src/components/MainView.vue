@@ -18,9 +18,9 @@
     </transition>
     <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
-        <swiper-slide class="home">
+        <!-- <swiper-slide class="home">
           <home></home>
-        </swiper-slide>
+        </swiper-slide> -->
         <swiper-slide class="page01">
           <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
           <!-- <div class="detail-page">
