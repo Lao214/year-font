@@ -18,7 +18,7 @@
                     <div class="left-ribbon"></div>
                   </div>
               <!-- </div> -->
-              <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img" loading="lazy">
+              <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
             </div>
           </div>
         </div>
@@ -197,7 +197,7 @@ export default {
           console.log(dataUrl)
           that.dataUrl = dataUrl
             // console.log(this.browser)
-            FileSaver.saveAs(dataUrl, browser+'poster')
+            FileSaver.saveAs(dataUrl, browser + 'poster')
             warp.className = 'winner-wrap'
         })
         .catch(function (error) {
