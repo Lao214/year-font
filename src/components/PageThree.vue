@@ -91,8 +91,8 @@
             </details>
         </div>
         <div class="search-box">
-            <input type="text" placeholder="我还想要学...">
-            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            <input v-model="comment" type="text" placeholder="我还想要学...">
+            <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
         </div>
     </div>
   </div>
@@ -111,6 +111,10 @@ export default {
       type: Number,
       default: 0
     },
+    browser: {
+      type: String,
+      default: ''
+    }
   },
   components:{swiper,swiperSlide},
   data() {
@@ -128,13 +132,15 @@ export default {
               revEl: '.swiper-button-prev'
             }
         },
-        browser: ''
+        thisBrowser: this.browser,
+        comment: '',
+        studyList: '',
+        sList: []
       }
   },
   created() {
     console.log('this is a prop :' + this.thisIndex)
-    this.browser = this.getBrowser()
-    console.log(this.browser)
+    console.log(this.thisBrowser)
   },
   methods: {
     getImageAccordingToBrowser(){
@@ -184,51 +190,13 @@ export default {
           console.error('生成失败', error);
         })
     },
-    getBrowser() {
-      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-      console.log("loginuserAgent:", userAgent)
-      //判断是否Opera浏览器
-      if (userAgent.indexOf("Opera") > -1) {
-        return "Opera"
+    sumbit() {
+      const view = {
+        comment: this.comment,
+        studyList: this.studyList
       }
-      //判断是否是QQ浏览器
-      else if (userAgent.indexOf("MQQBrowser") > -1) {
-        return "MQQBrowser"
-      }
-      //判断是否Edge浏览器
-      else if (userAgent.indexOf("Edg") > -1){
-        return 'Edge'
-      }
-      //判断是否Firefox浏览器
-      else if (userAgent.indexOf("Firefox") > -1) {
-        return "firefox";
-      }
-    
-      //判断是否Chrome浏览器
-      else if (userAgent.indexOf("Chrome") > -1){
-        return "Chrome";
-      }
-
-      //判断是否Chrome浏览器
-      else if (userAgent.indexOf("360SE") > -1){
-        return "360SE";
-      }
-    
-      //判断是否Safari浏览器
-      else if (userAgent.indexOf("Safari") > -1) {
-        return "Safari";
-      }
-      //判断是否IE浏览器
-      else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
-        return "IE";
-      }
-      else if ( userAgent.indexOf("Trident") > -1){
-        return "IE";
-      }
-      // else{
-      //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
-      //   return arr;
-      // }
+      this.$emit('sumbit',view)
+      // console.log('提交我的留言' + this.comment)
     }
   }
 }

@@ -51,7 +51,7 @@
           <page-five :dataObj="dataObj"></page-five>
         </swiper-slide>
         <swiper-slide class="page05">
-          <page-three :three="thisActiveIndex" :dataObj="dataObj"></page-three>
+          <page-three :three="thisActiveIndex" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
         </swiper-slide>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
@@ -81,10 +81,15 @@ export default {
   data() {
    return {
       jobNo: "11850",
-      dataObj: "",
+      dataObj: '',
+      viewId: '',
+      ua: '',
+      browser: '',
       showFixedHint: true,
       beforeSlideIndex: 0,
       thisActiveIndex: 0,
+      source: '',
+      device: '',
       swiperOption: {
         //  effect: "fade",
         direction: "horizontal", //垂直切换选项
@@ -119,14 +124,13 @@ export default {
     if(this.jobNo) { 
       this.swiper.slideTo(0, 1000, false)
     }
-    // this.$refs.audio.src=require('../assets/music.mp3')
-
     document.addEventListener("WeixinJSBridgeReady", function () {
       document.getElementById("audio").play()
-      //    console.log("自动播放调用了");
     })
   },
   created() {
+    this.browser = this.getBrowser()
+    this.getSystem()
     if (this.jobNo) {
       this.getData()
     }
@@ -162,14 +166,98 @@ export default {
     sendViewRecords() {
       if (this.jobNo) {
         let viewData ={
-          jobNo: this.jobNo
+          jobNo: this.jobNo,
+          device: this.device,
+          ua: this.ua,
+          browser: this.browser
+        }
+        if(this.source) {
+          viewData['source'] = this.source
         }
         viewApi.view(viewData).then(res =>{
-          
+          this.viewId = res.data.data.data.id
         })
       }
-    }
+    },
+    sumbit(view) {
+      view['id'] = this.viewId
+      console.log(view)
+      viewApi.update(view).then(res => {
+        
+      })
+      // console.log('提交我的留言' + this.comment)
+    },
+    getSystem() {
+      var system = navigator.userAgent
+      this.ua = system
+      //判断android ios windows
+      var android = system.indexOf("Android")
+      var iphone = system.indexOf("iPhone")
+      var ipad = system.indexOf("ipad")
+      var windows = system.indexOf("windows")
+      var isMac = /macintosh|mac os x/i.test(navigator.userAgent)
+      if (android !== -1) {
+        console.log("Android")
+        this.device = 'Android'
+        // return 'android'
+      }
+      if (iphone !== -1 || ipad !== -1 || isMac) {
+        console.log("ios")
+        this.device = 'ios'
+        // return 'ios'
+      }
+      if (windows !== -1) {
+        console.log("windows")
+        this.device = 'windows'
+        // return 'windows'
+      }
+    },
+    getBrowser() {
+      var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+      // console.log("loginuserAgent:", userAgent)
+      //判断是否Opera浏览器
+      if (userAgent.indexOf("Opera") > -1) {
+        return "Opera"
+      }
+      //判断是否是QQ浏览器
+      else if (userAgent.indexOf("MQQBrowser") > -1) {
+        return "MQQBrowser"
+      }
+      //判断是否Edge浏览器
+      else if (userAgent.indexOf("Edg") > -1){
+        return 'Edge'
+      }
+      //判断是否Firefox浏览器
+      else if (userAgent.indexOf("Firefox") > -1) {
+        return "firefox";
+      }
+    
+      //判断是否Chrome浏览器
+      else if (userAgent.indexOf("Chrome") > -1){
+        return "Chrome";
+      }
 
+      //判断是否Chrome浏览器
+      else if (userAgent.indexOf("360SE") > -1){
+        return "360SE";
+      }
+    
+      //判断是否Safari浏览器
+      else if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+      }
+      //判断是否IE浏览器
+      else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+        return "IE";
+      }
+      else if ( userAgent.indexOf("Trident") > -1){
+        return "IE";
+      }
+      // else{
+      //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
+      //   return arr;
+      // }
+    }
   },
 };
 </script>

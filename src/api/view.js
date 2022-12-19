@@ -8,5 +8,13 @@ export default {
       method: 'post',
       data: view
     })
+  },
+  update(view) {
+    return request({
+      // 接口路径
+      url: `/year/viewRecords/update`,
+      method: 'post', // 提交方式
+      data: view
+    })
   }
 }
