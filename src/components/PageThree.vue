@@ -18,7 +18,7 @@
                     <div class="left-ribbon"></div>
                   </div>
               <!-- </div> -->
-              <img class="poster" src="../assets/poster.jpg" alt="" loading="lazy">
+              <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img" loading="lazy">
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default {
   },
   methods: {
     getImageAccordingToBrowser(){
-      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser') {
+      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser' || this.browser === 'MiuiBrowser') {
         this.getPrintScreen(this.browser)
       } else {
         this.createImage(this.browser)
@@ -167,8 +167,10 @@ export default {
       html2canvas(this.$refs.imageDom,
       {
         imageTimeout: 15000, //newline
-        scale: 3, //newline
+        scale: 2, //newline
         dpi:300,
+        preserveDrawingBuffer:false,
+        allowTaint: false,
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程
         taintTest: true,//是否在渲染前测试图片
@@ -190,7 +192,7 @@ export default {
       // console.log(node.offsetHeight)
       // console.log(node.offsetWidth)
       let that = this
-      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight})
+      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight,useCORS:true,allowTaint:false})
         .then(function (dataUrl) {
           console.log(dataUrl)
           that.dataUrl = dataUrl
@@ -480,6 +482,8 @@ export default {
     height: 100%;
     font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
 }
+
+
 
 /** 证书 **/
 .winner-wrap{
