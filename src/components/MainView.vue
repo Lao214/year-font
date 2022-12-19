@@ -80,7 +80,7 @@ export default {
   components: { swiper, swiperSlide,Home, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
   data() {
    return {
-      jobNo: "11850",
+      jobNo: "",
       dataObj: '',
       viewId: '',
       ua: '',
