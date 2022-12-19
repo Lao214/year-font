@@ -10,9 +10,9 @@
                     <div class="border"></div>
                     <div class="medal-box"><i class="fas fa-medal"></i></div>
                     <h1>YourKeyWord 2022</h1>
-                    <h2>闻鸡起舞</h2>
-                    <h2>日积月累</h2>
-                    <h2>游刃有余</h2>
+                    <h2>{{ timeLab }}</h2>
+                    <h2>{{ examLab }}</h2>
+                    <h2>{{ stuLab }}</h2>
                     <div class="winner-ribbon">WINNER</div>
                     <div class="right-ribbon"></div>
                     <div class="left-ribbon"></div>
@@ -114,7 +114,19 @@ export default {
     browser: {
       type: String,
       default: ''
-    }
+    },
+    examLab: {
+      type: String,
+      default: ''
+    },
+    stuLab: {
+      type: String,
+      default: ''
+    },
+    timeLab: {
+      type: String,
+      default: ''
+    },
   },
   components:{swiper,swiperSlide},
   data() {

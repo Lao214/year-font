@@ -9,29 +9,6 @@
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
     </div>
     <img src="../assets/peacock.png" class="imggundam" alt="">
-    <!-- <div class="lion">
-      <div class="head">
-        <div class="hair" />
-        <div class="face">
-          <div class="hair" />
-          <div class="ear left" />
-          <div class="ear right" />
-          <div class="eye left" />
-          <div class="eye right" />
-          <div class="nose" />
-          <div class="mouth">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
-      <div class="Lionbody">
-        <div class="hand"></div>
-        <div class="hand"></div>
-      </div>
-    </div> -->
   </div>
   </div>
 </template>

@@ -51,7 +51,7 @@
           <page-five :dataObj="dataObj"></page-five>
         </swiper-slide>
         <swiper-slide class="page05">
-          <page-three :three="thisActiveIndex" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
+          <page-three :stuLab="dataObj.stuLab" :timeLab="dataObj.timeLab" :examLab="dataObj.examLab" :three="thisActiveIndex" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
         </swiper-slide>
         <!-- <div class="swiper-pagination" slot="pagination"></div> -->
       </swiper>
@@ -258,6 +258,10 @@ export default {
       }
       else if ( userAgent.indexOf("Trident") > -1){
         return "IE";
+      }
+      // 判断是否是小米浏览器
+      else if ( userAgent.indexOf("MiuiBrowser") > -1){
+        return "MiuiBrowser";
       }
       // else{
       //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
