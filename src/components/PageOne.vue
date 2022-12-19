@@ -2,7 +2,7 @@
   <div class="body">
    <div class="container">
     <p class="flip-horizontal-top">亲爱的<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.stuName
-}}</a>小伙伴</p>
+}}</a>小伙伴：</p>
     <p class="flip-horizontal-top2">2022年即将过去，感谢您与富士康科技集团携手走过<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.hyear}}</a>年！</p>
     <p class="flip-horizontal-top2">这一年，你在富学宝典平台上的总学习天数达到了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.studate}}</a>天，赶快来开启专属于你的年度学习报告吧～</p>
     <!-- <div class="dialog">
