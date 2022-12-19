@@ -121,7 +121,7 @@ export default {
   },
   mounted() {
     if(this.jobNo) {
-      
+      this.getData()
       this.swiper.slideTo(0, 1000, false)
       // this.getData()
     }
@@ -134,9 +134,9 @@ export default {
       this.source = '富学宝典'
       this.jobNo  = this.$store.getters.username
     }
-    if(this.jobNo) { 
-      this.getData()
-    }
+    // if(this.jobNo) { 
+    //   this.getData()
+    // }
     // console.log(this.$store.state.username)
     this.browser = this.getBrowser()
     this.getSystem()

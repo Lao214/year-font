@@ -8,8 +8,8 @@
     <div class="dialog">
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
     </div>
-    <!-- <img src="../assets/cartoon.jpeg" class="imggundam" alt=""> -->
-    <div class="lion">
+    <img src="../assets/peacock.png" class="imggundam" alt="">
+    <!-- <div class="lion">
       <div class="head">
         <div class="hair" />
         <div class="face">
@@ -31,7 +31,7 @@
         <div class="hand"></div>
         <div class="hand"></div>
       </div>
-    </div>
+    </div> -->
   </div>
   </div>
 </template>
@@ -213,6 +213,12 @@ export default {
   --other-color: rgb(219, 169, 108);
   position: absolute;
   bottom: 20%;
+  animation:bounce-in-top 1.1s both .2s
+}
+   
+.imggundam {
+  width: 156px;
+  height: 120px;
   animation:bounce-in-top 1.1s both .2s
 }
 @media screen and (min-height: 700px) and (max-height: 800px) {
