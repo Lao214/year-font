@@ -2,7 +2,7 @@
  <div class="body">
    <div class="container">
         <a href="#" class="pluse"></a>
-        <p>点击查看</p>
+        <p>{{ $store.state }}</p>
   </div>
   </div>
 </template>

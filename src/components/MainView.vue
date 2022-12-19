@@ -120,20 +120,26 @@ export default {
     }
   },
   mounted() {
-    // console.log("swiper",this.swiper)
-    if(this.jobNo) { 
+    if(this.jobNo) {
+      
       this.swiper.slideTo(0, 1000, false)
+      // this.getData()
     }
     document.addEventListener("WeixinJSBridgeReady", function () {
       document.getElementById("audio").play()
     })
   },
   created() {
-    this.browser = this.getBrowser()
-    this.getSystem()
-    if (this.jobNo) {
+    if(this.$store.getters.username) {
+      this.source = '富学宝典'
+      this.jobNo  = this.$store.getters.username
+    }
+    if(this.jobNo) { 
       this.getData()
     }
+    // console.log(this.$store.state.username)
+    this.browser = this.getBrowser()
+    this.getSystem()
   },
   methods: {
     getData() {
