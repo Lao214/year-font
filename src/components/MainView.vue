@@ -238,6 +238,10 @@ export default {
         return "firefox";
       }
     
+      // 判断是否是小米浏览器
+      else if ( userAgent.indexOf("MiuiBrowser") > -1){
+        return "MiuiBrowser";
+      }
       //判断是否Chrome浏览器
       else if (userAgent.indexOf("Chrome") > -1){
         return "Chrome";
@@ -258,10 +262,6 @@ export default {
       }
       else if ( userAgent.indexOf("Trident") > -1){
         return "IE";
-      }
-      // 判断是否是小米浏览器
-      else if ( userAgent.indexOf("MiuiBrowser") > -1){
-        return "MiuiBrowser";
       }
       // else{
       //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
