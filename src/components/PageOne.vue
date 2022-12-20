@@ -8,7 +8,7 @@
     <!-- <div class="dialog">
       <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
     </div> -->
-    <img src="../assets/peacock.png" class="imggundam" alt="">
+    <img src="../assets/peaco.webp" class="imggundam" alt="">
   </div>
   </div>
 </template>
@@ -22,19 +22,15 @@ export default {
 <style scoped>
 .body{
      background: url('../assets/bg.jpg');
-    /* background: rgb(255, 255, 255); */
     background-size: cover;
     width: 100%;
     height: 100vh;
-    /* font-family: 'Trebuchet MS', sans-serif;  */
   }
 .container {
   display: inline-block;
   padding-top: 70px;
   padding-left: 21px;
   padding-right: 21px;
-  /* background: url('../assets/bg.jpg');
-  background-size: 100%; */
 }
 
 .imggundam {
@@ -47,7 +43,6 @@ export default {
 .flip-horizontal-top{
   color: white;
   font-size: 1.2rem;
-  /* animation:roll-in-left .6s ease-out both 4.7s; */
   text-align: start;
   font-weight: 600;
 }

@@ -17,7 +17,7 @@
                     <div class="left-ribbon"></div>
                   </div>
               <!-- </div> -->
-                <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
+                <img id="poster" crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
             <!-- </div> -->
           </div>
     <input type="checkbox" id="search_btn" hidden>
@@ -49,7 +49,7 @@
                         <details >
                         <summary>javaScript</summary>
                         <div class="folder">
-                            <p>index.js</p>
+                            <p @click="choose()">index.js</p>
                             <p>allk.js</p>
                             <p>kerai.js</p>
                             <p>index.js</p>
@@ -199,6 +199,59 @@ export default {
           console.error('生成失败', error);
         })
     },
+    javaScriptCanvas() {
+      var canvas = document.createElement("canvas")
+      canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
+      var img = document.getElementById("poster")//创建新的图片对象
+      console.log(img)
+      var base64 = '' ;//base64 
+      // img.src = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg';
+      console.log(img.width)
+      console.log(img.height)
+      var topMargin  = img.height * 0.1
+      var bottomMargin  = img.height * 0.5
+      var leftMargin = img.width * 0.17
+      var rightMargin = img.width * 0.17
+      console.log('上边距'+topMargin)
+      console.log('下边距'+bottomMargin)  
+      console.log('左边距'+leftMargin)
+      console.log('右边距'+rightMargin)
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx=canvas.getContext("2d");
+      ctx.drawImage(img,0,0, img.width, img.height);
+      /* 画出证书矩形begin */
+      ctx.fillStyle= "#b21f66";
+      ctx.fillRect(leftMargin,topMargin,img.width-leftMargin-rightMargin,img.height*0.45)
+      /* 画出证书矩形end */
+      /* 画出上描边begin */
+      ctx.strokeStyle= "#ffbd69";
+      ctx.moveTo(leftMargin*1.1, topMargin*1.1)
+      ctx.lineTo(img.width*0.813, topMargin*1.1)
+      ctx.stroke()
+      /* 画出上描边end */
+      /* 画出下描边begin */
+      ctx.strokeStyle= "#ffbd69";
+      ctx.moveTo(leftMargin*1.1, img.height * 0.54)
+      ctx.lineTo(img.width*0.813,img.height * 0.54)
+      ctx.stroke()
+      /* 画出下描边end */
+      /* 画出左描边begin */
+      ctx.strokeStyle= "#ffbd69";
+      ctx.moveTo(leftMargin*1.1, topMargin*1.1)
+      ctx.lineTo(leftMargin*1.1, img.height * 0.54)
+      ctx.stroke()
+      /* 画出左描边end */
+      /* 画出右描边begin */
+      ctx.strokeStyle= "#ffbd69";
+      ctx.moveTo(img.width*0.813, topMargin*1.1)
+      ctx.lineTo(img.width*0.813, img.height * 0.54)
+      ctx.stroke()
+      /* 画出下描边end */
+        base64 = canvas.toDataURL("image/png"); 
+        FileSaver.saveAs(base64, 'a.jpeg');
+        console.log(base64)
+    },
     sumbit() {
       const view = {
         comment: this.comment,
@@ -206,6 +259,10 @@ export default {
       }
       this.$emit('sumbit',view)
       // console.log('提交我的留言' + this.comment)
+    },
+    choose() {
+      this.sList
+      this.studyList
     }
   }
 }
@@ -306,7 +363,7 @@ export default {
     color: #fff;
     cursor: pointer;
     display: none;
-    z-index: 101;
+    z-index: 121;
 }
 .container{
     /* 固定定位 */
@@ -476,11 +533,6 @@ export default {
     letter-spacing: 0.25em;
     box-shadow: 0 0 45px #f1c40f;
   }
-}
-.shadow {
-  letter-spacing: 0.25em;
-  box-shadow: 0 0 45px #f1c40f;
-  animation: faguang .8s linear;
 }
 
 

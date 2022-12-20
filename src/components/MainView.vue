@@ -1,7 +1,7 @@
 <template>
   <div class="view">
-    <div class="PromptBox">
-      <div v-show="jobNoCheck" class="prompt2">抱歉，暂时找不到您的学习报告！</div>
+    <div v-show="jobNoCheck"  class="PromptBox">
+      <div class="prompt2">抱歉，暂时找不到您的学习报告！</div>
       <!-- <div class="prompt2">12</div> -->
     </div>
     <div class="header">
