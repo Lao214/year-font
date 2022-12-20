@@ -1,15 +1,14 @@
 <template>
   <div class="body">
-        <div class="childSwiper">
-          <div class="shadow">
-            <div id="test" ref="imageDom">
+          <!-- <div class="shadow"> -->
+            <div id="test" class="test" ref="imageDom">
               <!-- <div class="zhengshu"> -->
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
                   <!-- <section class="random-bg"> -->
                   <div id="wrap" class="winner-wrap">
                     <div class="border"></div>
                     <div class="medal-box"><i class="fas fa-medal"></i></div>
-                    <h1>YourKeyWord 2022</h1>
+                    <h1>Your KeyWord 2022</h1>
                     <h2>{{ timeLab }}</h2>
                     <h2>{{ examLab }}</h2>
                     <h2>{{ stuLab }}</h2>
@@ -18,10 +17,9 @@
                     <div class="left-ribbon"></div>
                   </div>
               <!-- </div> -->
-              <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
-            </div>
+                <img crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
+            <!-- </div> -->
           </div>
-        </div>
     <input type="checkbox" id="search_btn" hidden>
       <div class="thebtn">
         <label for="search_btn" class="search-btn" style="margin-right: 17px;">
@@ -167,7 +165,7 @@ export default {
       html2canvas(this.$refs.imageDom,
       {
         imageTimeout: 15000, //newline
-        scale: 2, //newline
+        scale: 3, //newline
         dpi:300,
         preserveDrawingBuffer:false,
         allowTaint: false,
@@ -186,19 +184,18 @@ export default {
       })
     },
     createImage(browser) {
-      let warp = document.getElementById('wrap')
-      warp.className = 'winner-wrap2'
       let node = document.getElementById('test')
-      // console.log(node.offsetHeight)
-      // console.log(node.offsetWidth)
+      node.className = 'test2'
+      console.log(node.offsetHeight)
+      console.log(node.offsetWidth)
       let that = this
-      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight,useCORS:true,allowTaint:false})
+      domtoimage.toPng(node,{scale:1,width:node.offsetWidth,height:node.offsetHeight,useCORS:true})
         .then(function (dataUrl) {
           console.log(dataUrl)
           that.dataUrl = dataUrl
             // console.log(this.browser)
             FileSaver.saveAs(dataUrl, browser + 'poster')
-            warp.className = 'winner-wrap'
+            node.className = 'test'
         })
         .catch(function (error) {
           console.error('生成失败', error);
@@ -457,10 +454,21 @@ export default {
         width: 100%;
     }
 .poster{
+  position: relative;
+  left:50%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
   height: 100%;
   width: 100%;
-  /* margin: auto; */
+  /* background-color: #130048; */
   /* border: #003ea8 7px solid; */
+}
+.test {
+  position: absolute;
+  margin-top: 30px;
+  left:50%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
+  height: 70%;
+  width: 80%;
 }
 @keyframes faguang {
   from{
@@ -476,26 +484,24 @@ export default {
   box-shadow: 0 0 45px #f1c40f;
   animation: faguang .8s linear;
 }
-.childSwiper {
-    position: absolute;
-    padding: 40px 20px;
-    height: 100%;
-    font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei'; /* 根节点增加字体设置，避免iOS 15生成图片失败 */
-}
 
 
 
 /** 证书 **/
 .winner-wrap{
   position:absolute;
-  max-width:210px;
-  height:160px;
+  width:55%;
+  height:30%;
   background:#b21f66;
-  margin:13% 17% 0 12%;
+  position:absolute; /*参照物是父容器*/
+  left:50%;
+  top: 11%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
   /* position:relative; */
-  padding:1rem 2rem 5.5rem 2rem;
+  padding:1rem 2rem 4.5rem 2rem;
   font-family: 'Lato', sans-serif;
   text-align:center;
+  z-index: 88;
 }
 
 .border{
@@ -508,13 +514,13 @@ export default {
   margin:auto;
 }
 .medal-box{
-  width:25px;
-  height:20px;
+  width:10px;
+  height:10px;
   /* background:#fe346e; */
   color:#ffbd69;
   border-radius:50px;
-  line-height:30px;
-  font-size:1.7rem;
+  line-height:10px;
+  font-size:1.1rem;
   margin:.4rem auto 0rem;
 }
 .winner-wrap h1{
@@ -523,25 +529,64 @@ export default {
   font-weight:400;
   text-transform:uppercase;
   /* margin-bottom:1rem; */
+  margin-bottom: 0;
 }
 .winner-wrap h2{
   color:#fff;
-  font-size:1.4rem;
+  font-size:1.1rem;
   font-weight:400;
   text-transform:uppercase;
   margin-bottom: 0;
   margin-top: 0;
 }
+@media screen and (min-height: 700px) and (max-height: 810px) {
+  .winner-wrap h1{
+    color:rgba(255, 189, 105, 0.95);
+    font-size:1.1rem;
+    font-weight:400;
+    text-transform:uppercase;
+    /* margin-bottom:1rem; */
+    margin-bottom: 0;
+  }
+  .winner-wrap h2{
+    color:#fff;
+    font-size:1.3rem;
+    font-weight:400;
+    text-transform:uppercase;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-height: 811px) and (max-height: 910px) {
+  .winner-wrap h1{
+    color:rgba(255, 189, 105, 0.95);
+    font-size:1.2rem;
+    font-weight:400;
+    text-transform:uppercase;
+    /* margin-bottom:1rem; */
+    margin-bottom: 0;
+  }
+  .winner-wrap h2{
+    color:#fff;
+    font-size:1.5rem;
+    font-weight:400;
+    text-transform:uppercase;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
 .winner-ribbon{
   width:100%;
-  height:30px;
+  height:25px;
   background:#ffbd69;
   text-align:center;
   font-family: 'Bebas Neue', cursive;
-  font-size:1.6rem;
+  font-size:1.2rem;
   color:#fe346e;
   position:absolute;
-  bottom:30px;
+  bottom:35px;
   left:0;
   z-index:99;
   box-shadow:0 10px 15px -7px rgba(0,0,0,0.2)
@@ -551,9 +596,9 @@ export default {
   height:0;
   position:absolute;
   right:-35px;
-  bottom:25px;
-  border-top:12px solid #E0B05C;
-  border-bottom:12px solid #E0B05C;
+  bottom:30px;
+  border-top:10px solid #E0B05C;
+  border-bottom:10px solid #E0B05C;
   border-left:10px solid #E0B05C;
   border-right:25px solid transparent;
   transition:all ease .3s;
@@ -563,9 +608,9 @@ export default {
   height:0;
   position:absolute;
   left:-35px;
-  bottom:25px;
-  border-top:12px solid #E0B05C;
-  border-bottom:12px solid #E0B05C;
+  bottom:30px;
+  border-top:10px solid #E0B05C;
+  border-bottom:10px solid #E0B05C;
   border-left:25px solid transparent;
   border-right:10px solid #E0B05C;
   transition:all ease .3s;
@@ -573,35 +618,12 @@ export default {
 /** 证书 **/
 
 /** 证书 打印 **/
-
-.winner-wrap2{
-  position:absolute;
-  max-width:190px;
-  height:170px;
-  background:#b21f66;
-  margin:2% 12% 0% 6%;
-  /* position:relative; */
-  padding:1rem 2rem 5.5rem 2rem;
-  font-family: 'Lato', sans-serif;
-  text-align:center;
+.test2 {
+  position: absolute;
+  left:40%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
+  height: 70%;
+  width: 80%;
 }
-.winner-wrap2 h2{
-  color:#fff;
-  font-size:1.5rem;
-  font-weight:400;
-  text-transform:uppercase;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-.winner-wrap2 h1{
-  color:rgba(255, 189, 105, 0.95);
-  font-size:1rem;
-  font-weight:400;
-  text-transform:uppercase;
-  /* margin-bottom:1rem; */
-}
-
-
 /** 证书 打印 **/
 </style>
