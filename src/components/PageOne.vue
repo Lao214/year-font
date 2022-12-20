@@ -37,6 +37,13 @@ export default {
   background-size: 100%; */
 }
 
+.imggundam {
+  margin-top: 47px;
+  width: 338px;
+  height: 260px;
+  animation:bounce-in-top 1.1s both .2s
+}
+
 .flip-horizontal-top{
   color: white;
   font-size: 1.2rem;
