@@ -1,10 +1,9 @@
 <template>
   <div class="body">
-          <!-- <div class="shadow"> -->
+        <div class="shadow"></div>
             <div id="test" class="test" ref="imageDom">
               <!-- <div class="zhengshu"> -->
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-                  <!-- <section class="random-bg"> -->
                   <div id="wrap" class="winner-wrap">
                     <div class="border"></div>
                     <div class="medal-box"><i class="fas fa-medal"></i></div>
@@ -16,7 +15,6 @@
                     <div class="right-ribbon"></div>
                     <div class="left-ribbon"></div>
                   </div>
-              <!-- </div> -->
                 <img id="poster" crossOrigin="anonymous" class="poster" src="../assets/poster.jpg" alt="img">
             <!-- </div> -->
           </div>
@@ -34,58 +32,25 @@
         </label>
     <div class="container">
         <div class="shell">
-            <details >
-                <summary >课程列表</summary>
-                <div class="outer">
+            <details>
+              <summary >课程列表</summary>
+              <div class="outer">
                 <div class="inter">
                     <div class="folder">
-                        <details>
-                        <summary>IT互联网</summary>
-                        <div class="folder">
-                            <p>JAVA</p>
-                            <p>C#</p>
-                        </div>
-                        </details>
-                        <details >
-                        <summary>javaScript</summary>
-                        <div class="folder">
-                            <p @click="choose()">index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                            <p>index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                            <p>index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                            <p>index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                            <p>index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                            <p>index.js</p>
-                            <p>allk.js</p>
-                            <p>kerai.js</p>
-                        </div>
-                        </details>
-                        <details >
-                        <summary>img</summary>
-                        <div class="folder">
-                            <p>ksuia.png</p>
-                            <p>skksk.jpg</p>
-                        </div>
-                        </details>
-                        <details >
-                        <summary>flie</summary>
-                        <div class="folder">
-                            <p>impsksa -sasd.docx</p>
-                            <p>allsdasd.xlxs</p>
-                        </div>
+                        <details v-for="(item, index) in thisCourseList" :key="index">
+                          <summary>{{ item.course }}</summary>
+                            <div class="folder">
+                              <details v-for="(item2, index2) in item.children" :key="index2">
+                                <summary>{{ item2.course }}</summary>
+                                <div v-for="(item3, index3) in item2.children" :key="index3" class="folder">
+                                  <a @click="">{{ item3.course }}</a>
+                                </div>
+                              </details>
+                            </div>
                         </details>
                     </div>
                 </div>
-            </div>
+              </div>
             </details>
         </div>
         <div class="search-box">
@@ -102,6 +67,7 @@ import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
 import domtoimage from 'dom-to-image'
+import { getArray } from '../utils/ course'
 
 export default {
   props: {
@@ -145,12 +111,15 @@ export default {
         thisBrowser: this.browser,
         comment: '',
         studyList: '',
-        sList: []
+        sList: [],
+        thisCourseList:[]
       }
   },
   created() {
     console.log('this is a prop :' + this.thisIndex)
     console.log(this.thisBrowser)
+    this.thisCourseList = getArray()
+    console.log(this.thisCourseList)
   },
   methods: {
     getImageAccordingToBrowser(){
@@ -432,6 +401,32 @@ export default {
   color: #fff;
 }
 
+.shadow {
+  position: absolute;
+  left: 10%;
+  letter-spacing: 0.25em;
+  box-shadow: 0 0 45px #f1c40f;
+  animation: faguang .8s linear;
+  z-index: 2;
+  width: 80%;
+  top: 5%;
+  height: 70%;
+  position:absolute; /*参照物是父容器*/
+  left:50%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
+  animation: faguang 1.2s;
+}
+
+@keyframes faguang {
+  from{
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 1px #f1c40f;
+  }to {
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 45px #f1c40f;
+  }
+}
+
 
 /* 树形列表begin */
 .shell {
@@ -525,16 +520,6 @@ export default {
   height: 70%;
   width: 80%;
 }
-@keyframes faguang {
-  from{
-    letter-spacing: 0.25em;
-    box-shadow: 0 0 1px #f1c40f;
-  }to {
-    letter-spacing: 0.25em;
-    box-shadow: 0 0 45px #f1c40f;
-  }
-}
-
 
 
 /** 证书 **/
