@@ -497,7 +497,7 @@ export default {
   transform:translateX(-50%); /*百分比的参照物是自身*/
   /* position:relative; */
   padding:1rem 2rem 4.5rem 2rem;
-  font-family: 'Lato', sans-serif;
+ font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei', SimHei;
   text-align:center;
   z-index: 88;
 }
