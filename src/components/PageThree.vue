@@ -167,8 +167,6 @@ export default {
         imageTimeout: 15000, //newline
         scale: 3, //newline
         dpi:300,
-        preserveDrawingBuffer:false,
-        // allowTaint: false,
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程
         taintTest: true,//是否在渲染前测试图片
