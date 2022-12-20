@@ -9,7 +9,7 @@ const store = new Vuex.Store({
     username:'',
     realname:'',
     advertid:506,
-    advertname:"富士康大学grit指数问卷",
+    advertname:"year",
     device:'',
   },
   mutations: {

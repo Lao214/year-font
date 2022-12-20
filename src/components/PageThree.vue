@@ -168,7 +168,7 @@ export default {
         scale: 3, //newline
         dpi:300,
         preserveDrawingBuffer:false,
-        allowTaint: false,
+        // allowTaint: false,
         useCORS: true, //图片跨域，开启跨域配置
         logging: false,//日志开关，便于查看html2canvas的内部执行流程
         taintTest: true,//是否在渲染前测试图片
@@ -189,7 +189,7 @@ export default {
       console.log(node.offsetHeight)
       console.log(node.offsetWidth)
       let that = this
-      domtoimage.toPng(node,{scale:1,width:node.offsetWidth,height:node.offsetHeight,useCORS:true})
+      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight,useCORS:true})
         .then(function (dataUrl) {
           console.log(dataUrl)
           that.dataUrl = dataUrl

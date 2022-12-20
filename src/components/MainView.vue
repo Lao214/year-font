@@ -1,5 +1,9 @@
 <template>
   <div class="view">
+    <div class="PromptBox">
+      <div v-show="jobNoCheck" class="prompt2">抱歉，暂时找不到您的学习报告！</div>
+      <!-- <div class="prompt2">12</div> -->
+    </div>
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
       <!-- <audio ref="audio" autoplay loop dis>
@@ -81,6 +85,7 @@ export default {
   data() {
    return {
       jobNo: "",
+      jobNoCheck: false,
       dataObj: '',
       viewId: '',
       ua: '',
@@ -149,7 +154,7 @@ export default {
         if (this.dataObj) {
           this.sendViewRecords()
         } else if (!this.dataObj) {
-          alert('找不到您的成绩单，请确认工号是否正确。')
+          this.noEmployees()
         }
       })
     },
@@ -267,6 +272,15 @@ export default {
       //   arr.push('请更换主流浏览器,例如chrome,firefox,opera,safari,IE,Edge!')
       //   return arr;
       // }
+    },
+    noEmployees() {
+      this.jobNoCheck = false
+      setTimeout(() => {
+        this.jobNoCheck = true
+      },10)
+      setTimeout(() => {
+        this.jobNoCheck = false
+      },3000)
     }
   },
 };
@@ -291,18 +305,54 @@ export default {
   /* text-align: center; */
   touch-action: none;
 }
-/* .page01{
-  background: url(../assets/01.png) no-repeat;
-  background-size: 100% 100%;
+.PromptBox {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform:translateX(-50%); /*百分比的参照物是自身*/
+    width: 100%;
+    height: 20%;
+    z-index: 1000;
+    /* text-align: center; */
 }
-.page02{
-  background: url(../assets/02.png) no-repeat;
-  background-size: 100% 100%;
-}
-.page03{
-  background: url(../assets/03.png) no-repeat;
-  background-size: 100% 100%;
-} */
+  .prompt{
+    background-color: #000;
+    margin: 10px auto;
+    color: #fff;
+    padding: 25px 50px;
+    user-select: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -5%;
+    opacity: 0;
+    border-radius: 50px;
+    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
+    z-index: 1001;
+  }
+  .prompt2{
+    background-color: #000;
+    margin: 100px auto;
+    color: #fff;
+    padding: 25px 15px;
+    display:table;
+    margin:0 auto;
+    top: -100px;
+    opacity: 1;
+    border-radius: 10px;
+    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
+    z-index: 1001;
+  }
+
+  @keyframes slide-in-blurred-top{
+    0%{transform:translateY(-1000px) scaleY(2.5) scaleX(.2);transform-origin:50% 0;filter:blur(40px);opacity:0}
+    100%{transform:translateY(0) scaleY(1) scaleX(1);transform-origin:50% 50%;filter:blur(0);opacity:1}
+  }
+
+  /* .shown {
+    opacity: 1;
+    top: 10%;
+  } */
 .header {
   position: fixed;
   z-index: 10;
