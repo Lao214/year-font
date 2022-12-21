@@ -39,7 +39,6 @@ Vue.prototype.$getUserInfoByFXBD = function() {
   }).then((data) => { //拿到用户信息后的操作
     console.log('拿到信息:' + data)
     that.$setUserInfo(data)
-    return data
   }).catch(err => {})
 }
 Vue.prototype.$setUserInfo = function(data) {
@@ -51,7 +50,8 @@ Vue.prototype.$setUserInfo = function(data) {
   store.dispatch('setName', data.jobNo)
   store.dispatch('setRealname', data.name)
   store.dispatch('setDevice', data.device)
-  // console.log('调用了')
+  Vue.prototype.$data = data
+  return data
 }
 
 const vm = new Vue({
