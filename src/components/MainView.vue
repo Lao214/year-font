@@ -111,11 +111,15 @@ export default {
     }
   },
   mounted() {
+    let data = this.$getUserInfoByFXBD()
+    console.log('bubaodata:' + data)
     if(this.$store.getters.username) {
       this.source = '富学宝典'
       this.jobNo  = this.$store.getters.username
       console.log('nei' + this.$store.getters.username)
     }
+    console.log('wai' + this.$store.getters.username)
+    console.log('status' + this.$store.getters.status)
     if(this.jobNo) {
       this.getData()
       this.swiper.slideTo(0, 1000, false)

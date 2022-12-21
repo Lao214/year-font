@@ -37,6 +37,7 @@ Vue.prototype.$getUserInfoByFXBD = function() {
       reject()
     }
   }).then((data) => { //拿到用户信息后的操作
+    console.log('拿到信息:' + data)
     that.$setUserInfo(data)
   }).catch(err => {})
 }
