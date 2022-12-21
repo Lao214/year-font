@@ -2,7 +2,9 @@
   <div class="view">
     <div v-show="jobNoCheck"  class="PromptBox">
       <div class="prompt2">抱歉，暂时找不到您的学习报告！</div>
-      <!-- <div class="prompt2">12</div> -->
+    </div>
+    <div v-show="sumbitCheck"  class="PromptBox">
+      <div class="prompt2">提交成功，感谢您的留言</div>
     </div>
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
@@ -86,6 +88,7 @@ export default {
    return {
       jobNo: "",
       jobNoCheck: false,
+      sumbitCheck: false,
       dataObj: '',
       viewId: '',
       ua: '',
@@ -154,7 +157,7 @@ export default {
         if (this.dataObj) {
           this.sendViewRecords()
         } else if (!this.dataObj) {
-          this.noEmployees()
+          this.tipShow('check')
         }
       })
     },
@@ -194,7 +197,7 @@ export default {
       view['id'] = this.viewId
       console.log(view)
       viewApi.update(view).then(res => {
-        
+        this.tipShow('sumbit')
       })
       // console.log('提交我的留言' + this.comment)
     },
@@ -273,14 +276,24 @@ export default {
       //   return arr;
       // }
     },
-    noEmployees() {
-      this.jobNoCheck = false
-      setTimeout(() => {
-        this.jobNoCheck = true
-      },10)
-      setTimeout(() => {
+    tipShow(type) {
+      if(type === 'sumbit'){
+        this.sumbitCheck = false
+        setTimeout(() => {
+          this.sumbitCheck = true
+        },10)
+        setTimeout(() => {
+          this.sumbitCheck = false
+        },3000)
+      } else if (type === 'check') {
         this.jobNoCheck = false
-      },3000)
+        setTimeout(() => {
+          this.jobNoCheck = true
+        },10)
+        setTimeout(() => {
+          this.jobNoCheck = false
+        },3000)
+      }
     }
   },
 };
@@ -315,7 +328,7 @@ export default {
     z-index: 1000;
     /* text-align: center; */
 }
-  .prompt{
+  /* .prompt{
     background-color: #000;
     margin: 10px auto;
     color: #fff;
@@ -329,7 +342,7 @@ export default {
     border-radius: 50px;
     animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
     z-index: 1001;
-  }
+  } */
   .prompt2{
     background-color: #000;
     margin: 100px auto;

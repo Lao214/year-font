@@ -449,16 +449,5 @@ var sampleArray = [
 ]
 
 export function getArray() {
-  // var output1 = sampleArray.find(object => object.keyword === keyword1)
-  // var output2 = sampleArray.find(object => object.keyword === keyword2)
-  // var output3 = sampleArray.find(object => object.keyword === keyword3)
-  // var output4 = sampleArray.find(object => object.keyword === keyword4)
-  // var output5 = sampleArray.find(object => object.keyword === keyword5)
-  // var keyArray = []
-  // keyArray.push(output1)
-  // keyArray.push(output2)
-  // keyArray.push(output3)
-  // keyArray.push(output4)
-  // keyArray.push(output5)
   return sampleArray
 }

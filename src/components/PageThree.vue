@@ -1,8 +1,10 @@
 <template>
   <div class="body">
+        <div v-show="tipShow"  class="PromptBox">
+          <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
+        </div>
         <div class="shadow"></div>
             <div id="test" class="test" ref="imageDom">
-              <!-- <div class="zhengshu"> -->
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
                   <div id="wrap" class="winner-wrap">
                     <div class="border"></div>
@@ -44,10 +46,10 @@
                                 <details v-if="item2.children">
                                   <summary @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</summary>
                                   <div v-for="(item3, index3) in item2.children" :key="index3" class="folder">
-                                    <a @click="choose(item3.class + '_' + item3.course, item3.children, 3)">{{ item3.course }}</a>
+                                    <a class="choose" @click="choose(item3.class + '_' + item3.course, item3.children, 3)">{{ item3.course }}</a>
                                   </div>
                                 </details>
-                                <a v-if="!item2.children" @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</a>
+                                <a class="choose" v-if="!item2.children" @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</a>
                               </div>
                             </div>
                         </details>
@@ -56,6 +58,18 @@
               </div>
             </details>
         </div>
+        <!-- <button v-if="studyList" class="button-paper" role="button">已选课程</button> -->
+        <div class="modal-container">
+        <input id="modal-toggle" type="checkbox">
+        <label  class="modal-btn" for="modal-toggle">已选课程</label> 
+        <label class="modal-backdrop" for="modal-toggle"></label>
+        <div class="modal-content">
+          <label class="modal-close" for="modal-toggle">&#x2715;</label>
+          <h2>已选课程</h2><hr />
+          <p>{{ studyList }}</p> 
+          <p v-if="!studyList">您暂未选择课程列表中的课程</p>
+        </div>          
+      </div>
         <div class="search-box">
             <input v-model="comment" type="text" placeholder="我还想要学...">
             <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
@@ -115,7 +129,8 @@ export default {
         comment: '',
         studyList: '',
         sList: [],
-        thisCourseList:[]
+        thisCourseList:[],
+        tipShow: false
       }
   },
   created() {
@@ -236,14 +251,25 @@ export default {
       if(level === 3) {
         this.studyList =  this.studyList + ',' + course
         this.sList.push(course)
+        this.add()
       }else if(level === 2) {
         if(!children) {
           this.studyList =  this.studyList + ',' + course
           this.sList.push(course)
+          this.add()
         }
       }
       console.log(this.studyList)
       console.log(this.sList)
+    },
+    add() {
+      this.tipShow = false
+      setTimeout(() => {
+        this.tipShow = true
+      },10)
+      setTimeout(() => {
+        this.tipShow = false
+      },3000)
     }
   }
 }
@@ -447,6 +473,7 @@ export default {
     display: block;
     width: 600px;
     text-align: start;
+    z-index: 99;
 }
 @media screen and (min-width: 401px) and (max-width: 599px) {
     .shell {
@@ -508,11 +535,11 @@ export default {
     padding: 10px 0 10px 20px;
   }
   .outer {
-        height: 67vh;
+        height: 47vh;
         overflow-y: scroll;
     }
     .inter {
-        height: 87vh;
+        height: 67vh;
         width: 100%;
     }
 .poster{
@@ -673,4 +700,147 @@ export default {
   width: 80%;
 }
 /** 证书 打印 **/
+
+.choose:hover {
+  /* background-color: #75bcff; */
+}
+
+.PromptBox {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform:translateX(-50%); /*百分比的参照物是自身*/
+    width: 100%;
+    height: 20%;
+    z-index: 1000;
+    /* text-align: center; */
+}
+  .prompt2{
+    background-color: #000;
+    margin: 100px auto;
+    color: #fff;
+    padding: 25px 15px;
+    display:table;
+    margin:0 auto;
+    top: -100px;
+    opacity: 1;
+    border-radius: 10px;
+    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
+    z-index: 1001;
+  }
+
+  @keyframes slide-in-blurred-top{
+    0%{transform:translateY(-1000px) scaleY(2.5) scaleX(.2);transform-origin:50% 0;filter:blur(40px);opacity:0}
+    100%{transform:translateY(0) scaleY(1) scaleX(1);transform-origin:50% 50%;filter:blur(0);opacity:1}
+  }
+
+
+  /* dialog */
+  .modal-container {
+  margin: 60px auto;
+  padding-top: 0px;
+  position: relative;
+  width: 160px;
+}
+.modal-container .modal-btn {
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+  background: #446cb3;
+  font-size: 22px;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 30vh;
+  box-shadow: 0 5px 5px -5px #333;
+  transition: background 0.3s ease-in;
+}
+.modal-container .modal-btn:hover {
+  background: #365690;
+}
+.modal-container .modal-content,
+.modal-container .modal-backdrop {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+.modal-container .modal-close {
+  color: #aaa;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding-top: 3px;
+  background: #fff;
+  font-size: 16px;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.modal-container .modal-close:hover {
+  color: #333;
+}
+.modal-container #modal-toggle {
+  display: none;
+}
+.modal-container #modal-toggle.active ~ .modal-backdrop, .modal-container #modal-toggle:checked ~ .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+.modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
+  opacity: 1;
+  background-color: #fff;
+  max-width: 400px;
+  width: 400px;
+  height: 280px;
+  padding: 10px 30px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 12%;
+  border-radius: 4px;
+  z-index: 999;
+  pointer-events: auto;
+  cursor: auto;
+  visibility: visible;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 400px) {
+  .modal-container #modal-toggle.active ~ .modal-content, .modal-container #modal-toggle:checked ~ .modal-content {
+    /* left: 0; */
+    opacity: 1;
+  background-color: #fff;
+  max-width: 400px;
+  width: 300px;
+  height: 280px;
+  padding: 10px 30px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 12%;
+  border-radius: 4px;
+  z-index: 999;
+  pointer-events: auto;
+  cursor: auto;
+  visibility: visible;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.6);
+  }
+}
 </style>
