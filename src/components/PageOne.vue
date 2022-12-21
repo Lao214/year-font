@@ -5,11 +5,13 @@
 }}</a>小伙伴：</p>
     <p class="flip-horizontal-top2">2022年即将过去，感谢您与富士康科技集团携手走过<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.hyear}}</a>年！</p>
     <p class="flip-horizontal-top2">这一年，你在富学宝典平台上的总学习天数达到了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.studate}}</a>天，赶快来开启专属于你的年度学习报告吧～</p>
-    <!-- <div class="dialog">
-      <p class="dialogText">今年居然学了那么多<br> 真的很棒呢！</p>
-    </div> -->
     <img src="../assets/peaco.webp" class="imggundam" alt="">
   </div>
+    <div class="arrows-body">
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+      <div class="arrow"></div>
+    </div>
   </div>
 </template>
 
@@ -20,6 +22,49 @@ export default {
 </script>
 
 <style scoped>
+
+.arrows-body {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrow {
+    position: relative;
+    width:30px;
+    height: 30px;
+    border-bottom: 6px solid #fff;
+    border-right:6px solid #fff;
+    transform: rotate(-45deg);
+    animation: arrow-load 2s infinite;
+  }
+  .arrow:nth-child(1) {
+     left: 11px;
+     animation-delay:  -0.4s;
+  }
+  .arrow:nth-child(2) {
+     animation-delay:  -0.2s;
+  }
+  .arrow:nth-child(3) {
+     right:  11px;
+  }
+
+  @keyframes arrow-load {
+    0% {
+      opacity: 0;
+      transform: rotate(-45deg) translate(60px,60px);
+    }
+    0% {
+      opacity: 1;
+    }
+    0% {
+      opacity: 0;
+      transform: rotate(-45deg) translate(-60px,-60px);
+    }
+  }
 .body{
      background: url('../assets/bg.jpg');
     background-size: cover;
@@ -129,24 +174,10 @@ export default {
   0%{filter:blur(12px);opacity:0}
   100%{filter:blur(0);opacity:1}
 }
-/* .dialog{
-  width: 60vw;
-  display: flex;
-  margin-left: 100px;
-  font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
-  z-index: 99;
-  animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .7s
-} */
+
 
 @media screen and (min-height: 360px) and (max-height: 590px) {
-    /* .dialog{
-    width: 60vw;
-    display: flex;
-    margin-left: 80px;
-    font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
-    z-index: 99;
-    animation:text-focus-in .7s cubic-bezier(.55,.085,.68,.53) both .7s
-    } */
+   
     .flip-horizontal-top{
     font-size: 1rem;
     animation:roll-in-left .6s ease-out both 4.7s;

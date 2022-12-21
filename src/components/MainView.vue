@@ -8,9 +8,9 @@
     </div>
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
-      <!-- <audio ref="audio" autoplay loop dis>
+      <audio ref="audio" autoplay loop dis>
         <source src="../assets/music.mp3" />
-      </audio> -->
+      </audio>
       <div class="music-icon">
         <i ref="off" class="fa fa-bell-slash fa-lg" @click="change1" style="display: block"></i>
         <i ref="on" class="fa fa-bell fa-lg" @click="change2" style="display: none"></i>
