@@ -40,12 +40,15 @@
                         <details v-for="(item, index) in thisCourseList" :key="index">
                           <summary>{{ item.course }}</summary>
                             <div class="folder">
-                              <details v-for="(item2, index2) in item.children" :key="index2">
-                                <summary>{{ item2.course }}</summary>
-                                <div v-for="(item3, index3) in item2.children" :key="index3" class="folder">
-                                  <a @click="">{{ item3.course }}</a>
-                                </div>
-                              </details>
+                              <div v-for="(item2, index2) in item.children" :key="index2">
+                                <details v-if="item2.children">
+                                  <summary @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</summary>
+                                  <div v-for="(item3, index3) in item2.children" :key="index3" class="folder">
+                                    <a @click="choose(item3.class + '_' + item3.course, item3.children, 3)">{{ item3.course }}</a>
+                                  </div>
+                                </details>
+                                <a v-if="!item2.children" @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</a>
+                              </div>
                             </div>
                         </details>
                     </div>
@@ -229,9 +232,18 @@ export default {
       this.$emit('sumbit',view)
       // console.log('提交我的留言' + this.comment)
     },
-    choose() {
-      this.sList
-      this.studyList
+    choose(course, children, level) {
+      if(level === 3) {
+        this.studyList =  this.studyList + ',' + course
+        this.sList.push(course)
+      }else if(level === 2) {
+        if(!children) {
+          this.studyList =  this.studyList + ',' + course
+          this.sList.push(course)
+        }
+      }
+      console.log(this.studyList)
+      console.log(this.sList)
     }
   }
 }
