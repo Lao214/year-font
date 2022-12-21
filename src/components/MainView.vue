@@ -29,28 +29,11 @@
         </swiper-slide> -->
         <swiper-slide class="page01">
           <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
-          <!-- <div class="detail-page">
-            <div class="text-detail-box textOne" v-show="textOne">
-              <p>时光总是偷偷流逝</p>
-              <p>转眼间一年又过去了</p>
-              <p>这一年你又有多少收获呢</p>
-            </div>
-          </div>       -->
         </swiper-slide>
         <swiper-slide class="page02">
           <page-two :dataObj="dataObj"></page-two>
-          <!-- <div class="detail-page">
-            <div class="text-detail-box textTwo" v-show="textTwo">
-              <p>您今年共看了<span style="font-size: 2.7rem;color: rgb(42, 91, 165);">{{dataObj.courses}}</span>门课程</p>
-            </div>
-          </div> -->
         </swiper-slide>
         <swiper-slide class="page03">
-          <!-- <div class="detail-page">
-            <div class="text-detail-box textThree" v-show="textThree">
-              <p>您的学分是{{dataObj.credit}}分</p>
-            </div>
-          </div> -->
           <page-four :dataObj="dataObj"></page-four>
         </swiper-slide>
         <swiper-slide class="page04">
@@ -59,7 +42,7 @@
         <swiper-slide class="page05">
           <page-three :stuLab="dataObj.stuLab" :timeLab="dataObj.timeLab" :examLab="dataObj.examLab" :three="thisActiveIndex" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
         </swiper-slide>
-        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
+
       </swiper>
     </div>
     <!-- <audio id="audio" controls="controls" autoplay loop>
@@ -142,10 +125,6 @@ export default {
       this.source = '富学宝典'
       this.jobNo  = this.$store.getters.username
     }
-    // if(this.jobNo) { 
-    //   this.getData()
-    // }
-    // console.log(this.$store.state.username)
     this.browser = this.getBrowser()
     this.getSystem()
   },
@@ -328,21 +307,6 @@ export default {
     z-index: 1000;
     /* text-align: center; */
 }
-  /* .prompt{
-    background-color: #000;
-    margin: 10px auto;
-    color: #fff;
-    padding: 25px 50px;
-    user-select: none;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: -5%;
-    opacity: 0;
-    border-radius: 50px;
-    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
-    z-index: 1001;
-  } */
   .prompt2{
     background-color: #000;
     margin: 100px auto;
