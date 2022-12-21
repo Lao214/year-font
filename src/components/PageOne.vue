@@ -12,6 +12,7 @@
       <div class="arrow"></div>
       <div class="arrow"></div>
     </div>
+    <!-- <p style="color:aliceblue;position:absolute;bottom:4%;left:50%">左划开启</p> -->
   </div>
 </template>
 
@@ -36,33 +37,33 @@ export default {
     position: relative;
     width:30px;
     height: 30px;
-    border-bottom: 6px solid #fff;
-    border-right:6px solid #fff;
+    border-top: 6px solid #fff;
+    border-left:6px solid #fff;
     transform: rotate(-45deg);
     animation: arrow-load 2s infinite;
   }
   .arrow:nth-child(1) {
-     left: 11px;
+     right: -7px;
      animation-delay:  -0.4s;
   }
   .arrow:nth-child(2) {
      animation-delay:  -0.2s;
   }
   .arrow:nth-child(3) {
-     right:  11px;
+     left:  -7px;
   }
 
   @keyframes arrow-load {
     0% {
       opacity: 0;
-      transform: rotate(-45deg) translate(60px,60px);
+      transform: rotate(-45deg) translate(-60px,-60px);
     }
     0% {
       opacity: 1;
     }
     0% {
       opacity: 0;
-      transform: rotate(-45deg) translate(-60px,-60px);
+      transform: rotate(-45deg) translate(60px,60px);
     }
   }
 .body{
