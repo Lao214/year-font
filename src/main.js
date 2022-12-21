@@ -42,14 +42,14 @@ Vue.prototype.$getUserInfoByFXBD = function() {
 }
 Vue.prototype.$setUserInfo = function(data) {
   //将用户信息放入到状态管理器的，方便使用时调用
-  // console.log(data)
-  // console.log(this)
-  // console.log(this.$store)
+  console.log(data)
+  console.log(this)
+  console.log(this.$store)
   let store = this.$store
   store.dispatch('setName', data.jobNo)
   store.dispatch('setRealname', data.name)
   store.dispatch('setDevice', data.device)
-  // console.log('调用了')
+  console.log('调用了')
 }
 
 const vm = new Vue({
