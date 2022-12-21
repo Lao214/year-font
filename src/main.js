@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import store from './store'
+import { Tree } from 'element-ui';
+
+Vue.component(Tree.name, Tree)
+
 Vue.config.productionTip = false
 
 
@@ -45,11 +48,6 @@ Vue.prototype.$setUserInfo = function(data) {
   //将用户信息放入到状态管理器的，方便使用时调用
   console.log(data.jobNo)
   console.log(this)
-  console.log(this.$store)
-  let store = this.$store
-  store.dispatch('setName', data.jobNo)
-  store.dispatch('setRealname', data.name)
-  store.dispatch('setDevice', data.device)
   Vue.prototype.$jobNo = data.jobNo
   return data.jobNo
 }
@@ -58,7 +56,6 @@ const vm = new Vue({
   mounted() {
     this.$getUserInfoByFXBD()
   },
-  store,
   render: h => h(App)
 }).$mount('#app')
 

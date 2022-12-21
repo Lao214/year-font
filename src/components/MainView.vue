@@ -113,24 +113,21 @@ export default {
   mounted() {
     setTimeout(() => {
         console.log('1s')
-        if(this.$store.getters.username) {
+        if(this.$jobNo) {
           this.source = '富学宝典'
-          this.jobNo  = this.$store.getters.username
-          console.log('nei' + this.$store.getters.username)
-          console.log('nei' + this.$jobNo)
+          this.jobNo  = this.$jobNo
+          // console.log('nei' + this.$store.getters.username)
+          // console.log('nei' + this.$jobNo)
           if(this.jobNo) {
             this.getData()
-            this.swiper.slideTo(0, 1000, false)
+            // this.swiper.slideTo(0, 1000, false)
           }
         }
       }, 1000)
-
-    // console.log('wai' + this.$store.getters.username)
-    // console.log('status' + this.$store.getters.status)
-    if(this.jobNo) {
-      this.getData()
-      this.swiper.slideTo(0, 1000, false)
-    }
+    // if(this.jobNo) {
+    //   this.getData()
+    //   this.swiper.slideTo(0, 1000, false)
+    // }
     document.addEventListener("WeixinJSBridgeReady", function () {
       document.getElementById("audio").play()
     })

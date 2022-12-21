@@ -33,7 +33,7 @@
             <i class="fa fa-close" aria-hidden="true"></i>
         </label>
     <div class="container">
-        <div class="shell">
+        <!-- <div class="shell">
             <details>
               <summary >课程列表</summary>
               <div class="outer">
@@ -57,17 +57,20 @@
                 </div>
               </div>
             </details>
-        </div>
-        <!-- <button v-if="studyList" class="button-paper" role="button">已选课程</button> -->
+        </div> -->
         <div class="modal-container">
         <input id="modal-toggle" type="checkbox">
-        <label  class="modal-btn" for="modal-toggle">已选课程</label> 
+        <label  class="modal-btn" for="modal-toggle">选择课程</label> 
         <label class="modal-backdrop" for="modal-toggle"></label>
         <div class="modal-content">
           <label class="modal-close" for="modal-toggle">&#x2715;</label>
-          <h2>已选课程</h2><hr />
-          <p>{{ studyList }}</p> 
-          <p v-if="!studyList">您暂未选择课程列表中的课程</p>
+          <h2>课程列表</h2><hr />
+          <div class="outer">
+                <div class="inter">
+          <el-tree :data="thisCourseList"  ref="tree"  show-checkbox  node-key="id"  :props="defaultProps"  @check-change="handleCheckChange">
+          </el-tree>
+                </div>
+          </div>
         </div>          
       </div>
         <div class="search-box">
@@ -84,7 +87,7 @@ import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
 import domtoimage from 'dom-to-image'
-import { getArray } from '../utils/ course'
+import { getArray } from '../utils/course'
 
 export default {
   props: {
@@ -124,6 +127,10 @@ export default {
               nextEl: '.swiper-button-next',
               revEl: '.swiper-button-prev'
             }
+        },
+        defaultProps: {
+          children: 'children',
+          label: 'label'
         },
         thisBrowser: this.browser,
         comment: '',
@@ -240,6 +247,13 @@ export default {
         console.log(base64)
     },
     sumbit() {
+      this.studyList = ''
+      let array = this.$refs.tree.getCheckedNodes()
+      for (let i = 0; i < array.length; i++) {
+        if(!array[i].children) {
+          this.studyList =  this.studyList + ',' + array[i].class + array[i].label
+        }
+      }
       const view = {
         comment: this.comment,
         studyList: this.studyList
@@ -247,21 +261,21 @@ export default {
       this.$emit('sumbit',view)
       // console.log('提交我的留言' + this.comment)
     },
-    choose(course, children, level) {
-      if(level === 3) {
-        this.studyList =  this.studyList + ',' + course
-        this.sList.push(course)
-        this.add()
-      }else if(level === 2) {
-        if(!children) {
-          this.studyList =  this.studyList + ',' + course
-          this.sList.push(course)
-          this.add()
-        }
-      }
-      console.log(this.studyList)
-      console.log(this.sList)
-    },
+    // choose(course, children, level) {
+    //   if(level === 3) {
+    //     this.studyList =  this.studyList + ',' + course
+    //     this.sList.push(course)
+    //     this.add()
+    //   }else if(level === 2) {
+    //     if(!children) {
+    //       this.studyList =  this.studyList + ',' + course
+    //       this.sList.push(course)
+    //       this.add()
+    //     }
+    //   }
+    //   console.log(this.studyList)
+    //   console.log(this.sList)
+    // },
     add() {
       this.tipShow = false
       setTimeout(() => {
@@ -270,6 +284,10 @@ export default {
       setTimeout(() => {
         this.tipShow = false
       },3000)
+    },
+    handleCheckChange(data, checked, indeterminate) {
+      // console.log(this.$refs.tree.getCurrentKey())
+          // console.log(this.studyList)
     }
   }
 }
@@ -467,7 +485,7 @@ export default {
 
 
 /* 树形列表begin */
-.shell {
+/* .shell {
     position: absolute;
     top: 5%;
     display: block;
@@ -527,13 +545,13 @@ export default {
   details[open]>summary::before {
     content: '曰';
     background-color: #444;
-  }
-  .folder{
+  } */
+  /* .folder{
     border-left: 2px dotted #ccc;
     border-bottom: 2px dotted #ccc;
     margin: 0 0 10px 10px;
     padding: 10px 0 10px 20px;
-  }
+  } */
   .outer {
         height: 47vh;
         overflow-y: scroll;
@@ -737,7 +755,7 @@ export default {
 
   /* dialog */
   .modal-container {
-  margin: 60px auto;
+  margin: 10px auto;
   padding-top: 0px;
   position: relative;
   width: 160px;
@@ -809,12 +827,12 @@ export default {
   background-color: #fff;
   max-width: 400px;
   width: 400px;
-  height: 280px;
+  height: 60vh;
   padding: 10px 30px;
   position: absolute;
   left: 50%;
-  transform: translate(-50%);
-  top: 12%;
+  top: -50%;
+  transform: translate(-50%); 
   border-radius: 4px;
   z-index: 999;
   pointer-events: auto;
@@ -829,12 +847,12 @@ export default {
   background-color: #fff;
   max-width: 400px;
   width: 300px;
-  height: 280px;
+  height: 60vh;
   padding: 10px 30px;
   position: absolute;
   left: 50%;
+  top: -50%;
   transform: translate(-50%);
-  top: 12%;
   border-radius: 4px;
   z-index: 999;
   pointer-events: auto;
