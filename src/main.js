@@ -55,7 +55,7 @@ Vue.prototype.$setUserInfo = function(data) {
 }
 
 const vm = new Vue({
-  created() {
+  mounted() {
     this.$getUserInfoByFXBD()
   },
   store,
