@@ -111,21 +111,20 @@ export default {
     }
   },
   mounted() {
+    if(this.$store.getters.username) {
+      this.source = '富学宝典'
+      this.jobNo  = this.$store.getters.username
+      console.log('nei' + this.$store.getters.username)
+    }
+    if(this.jobNo) {
+      this.getData()
+      this.swiper.slideTo(0, 1000, false)
+    }
     document.addEventListener("WeixinJSBridgeReady", function () {
       document.getElementById("audio").play()
     })
   },
   created() {
-    if(this.$store.getters.username) {
-      this.source = '富学宝典'
-      this.jobNo  = this.$store.getters.username
-      if(this.jobNo) {
-      this.getData()
-      this.swiper.slideTo(0, 1000, false)
-      }
-      console.log('nei' + this.$store.getters.username)
-    }
-    console.log('wai' + this.$store.getters.username)
     this.browser = this.getBrowser()
     this.getSystem()
   },
