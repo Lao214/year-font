@@ -33,7 +33,6 @@ const store = new Vuex.Store({
     },
     setRealname(context,name){
        context.commit("SET_REALNAME",name)
-
     },
     setDevice(context,device){
       context.commit("SET_DEVICE",device)
