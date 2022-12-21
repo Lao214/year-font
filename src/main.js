@@ -43,7 +43,7 @@ Vue.prototype.$getUserInfoByFXBD = function() {
 }
 Vue.prototype.$setUserInfo = function(data) {
   //将用户信息放入到状态管理器的，方便使用时调用
-  console.log(data)
+  console.log(data.jobNo)
   console.log(this)
   console.log(this.$store)
   let store = this.$store
