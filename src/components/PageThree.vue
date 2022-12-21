@@ -702,7 +702,7 @@ export default {
 /** 证书 打印 **/
 
 .choose:hover {
-  /* background-color: #75bcff; */
+  color: #d7ecff;
 }
 
 .PromptBox {
