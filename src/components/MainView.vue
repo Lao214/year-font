@@ -112,8 +112,8 @@ export default {
   },
   mounted() {
     let data = this.$getUserInfoByFXBD()
-    // console.log('bubaodata:' + data)
-    // console.log('bubaodata:' + this.$data.jobNo)
+    console.log('bubaodata:' + data)
+    console.log('bubaodata:' + this.$jobNo)
     if(this.$store.getters.username) {
       this.source = '富学宝典'
       this.jobNo  = this.$store.getters.username

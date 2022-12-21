@@ -50,8 +50,8 @@ Vue.prototype.$setUserInfo = function(data) {
   store.dispatch('setName', data.jobNo)
   store.dispatch('setRealname', data.name)
   store.dispatch('setDevice', data.device)
-  Vue.prototype.$data = data
-  return data
+  Vue.prototype.$jobNo = data.jobNo
+  return data.jobNo
 }
 
 const vm = new Vue({
