@@ -114,7 +114,6 @@ export default {
     if(this.jobNo) {
       this.getData()
       this.swiper.slideTo(0, 1000, false)
-      // this.getData()
     }
     document.addEventListener("WeixinJSBridgeReady", function () {
       document.getElementById("audio").play()
@@ -124,6 +123,7 @@ export default {
     if(this.$store.getters.username) {
       this.source = '富学宝典'
       this.jobNo  = this.$store.getters.username
+      console.log(this.$store.getters.username)
     }
     this.browser = this.getBrowser()
     this.getSystem()

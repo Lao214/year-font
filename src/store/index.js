@@ -7,7 +7,7 @@ const store = new Vuex.Store({
   state: {
     status:0,
     username:'',
-    realname:'',
+    realname:'123',
     advertid:506,
     advertname:"year",
     device:'',
