@@ -287,7 +287,12 @@ export default {
       ctx.stroke()
       /* 下斜线 end */
       base64 = canvas.toDataURL("image/png"); 
-      FileSaver.saveAs(base64, 'a.jpeg');
+      let eleLink = document.createElement("a");
+        eleLink.href = base64 // 转换后的图片地址
+        eleLink.download =  'aa'
+        document.body.appendChild(eleLink);
+        eleLink.click()
+        document.body.removeChild(eleLink);
       console.log(base64)
     },
     sumbit() {
