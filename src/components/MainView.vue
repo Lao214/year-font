@@ -220,6 +220,10 @@ export default {
       if (userAgent.indexOf("Opera") > -1) {
         return "Opera"
       }
+      //判断微信浏览器
+      else if(userAgent.indexOf('MicroMessenger') > -1 || userAgent.indexOf('micromessenger') > -1) {
+        return "MicroMessenger";
+      }
       //判断是否是QQ浏览器
       else if (userAgent.indexOf("MQQBrowser") > -1) {
         return "MQQBrowser"
@@ -232,7 +236,6 @@ export default {
       else if (userAgent.indexOf("Firefox") > -1) {
         return "firefox";
       }
-    
       // 判断是否是小米浏览器
       else if ( userAgent.indexOf("MiuiBrowser") > -1){
         return "MiuiBrowser";

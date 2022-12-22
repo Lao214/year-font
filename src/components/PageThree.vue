@@ -150,6 +150,8 @@ export default {
     getImageAccordingToBrowser(){
       if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser') {
         this.getPrintScreen(this.browser)
+      } else if(this.browser === 'MicroMessenger') {
+        alert('可在浏览器打开此网页下载')
       } else {
         this.createImage(this.browser)
       }
@@ -206,10 +208,10 @@ export default {
       var bottomMargin  = img.height * 0.5
       var leftMargin = img.width * 0.17
       var rightMargin = img.width * 0.17
-      console.log('上边距'+topMargin)
-      console.log('下边距'+bottomMargin)  
-      console.log('左边距'+leftMargin)
-      console.log('右边距'+rightMargin)
+      // console.log('上边距'+topMargin)
+      // console.log('下边距'+bottomMargin)  
+      // console.log('左边距'+leftMargin)
+      // console.log('右边距'+rightMargin)
       canvas.width = img.width;
       canvas.height = img.height;
       var ctx=canvas.getContext("2d");
@@ -241,10 +243,37 @@ export default {
       ctx.moveTo(img.width*0.813, topMargin*1.1)
       ctx.lineTo(img.width*0.813, img.height * 0.54)
       ctx.stroke()
-      /* 画出下描边end */
-        base64 = canvas.toDataURL("image/png"); 
-        FileSaver.saveAs(base64, 'a.jpeg');
-        console.log(base64)
+      /* 画出右描边end */
+
+      /* 文本 begin*/
+      ctx.fillStyle = "#ffbd69"
+      ctx.textAlign = 'center'
+      ctx.font = '20px Arial'
+      ctx.fillText("YOUR",img.width*0.5, img.width*0.35, img.width*0.4);
+      ctx.fillText("KEYWORD 2022",img.width*0.5, img.width*0.45, img.width*0.4);
+      /* 文本 end */
+      /* 文本 标签 begin*/
+      ctx.fillStyle = "#fff"
+      ctx.font = '24px Arial'
+      ctx.fillText(this.timeLab,img.width*0.5, img.width*0.55, img.width*0.3);
+      ctx.fillStyle = "#fff"
+      ctx.font = '24px Arial'
+      ctx.fillText(this.stuLab,img.width*0.5, img.width*0.65, img.width*0.3);
+      ctx.fillStyle = "#fff"
+      ctx.font = '24px Arial'
+      ctx.fillText(this.examLab,img.width*0.5, img.width*0.75, img.width*0.3);
+      /* 文本 标签 end */
+      /* 下斜线 begin */
+      ctx.moveTo(img.width*0.813, img.height * 0.5)
+      ctx.lineTo(img.width*0.75, img.height * 0.54)
+      ctx.stroke()
+      ctx.moveTo(leftMargin*1.1, img.height * 0.5)
+      ctx.lineTo(img.width*0.253, img.height * 0.54)
+      ctx.stroke()
+      /* 下斜线 end */
+      base64 = canvas.toDataURL("image/png"); 
+      FileSaver.saveAs(base64, 'a.jpeg');
+      console.log(base64)
     },
     sumbit() {
       this.studyList = ''
@@ -826,7 +855,7 @@ export default {
   opacity: 1;
   background-color: #fff;
   max-width: 400px;
-  width: 400px;
+  width: 340px;
   height: 60vh;
   padding: 10px 30px;
   position: absolute;
