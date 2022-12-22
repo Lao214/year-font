@@ -242,19 +242,17 @@ export default {
       /* 下斜线 end */
       base64 = canvas.toDataURL("image/png")
       if(this.browser === 'MiuiBrowser'){
+        this.imgUrl = base64
         FileSaver.saveAs(base64, this.browser + 'poster')
       } else {
         let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
-        if(this.browser === 'Chrome'){
+        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger'){
             this.imgUrl = base64
         }
         document.body.appendChild(eleLink)
-        eleLink.click().catch(function (error) {
-          alert(error)
-          console.error('生成失败', error);
-        })
+        eleLink.click()
         document.body.removeChild(eleLink)
       }
     
