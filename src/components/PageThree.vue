@@ -148,7 +148,7 @@ export default {
   },
   methods: {
     getImageAccordingToBrowser(){
-      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser' || this.browser === 'Chrome') {
+      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser') {
         this.getPrintScreen(this.browser)
       } else {
         this.createImage(this.browser)
