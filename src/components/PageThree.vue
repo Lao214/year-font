@@ -1,5 +1,6 @@
 <template>
   <div class="body">
+        <img v-show="imgUrl" id="show" crossOrigin="anonymous" style="width: 102%;height:102%;position: absolute;z-index: 200;" :src="imgUrl" alt="">
         <div v-show="tipShow"  class="PromptBox">
           <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
         </div>
@@ -152,7 +153,7 @@ export default {
         this.getPrintScreen(this.browser)
       } else if (this.browser === 'MicroMessenger') {
         alert('可在浏览器打开此网页下载')
-      } else if (this.browser === 'MQQBrowser' || this.browser === 'Chrome') {
+      } else if (this.browser === 'MQQBrowser' || this.browser === 'Chrome' || this.browser === 'MiuiBrowser') {
         this.javaScriptCanvas()
       }
       else {
@@ -293,6 +294,7 @@ export default {
         document.body.appendChild(eleLink);
         eleLink.click()
         document.body.removeChild(eleLink);
+        this.imgUrl = base64
       console.log(base64)
     },
     sumbit() {
