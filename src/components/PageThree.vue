@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <img id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ; 200;border: 8px solid #fff;">
+    <img id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ;border: 8px solid #fff;">
         <div v-show="tipShow"  class="PromptBox">
           <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
         </div>
@@ -241,12 +241,12 @@ export default {
       base64 = canvas.toDataURL("image/png")
       if(this.browser === 'MiuiBrowser'){
         this.imgUrl = base64
-        FileSaver.saveAs(base64, this.browser + 'poster')
+        // FileSaver.saveAs(base64, this.browser + 'poster')
       } else {
         let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
-        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger'){
+        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger' || this.browser === 'MQQBrowser'){
             this.imgUrl = base64
         }
         document.body.appendChild(eleLink)
@@ -382,7 +382,7 @@ export default {
     color: #fff;
     cursor: pointer;
     display: none;
-    z-index: 121;
+    z-index: 202;
 }
 .container{
     /* 固定定位 */
@@ -398,7 +398,7 @@ export default {
     clip-path: circle(0px at 50% 50%);
     /* 设置过渡 */
     transition: 0.4s;
-    z-index: 100;
+    z-index: 201;
 }
 .search-box{
     /* 默认宽度为0(隐藏) */
