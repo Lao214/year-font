@@ -40,7 +40,7 @@
           <page-five :dataObj="dataObj"></page-five>
         </swiper-slide>
         <swiper-slide class="page05">
-          <page-three :stuLab="dataObj.stuLab" :timeLab="dataObj.timeLab" :examLab="dataObj.examLab" :three="thisActiveIndex" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
+          <page-three :stuLab="dataObj.stuLab" :timeLab="dataObj.timeLab" :examLab="dataObj.examLab" :three="thisActiveIndex" :username="dataObj.username" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
         </swiper-slide>
 
       </swiper>

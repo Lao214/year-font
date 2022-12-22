@@ -4,6 +4,9 @@
         <div v-show="tipShow"  class="PromptBox">
           <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
         </div>
+        <div v-show="tipShow2"  class="PromptBox">
+          <div class="prompt2">生成成功，点击右下角缩略图进行预览保存即可。</div>
+        </div>
         <div class="shadow"></div>
             <div id="test" class="test" ref="imageDom">
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
@@ -27,7 +30,7 @@
             <a class="btn">新年学习清单</a>
         </label>
         <label class="imgCreate">
-            <a class="btn" @click="javaScriptCanvas()">生成海报</a>
+            <a class="btn" @click="getImageAccordingToBrowser()">生成海报</a>
         </label>
       </div>
         <label for="search_btn" class="close-btn">
@@ -86,6 +89,10 @@ export default {
       type: String,
       default: ''
     },
+    username: {
+      type: String,
+      default: ''
+    },
   },
   components:{swiper,swiperSlide},
   data() {
@@ -112,22 +119,23 @@ export default {
         studyList: '',
         sList: [],
         thisCourseList:[],
-        tipShow: false
+        tipShow: false,
+        tipShow2: false
       }
   },
   created() {
     console.log('this is a prop :' + this.thisIndex)
-    // console.log(this.thisBrowser)
+    console.log(this.thisBrowser)
     this.thisCourseList = getArray()
     // console.log(this.thisCourseList)
   },
   methods: {
     getImageAccordingToBrowser(){
-      if (this.browser === 'safari'|| this.browser === 'Safari') {
-        this.getPrintScreen(this.browser)
-      } else {
+      // if (this.browser === 'safari'|| this.browser === 'Safari') {
+      //   this.getPrintScreen(this.browser)
+      // } else {
         this.javaScriptCanvas()
-      }
+      // }
     },
     //获取截图方法
     getPrintScreen(browser) {
@@ -217,6 +225,9 @@ export default {
       ctx.fillStyle = "#fff"
       ctx.font = '24px Arial'
       ctx.fillText(this.examLab,img.width*0.5, img.height*0.49, img.width*0.3);
+      // ctx.fillStyle ='#808080'
+      // ctx.font = '24px Arial'
+      // ctx.fillText(this.username,img.width*0.81, img.height*0.94, img.width*0.3);
       /* 文本 标签 end */
       /* 奖牌begin */
       ctx.fillStyle = "#ffbd69"
@@ -241,17 +252,33 @@ export default {
       base64 = canvas.toDataURL("image/png")
       if(this.browser === 'MiuiBrowser'){
         this.imgUrl = base64
+        this.tipShow2 = false
+            setTimeout(() => {
+              this.tipShow2 = true
+            },10)
+            setTimeout(() => {
+              this.tipShow2 = false
+            },3000)
         // FileSaver.saveAs(base64, this.browser + 'poster')
       } else {
         let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
-        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger' || this.browser === 'MQQBrowser'){
+        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger' || this.browser === 'MQQBrowser' || this.browser === 'Safari'|| this.browser === 'safari'){
             this.imgUrl = base64
+            this.tipShow2 = false
+            setTimeout(() => {
+              this.tipShow2 = true
+            },10)
+            setTimeout(() => {
+              this.tipShow2 = false
+            },3000)
         }
-        document.body.appendChild(eleLink)
-        eleLink.click()
-        document.body.removeChild(eleLink)
+        if(this.browser === 'Chrome'){
+          document.body.appendChild(eleLink)
+          eleLink.click()
+          document.body.removeChild(eleLink)
+        }
       }
     
     },
@@ -279,10 +306,10 @@ export default {
         this.tipShow = false
       },3000)
     },
-    // handleCheckChange(data, checked, indeterminate) {
+    handleCheckChange(data, checked, indeterminate) {
       // console.log(this.$refs.tree.getCurrentKey())
-          // console.log(this.studyList)
-    // }
+      //     console.log(this.studyList)
+    }
   }
 }
 </script>
