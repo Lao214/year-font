@@ -75,12 +75,14 @@ export default {
       dataObj: '',
       viewId: '',
       ua: '',
+      code: '',
       browser: '',
       showFixedHint: true,
       beforeSlideIndex: 0,
       thisActiveIndex: 0,
       source: '',
       device: '',
+      appId: 'GSZDIv6rmA8d2LujhLa30g2',
       swiperOption: {
         //  effect: "fade",
         direction: "horizontal", //垂直切换选项
@@ -135,6 +137,24 @@ export default {
   created() {
     this.browser = this.getBrowser()
     this.getSystem()
+     /* 相信数据begin */
+    var test = window.location.href
+    let arr  = test.split('?code=')
+    this.code = arr[1]
+    if (this.code) {
+      setTimeout(() => {
+      viewApi.getUserInfoByBelieve('code=' + this.code + '&appid=' + this.appId).then(res => {
+        console.log(this.code)
+        this.jobNo = res.data.civetno
+        console.log(res.data)
+        this.source = '相信'
+        if(this.jobNo) {
+          this.getData()
+        }
+      })
+    },1000)
+    }
+    /* 相信数据end */
   },
   methods: {
     getData() {
