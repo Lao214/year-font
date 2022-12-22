@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-        <img v-show="imgUrl" id="show" crossOrigin="anonymous" style="width: 102%;height:102%;position: absolute;z-index: 200;" :src="imgUrl" alt="">
+    <img id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ; 200;border: 8px solid #fff;">
         <div v-show="tipShow"  class="PromptBox">
           <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
         </div>
@@ -34,31 +34,6 @@
             <i class="fa fa-close" aria-hidden="true"></i>
         </label>
     <div class="container">
-        <!-- <div class="shell">
-            <details>
-              <summary >课程列表</summary>
-              <div class="outer">
-                <div class="inter">
-                    <div class="folder">
-                        <details v-for="(item, index) in thisCourseList" :key="index">
-                          <summary>{{ item.course }}</summary>
-                            <div class="folder">
-                              <div v-for="(item2, index2) in item.children" :key="index2">
-                                <details v-if="item2.children">
-                                  <summary @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</summary>
-                                  <div v-for="(item3, index3) in item2.children" :key="index3" class="folder">
-                                    <a class="choose" @click="choose(item3.class + '_' + item3.course, item3.children, 3)">{{ item3.course }}</a>
-                                  </div>
-                                </details>
-                                <a class="choose" v-if="!item2.children" @click="choose(item2.class + '_' + item2.course, item2.children, 2)">{{ item2.course }}</a>
-                              </div>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-              </div>
-            </details>
-        </div> -->
         <div class="modal-container">
         <input id="modal-toggle" type="checkbox">
         <label  class="modal-btn" for="modal-toggle">选择课程</label> 
@@ -253,30 +228,30 @@ export default {
       ctx.fillStyle = "#ffbd69"
       ctx.textAlign = 'center'
       ctx.font = '20px Arial'
-      ctx.fillText("YOUR",img.width*0.5, img.width*0.35, img.width*0.4);
-      ctx.fillText("KEYWORD 2022",img.width*0.5, img.width*0.45, img.width*0.4);
+      ctx.fillText("YOUR",img.width*0.5, img.height*0.20, img.width*0.4);
+      ctx.fillText("KEYWORD 2022",img.width*0.5, img.height*0.25, img.width*0.4);
       /* 文本 end */
       /* 文本 标签 begin*/
       ctx.fillStyle = "#fff"
       ctx.font = '24px Arial'
-      ctx.fillText(this.timeLab,img.width*0.5, img.width*0.55, img.width*0.3);
+      ctx.fillText(this.timeLab,img.width*0.5, img.height*0.33, img.width*0.3);
       ctx.fillStyle = "#fff"
       ctx.font = '24px Arial'
-      ctx.fillText(this.stuLab,img.width*0.5, img.width*0.65, img.width*0.3);
+      ctx.fillText(this.stuLab,img.width*0.5, img.height*0.41, img.width*0.3);
       ctx.fillStyle = "#fff"
       ctx.font = '24px Arial'
-      ctx.fillText(this.examLab,img.width*0.5, img.width*0.75, img.width*0.3);
+      ctx.fillText(this.examLab,img.width*0.5, img.height*0.49, img.width*0.3);
       /* 文本 标签 end */
       /* 奖牌begin */
       ctx.fillStyle = "#ffbd69"
       ctx.beginPath();
-      ctx.arc(img.width*0.5,img.width*0.27,7,0,2*Math.PI);
+      ctx.arc(img.width*0.5,img.height*0.14,7,0,2*Math.PI);
       ctx.fill()
       ctx.moveTo(img.width*0.45,topMargin*1.1)
-      ctx.lineTo(img.width*0.5,img.width*0.27)
+      ctx.lineTo(img.width*0.5,img.height*0.14)
       ctx.stroke()
       ctx.moveTo(img.width*0.55,topMargin*1.1)
-      ctx.lineTo(img.width*0.5,img.width*0.27)
+      ctx.lineTo(img.width*0.5,img.height*0.14)
       ctx.stroke()
       /* 奖牌end */
       /* 下斜线 begin */
@@ -290,11 +265,13 @@ export default {
       base64 = canvas.toDataURL("image/png"); 
       let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
-        eleLink.download =  'aa'
+        eleLink.download =  this.browser + 'canvasOrigin'
         document.body.appendChild(eleLink);
         eleLink.click()
         document.body.removeChild(eleLink);
-        this.imgUrl = base64
+        if(this.browser === 'Chrome'){
+          this.imgUrl = base64
+        }
       console.log(base64)
     },
     sumbit() {
@@ -312,21 +289,6 @@ export default {
       this.$emit('sumbit',view)
       // console.log('提交我的留言' + this.comment)
     },
-    // choose(course, children, level) {
-    //   if(level === 3) {
-    //     this.studyList =  this.studyList + ',' + course
-    //     this.sList.push(course)
-    //     this.add()
-    //   }else if(level === 2) {
-    //     if(!children) {
-    //       this.studyList =  this.studyList + ',' + course
-    //       this.sList.push(course)
-    //       this.add()
-    //     }
-    //   }
-    //   console.log(this.studyList)
-    //   console.log(this.sList)
-    // },
     add() {
       this.tipShow = false
       setTimeout(() => {
@@ -336,10 +298,10 @@ export default {
         this.tipShow = false
       },3000)
     },
-    handleCheckChange(data, checked, indeterminate) {
+    // handleCheckChange(data, checked, indeterminate) {
       // console.log(this.$refs.tree.getCurrentKey())
           // console.log(this.studyList)
-    }
+    // }
   }
 }
 </script>
