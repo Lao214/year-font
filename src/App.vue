@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import MainView from './components/MainView.vue'
 import PageThree from './components/PageThree.vue';
 import Home from './components/Home.vue'
@@ -16,7 +15,6 @@ import Home from './components/Home.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     MainView,
     PageThree,
     Home

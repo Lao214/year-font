@@ -62,7 +62,6 @@ import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import html2canvas from "html2canvas"
 import FileSaver from 'file-saver'
-import domtoimage from 'dom-to-image'
 import { getArray } from '../utils/course'
 
 export default {
@@ -118,9 +117,9 @@ export default {
   },
   created() {
     console.log('this is a prop :' + this.thisIndex)
-    console.log(this.thisBrowser)
+    // console.log(this.thisBrowser)
     this.thisCourseList = getArray()
-    console.log(this.thisCourseList)
+    // console.log(this.thisCourseList)
   },
   methods: {
     getImageAccordingToBrowser(){
@@ -128,11 +127,8 @@ export default {
         this.getPrintScreen(this.browser)
       } else if (this.browser === 'MicroMessenger') {
         alert('可在浏览器打开此网页下载')
-      } else if (this.browser === 'MQQBrowser' || this.browser === 'Chrome' || this.browser === 'MiuiBrowser') {
+      } else {
         this.javaScriptCanvas()
-      }
-      else {
-        this.createImage(this.browser)
       }
     },
     //获取截图方法
@@ -156,35 +152,17 @@ export default {
         document.body.removeChild(eleLink);
       })
     },
-    createImage(browser) {
-      let node = document.getElementById('test')
-      node.className = 'test2'
-      console.log(node.offsetHeight)
-      console.log(node.offsetWidth)
-      let that = this
-      domtoimage.toPng(node,{scale:2,width:node.offsetWidth,height:node.offsetHeight,useCORS:true})
-        .then(function (dataUrl) {
-          console.log(dataUrl)
-          that.dataUrl = dataUrl
-            // console.log(this.browser)
-            FileSaver.saveAs(dataUrl, browser + 'poster')
-            node.className = 'test'
-        })
-        .catch(function (error) {
-          console.error('生成失败', error);
-        })
-    },
     javaScriptCanvas() {
       var canvas = document.createElement("canvas")
-      canvas.getContext("2d")//对应的CanvasRenderingContext2D对象(画笔)
+      canvas.getContext("2d") 
+      //对应的CanvasRenderingContext2D对象(画笔)
       var img = document.getElementById("poster")//创建新的图片对象
       console.log(img)
       var base64 = '' ;//base64 
-      // img.src = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg';
       console.log(img.width)
       console.log(img.height)
       var topMargin  = img.height * 0.1
-      var bottomMargin  = img.height * 0.5
+      // var bottomMargin  = img.height * 0.5
       var leftMargin = img.width * 0.17
       var rightMargin = img.width * 0.17
       // console.log('上边距'+topMargin)
@@ -262,17 +240,24 @@ export default {
       ctx.lineTo(img.width*0.253, img.height * 0.54)
       ctx.stroke()
       /* 下斜线 end */
-      base64 = canvas.toDataURL("image/png"); 
-      let eleLink = document.createElement("a");
+      base64 = canvas.toDataURL("image/png")
+      if(this.browser === 'MiuiBrowser'){
+        FileSaver.saveAs(base64, this.browser + 'poster')
+      } else {
+        let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
-        document.body.appendChild(eleLink);
-        eleLink.click()
-        document.body.removeChild(eleLink);
         if(this.browser === 'Chrome'){
-          this.imgUrl = base64
+            this.imgUrl = base64
         }
-      console.log(base64)
+        document.body.appendChild(eleLink)
+        eleLink.click().catch(function (error) {
+          alert(error)
+          console.error('生成失败', error);
+        })
+        document.body.removeChild(eleLink)
+      }
+    
     },
     sumbit() {
       this.studyList = ''
