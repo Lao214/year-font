@@ -12,8 +12,6 @@
     "core-js": "^3.8.3",
     "element-ui": "^2.15.12",
     "file-save": "^0.2.0",
-    "file-saver": "^2.0.5",
-    "html2canvas": "^1.0.0-rc.4",
     "js-base64": "^3.7.3",
     "vue": "^2.6.14",
     "vue-awesome-swiper": "^3.1.3",

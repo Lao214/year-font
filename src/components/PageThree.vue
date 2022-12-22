@@ -63,8 +63,8 @@
 <script>
 import {swiper,swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-import html2canvas from "html2canvas"
-import FileSaver from 'file-saver'
+// import html2canvas from "html2canvas"
+// import FileSaver from 'file-saver'
 import { getArray } from '../utils/course'
 
 export default {
@@ -138,26 +138,26 @@ export default {
       // }
     },
     //获取截图方法
-    getPrintScreen(browser) {
-      html2canvas(this.$refs.imageDom,
-      {
-        imageTimeout: 15000, //newline
-        scale: 3, //newline
-        dpi:300,
-        useCORS: true, //图片跨域，开启跨域配置
-        logging: false,//日志开关，便于查看html2canvas的内部执行流程
-        taintTest: true,//是否在渲染前测试图片
-      }).then(canvas => {
-        // 转成图片，生成图片地址
-        let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
-        let eleLink = document.createElement("a");
-        eleLink.href = imgUrl // 转换后的图片地址
-        eleLink.download = browser + 'canvas'
-        document.body.appendChild(eleLink);
-        eleLink.click()
-        document.body.removeChild(eleLink);
-      })
-    },
+    // getPrintScreen(browser) {
+    //   html2canvas(this.$refs.imageDom,
+    //   {
+    //     imageTimeout: 15000, //newline
+    //     scale: 3, //newline
+    //     dpi:300,
+    //     useCORS: true, //图片跨域，开启跨域配置
+    //     logging: false,//日志开关，便于查看html2canvas的内部执行流程
+    //     taintTest: true,//是否在渲染前测试图片
+    //   }).then(canvas => {
+    //     // 转成图片，生成图片地址
+    //     let imgUrl = canvas.toDataURL("image/png", 1); //可将 canvas 转为 base64 格式
+    //     let eleLink = document.createElement("a");
+    //     eleLink.href = imgUrl // 转换后的图片地址
+    //     eleLink.download = browser + 'canvas'
+    //     document.body.appendChild(eleLink);
+    //     eleLink.click()
+    //     document.body.removeChild(eleLink);
+    //   })
+    // },
     javaScriptCanvas() {
       var canvas = document.createElement("canvas")
       canvas.getContext("2d") 
