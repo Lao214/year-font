@@ -125,8 +125,6 @@ export default {
     getImageAccordingToBrowser(){
       if (this.browser === 'safari'|| this.browser === 'Safari') {
         this.getPrintScreen(this.browser)
-      } else if (this.browser === 'MicroMessenger') {
-        alert('可在浏览器打开此网页下载')
       } else {
         this.javaScriptCanvas()
       }
