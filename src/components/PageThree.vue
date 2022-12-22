@@ -26,7 +26,7 @@
             <a class="btn">新年学习清单</a>
         </label>
         <label class="imgCreate">
-            <a class="btn" @click="getImageAccordingToBrowser()">生成海报</a>
+            <a class="btn" @click="javaScriptCanvas()">生成海报</a>
         </label>
       </div>
         <label for="search_btn" class="close-btn">
@@ -148,11 +148,14 @@ export default {
   },
   methods: {
     getImageAccordingToBrowser(){
-      if (this.browser === 'safari'|| this.browser === 'Safari' || this.browser === 'MQQBrowser') {
+      if (this.browser === 'safari'|| this.browser === 'Safari') {
         this.getPrintScreen(this.browser)
-      } else if(this.browser === 'MicroMessenger') {
+      } else if (this.browser === 'MicroMessenger') {
         alert('可在浏览器打开此网页下载')
-      } else {
+      } else if (this.browser === 'MQQBrowser' || this.browser === 'Chrome') {
+        this.javaScriptCanvas()
+      }
+      else {
         this.createImage(this.browser)
       }
     },
@@ -263,6 +266,18 @@ export default {
       ctx.font = '24px Arial'
       ctx.fillText(this.examLab,img.width*0.5, img.width*0.75, img.width*0.3);
       /* 文本 标签 end */
+      /* 奖牌begin */
+      ctx.fillStyle = "#ffbd69"
+      ctx.beginPath();
+      ctx.arc(img.width*0.5,img.width*0.27,7,0,2*Math.PI);
+      ctx.fill()
+      ctx.moveTo(img.width*0.45,topMargin*1.1)
+      ctx.lineTo(img.width*0.5,img.width*0.27)
+      ctx.stroke()
+      ctx.moveTo(img.width*0.55,topMargin*1.1)
+      ctx.lineTo(img.width*0.5,img.width*0.27)
+      ctx.stroke()
+      /* 奖牌end */
       /* 下斜线 begin */
       ctx.moveTo(img.width*0.813, img.height * 0.5)
       ctx.lineTo(img.width*0.75, img.height * 0.54)
@@ -620,7 +635,7 @@ export default {
   transform:translateX(-50%); /*百分比的参照物是自身*/
   /* position:relative; */
   padding:1rem 2rem 4.5rem 2rem;
- font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei', SimHei;
+  font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', STXihei, 'Microsoft YaHei', SimHei;
   text-align:center;
   z-index: 88;
 }
