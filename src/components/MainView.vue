@@ -1,11 +1,5 @@
 <template>
   <div class="view">
-    <div v-show="jobNoCheck"  class="PromptBox">
-      <div class="prompt2">抱歉，暂时找不到您的学习报告！</div>
-    </div>
-    <div v-show="sumbitCheck"  class="PromptBox">
-      <div class="prompt2">提交成功，感谢您的留言</div>
-    </div>
     <div class="header">
       <!-- <h2>年度学习报告</h2> -->
       <audio ref="audio" autoplay loop dis>
@@ -16,7 +10,6 @@
         <i ref="on" class="fa fa-bell fa-lg" @click="change2" style="display: none"></i>
       </div>
     </div>
-    <!-- <div class="fixed-hint" v-if="showFixedHint"><i class="fa fa-angle-double-up fa-3x"></i></div> -->
     <transition appear>
     <div v-if="!dataObj" style="position: absolute;z-index: 999; width: 100%; height: 100%">
       <job-no-input :job-no="jobNo"  @inputJobNo="inputJobNo"></job-no-input>
@@ -89,11 +82,6 @@ export default {
         // speed: 3,  切换速度
         height: window.innerHeight, // 高
         width: window.innerWidth, //宽
-        // autoplay: {
-        //     delay:5000,
-        //     disableOnInteraction:false,
-        //     stopOnLastSlide: true,
-        // },
         pagination: ".swiper-pagination",
         on: {
           slideChange: () => {
@@ -164,7 +152,11 @@ export default {
         if (this.dataObj) {
           this.sendViewRecords()
         } else if (!this.dataObj) {
-          this.tipShow('check')
+          this.$message({
+            message: '抱歉，暂时找不到您的学习报告！',
+            type: 'warning',
+            center: true
+          })
         }
       })
     },
@@ -204,9 +196,14 @@ export default {
       view['id'] = this.viewId
       console.log(view)
       viewApi.update(view).then(res => {
-        this.tipShow('sumbit')
+        if(res) {
+          this.$message({
+            message: '提交成功，感谢您的留言。',
+            type: 'success',
+            center: true
+          })
+        }
       })
-      // console.log('提交我的留言' + this.comment)
     },
     getSystem() {
       var system = navigator.userAgent
@@ -286,25 +283,25 @@ export default {
       //   return arr;
       // }
     },
-    tipShow(type) {
-      if(type === 'sumbit'){
-        this.sumbitCheck = false
-        setTimeout(() => {
-          this.sumbitCheck = true
-        },10)
-        setTimeout(() => {
-          this.sumbitCheck = false
-        },3000)
-      } else if (type === 'check') {
-        this.jobNoCheck = false
-        setTimeout(() => {
-          this.jobNoCheck = true
-        },10)
-        setTimeout(() => {
-          this.jobNoCheck = false
-        },3000)
-      }
-    }
+    // tipShow(type) {
+    //   if(type === 'sumbit'){
+    //     this.sumbitCheck = false
+    //     setTimeout(() => {
+    //       this.sumbitCheck = true
+    //     },10)
+    //     setTimeout(() => {
+    //       this.sumbitCheck = false
+    //     },3000)
+    //   } else if (type === 'check') {
+    //     this.jobNoCheck = false
+    //     setTimeout(() => {
+    //       this.jobNoCheck = true
+    //     },10)
+    //     setTimeout(() => {
+    //       this.jobNoCheck = false
+    //     },3000)
+    //   }
+    // }
   },
 };
 </script>
@@ -328,39 +325,7 @@ export default {
   /* text-align: center; */
   touch-action: none;
 }
-.PromptBox {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform:translateX(-50%); /*百分比的参照物是自身*/
-    width: 100%;
-    height: 20%;
-    z-index: 1000;
-    /* text-align: center; */
-}
-  .prompt2{
-    background-color: #000;
-    margin: 100px auto;
-    color: #fff;
-    padding: 25px 15px;
-    display:table;
-    margin:0 auto;
-    top: -100px;
-    opacity: 1;
-    border-radius: 10px;
-    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
-    z-index: 1001;
-  }
 
-  @keyframes slide-in-blurred-top{
-    0%{transform:translateY(-1000px) scaleY(2.5) scaleX(.2);transform-origin:50% 0;filter:blur(40px);opacity:0}
-    100%{transform:translateY(0) scaleY(1) scaleX(1);transform-origin:50% 50%;filter:blur(0);opacity:1}
-  }
-
-  /* .shown {
-    opacity: 1;
-    top: 10%;
-  } */
 .header {
   position: fixed;
   z-index: 10;
@@ -382,43 +347,14 @@ h2 {
     right: 10px;
     color: rgb(229, 236, 240);
 }
-.fixed-hint {
-  position: absolute;
-  z-index: 10;
-  padding-top: 10px;
-  bottom: 0%;
-  color: rgb(42, 91, 165);
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 12px;
-  font-weight: 600;
-  /* animation: fixedHintAnimation 1s linear infinite; */
-}
-.detail-page {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.text-detail-box {
-  margin-top: 200px;
-  margin-left: 50px;
-}
+
 p {
   font-size: 25px;
   line-height: 10px;
   font-weight: 600;
   color: black;
 }
-.textOne {
-  animation: fadenum 2s linear;
-}
-.textTwo {
-  animation: fadenum 2s linear;
-}
-.textThree {
-  animation: fadenum 2s linear;
-}
+
 @keyframes fadenum {
   0% {
     opacity: 0;
@@ -427,7 +363,6 @@ p {
     opacity: 1;
   }
 }
-
 @keyframes input {
   0% {
     transform: translateY(-1000px);
@@ -435,9 +370,6 @@ p {
   100% {
     transform: translateY(0px);
   }
-}
-.come {
-  animation: input .7s ;
 }
 .v-enter-active {
   animation: input .7s ;

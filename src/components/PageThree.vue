@@ -1,12 +1,6 @@
 <template>
   <div class="body">
     <img id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ;border: 8px solid #fff;">
-        <div v-show="tipShow"  class="PromptBox">
-          <div class="prompt2">添加成功，右下方按钮会将您的课程与留言一同提交，十分感谢您的支持。</div>
-        </div>
-        <div v-show="tipShow2"  class="PromptBox">
-          <div class="prompt2">生成成功，点击右下角缩略图进行预览保存即可。</div>
-        </div>
         <div class="shadow"></div>
             <div id="test" class="test" ref="imageDom">
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
@@ -45,10 +39,9 @@
           <label class="modal-close" for="modal-toggle">&#x2715;</label>
           <h2>课程列表</h2><hr />
           <div class="outer">
-                <div class="inter">
-          <el-tree :data="thisCourseList"  ref="tree"  show-checkbox  node-key="id"  :props="defaultProps"  @check-change="handleCheckChange">
-          </el-tree>
-                </div>
+            <div class="inter">
+              <el-tree :data="thisCourseList"  ref="tree"  show-checkbox  node-key="id"  :props="defaultProps"  @check-change="handleCheckChange"></el-tree>
+            </div>
           </div>
         </div>          
       </div>
@@ -118,9 +111,7 @@ export default {
         comment: '',
         studyList: '',
         sList: [],
-        thisCourseList:[],
-        tipShow: false,
-        tipShow2: false
+        thisCourseList:[]
       }
   },
   created() {
@@ -135,6 +126,11 @@ export default {
       //   this.getPrintScreen(this.browser)
       // } else {
         this.javaScriptCanvas()
+        this.$message({
+          message: '生成成功，点击右下角缩略图进行预览保存即可。',
+          type: 'success',
+          center: true
+        })
       // }
     },
     //获取截图方法
@@ -163,10 +159,7 @@ export default {
       canvas.getContext("2d") 
       //对应的CanvasRenderingContext2D对象(画笔)
       var img = document.getElementById("poster")//创建新的图片对象
-      console.log(img)
-      var base64 = '' ;//base64 
-      console.log(img.width)
-      console.log(img.height)
+      var base64 = '' ;//base64
       var topMargin  = img.height * 0.1
       // var bottomMargin  = img.height * 0.5
       var leftMargin = img.width * 0.17
@@ -252,28 +245,12 @@ export default {
       base64 = canvas.toDataURL("image/png")
       if(this.browser === 'MiuiBrowser'){
         this.imgUrl = base64
-        this.tipShow2 = false
-            setTimeout(() => {
-              this.tipShow2 = true
-            },10)
-            setTimeout(() => {
-              this.tipShow2 = false
-            },3000)
         // FileSaver.saveAs(base64, this.browser + 'poster')
       } else {
         let eleLink = document.createElement("a");
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
-        if(this.browser === 'Chrome' || this.browser === 'MicroMessenger' || this.browser === 'MQQBrowser' || this.browser === 'Safari'|| this.browser === 'safari'){
-            this.imgUrl = base64
-            this.tipShow2 = false
-            setTimeout(() => {
-              this.tipShow2 = true
-            },10)
-            setTimeout(() => {
-              this.tipShow2 = false
-            },3000)
-        }
+        this.imgUrl = base64
         if(this.browser === 'Chrome'){
           document.body.appendChild(eleLink)
           eleLink.click()
@@ -297,15 +274,15 @@ export default {
       this.$emit('sumbit',view)
       // console.log('提交我的留言' + this.comment)
     },
-    add() {
-      this.tipShow = false
-      setTimeout(() => {
-        this.tipShow = true
-      },10)
-      setTimeout(() => {
-        this.tipShow = false
-      },3000)
-    },
+    // add() {
+    //   this.tipShow = false
+    //   setTimeout(() => {
+    //     this.tipShow = true
+    //   },10)
+    //   setTimeout(() => {
+    //     this.tipShow = false
+    //   },3000)
+    // },
     handleCheckChange(data, checked, indeterminate) {
       // console.log(this.$refs.tree.getCurrentKey())
       //     console.log(this.studyList)
@@ -317,13 +294,13 @@ export default {
 <style scoped>
 /* @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato:300,400,700,900&display=swap'); */
 .body{
-    /* 100%窗口高度 */
-    height: 100vh;
-    /* 弹性布局 水平+垂直居中 */
-    /* display: flex; */
-    background: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771);
-    background-size: cover;
-    width: 100%;
+  /* 100%窗口高度 */
+  height: 100vh;
+  /* 弹性布局 水平+垂直居中 */
+  /* display: flex; */
+  background: linear-gradient(to bottom, #1b2947, #2b3152, #3b385d, #4c4067, #5d4771);
+  background-size: cover;
+  width: 100%;
 } 
 .thebtn {
   position: absolute;
@@ -504,75 +481,6 @@ export default {
   }
 }
 
-
-/* 树形列表begin */
-/* .shell {
-    position: absolute;
-    top: 5%;
-    display: block;
-    width: 600px;
-    text-align: start;
-    z-index: 99;
-}
-@media screen and (min-width: 401px) and (max-width: 599px) {
-    .shell {
-        position: absolute;
-        top: 5%;
-        display: block;
-        width: 400px;
-        text-align: start;
-    }
-}
-@media screen and (min-width: 280px) and (max-width: 400px) {
-    .shell {
-        position: absolute;
-        top: 5%;
-        display: block;
-        width: 300px;
-        text-align: start;
-    }
-    #search_btn:checked ~ .container .search-box{
-        width: 300px;
-    }
-}
-  details {
-    position: relative;
-    width: auto;
-    height: auto;
-    overflow: hidden;
-    max-height: 2.5em !important;
-    transition: 1s;
-  }
-
-  details[open] {
-    max-height: 600px !important;
-  }
-
-  details>summary {
-    position: relative;
-    margin-top: 0.25em;
-    color: rgb(109, 153, 233);
-    padding: 0.1em .5em .2em;
-    background-color: #444;
-  }
-  details>summary::before {
-    content: '田';
-    color: #eee;
-    margin-right: 0.5em;
-  }
-  details[open]>summary {
-    background-color: rgb(14, 76, 190);
-  }
-  details[open]>summary::before {
-    content: '曰';
-    background-color: #444;
-  } */
-  /* .folder{
-    border-left: 2px dotted #ccc;
-    border-bottom: 2px dotted #ccc;
-    margin: 0 0 10px 10px;
-    padding: 10px 0 10px 20px;
-  } */
   .outer {
         height: 47vh;
         overflow-y: scroll;
@@ -729,50 +637,6 @@ export default {
   transition:all ease .3s;
 }
 /** 证书 **/
-
-/** 证书 打印 **/
-.test2 {
-  position: absolute;
-  left:40%;
-  transform:translateX(-50%); /*百分比的参照物是自身*/
-  height: 70%;
-  width: 80%;
-}
-/** 证书 打印 **/
-
-.choose:hover {
-  color: #d7ecff;
-}
-
-.PromptBox {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform:translateX(-50%); /*百分比的参照物是自身*/
-    width: 100%;
-    height: 20%;
-    z-index: 1000;
-    /* text-align: center; */
-}
-  .prompt2{
-    background-color: #000;
-    margin: 100px auto;
-    color: #fff;
-    padding: 25px 15px;
-    display:table;
-    margin:0 auto;
-    top: -100px;
-    opacity: 1;
-    border-radius: 10px;
-    animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both;
-    z-index: 1001;
-  }
-
-  @keyframes slide-in-blurred-top{
-    0%{transform:translateY(-1000px) scaleY(2.5) scaleX(.2);transform-origin:50% 0;filter:blur(40px);opacity:0}
-    100%{transform:translateY(0) scaleY(1) scaleX(1);transform-origin:50% 50%;filter:blur(0);opacity:1}
-  }
-
 
   /* dialog */
   .modal-container {
