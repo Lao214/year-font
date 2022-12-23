@@ -458,26 +458,30 @@ export default {
 .shadow {
   position: absolute;
   left: 10%;
-  letter-spacing: 0.25em;
+  /* letter-spacing: 0.25em; */
   box-shadow: 0 0 45px #f1c40f;
-  animation: faguang .8s linear;
   z-index: 2;
   width: 80%;
-  top: 5%;
+  top: 4%;
   height: 70%;
   position:absolute; /*参照物是父容器*/
   left:50%;
   transform:translateX(-50%); /*百分比的参照物是自身*/
-  animation: faguang 1.2s;
+  animation: faguang 2s infinite;
 }
 
 @keyframes faguang {
-  from{
+  0%{
     letter-spacing: 0.25em;
-    box-shadow: 0 0 1px #f1c40f;
-  }to {
+    box-shadow: 0 0 25px #f1c40f;
+  }
+  50%{
     letter-spacing: 0.25em;
     box-shadow: 0 0 45px #f1c40f;
+  }
+  100%{
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 25px #f1c40f;
   }
 }
 

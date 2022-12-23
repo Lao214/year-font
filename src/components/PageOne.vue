@@ -12,7 +12,6 @@
       <div class="arrow"></div>
       <div class="arrow"></div>
     </div>
-    <!-- <p style="color:aliceblue;position:absolute;bottom:4%;left:50%">左划开启</p> -->
   </div>
 </template>
 
@@ -35,7 +34,7 @@ export default {
   }
   .arrow {
     position: relative;
-    width:30px;
+    width: 30px;
     height: 30px;
     border-top: 6px solid #fff;
     border-left:6px solid #fff;
@@ -99,77 +98,9 @@ export default {
   text-align: start;
   font-weight: 600;
 }
-.slide-in-blurred-top{
-  color: white;
-  font-size: 1.2rem;
-  /* animation:slide-in-blurred-top .6s cubic-bezier(.23,1.000,.32,1.000) both 6s; */
-  text-align: start;
-  font-weight: 600;
-}
-
-.dialogText {
-    position: relative;
-    padding: 20px;
-    background-color: #ECE5CE;
-    border-radius: 11px;
-    /* 投影 */
-    box-shadow: 20px 20px #83af9b;
-    /* 动画效果 50%的时候向上移动20px */
-    animation: animate1 4s ease-in-out infinite;
-}
 
 /* 实现底部横线与圆点 */
 
-.dialogText::after, .dialogText::before {
-    position: absolute;
-    content: '';
-    height: 5px;
-    left: 0px;
-    font-weight: 600;
-    background-color: #ECE5CE;
-    border-radius: 11px;
-    /* 投影 */
-    box-shadow: 20px 20px #83af9b;
-}
-
-/* 单独定义底部横线的样式，宽度为50px */
-
-.dialogText::after {
-    width: 50px;
-    bottom: -25px;
-    /* 动画效果 50%的时候向上移动10px 加上P元素向上移动20，真实移动像素为20+10px */
-    animation: animate2 4s ease-in-out infinite;
-}
-
-/* 单独定义底部圆点的样式，宽度为11px */
-
-.dialogText::before {
-    width: 11px;
-    bottom: -50px;
-    /* 动画效果 50%的时候向上移动15px 加上P元素向上移动20，真实移动像素为20+15px */
-    animation: animate3 4s ease-in-out infinite;
-}
-
-@keyframes animate1 {
-  
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-@keyframes animate2 {
-   
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes animate3 {
- 
-    50% {
-        transform: translateY(-15px);
-    }
-}
 
 @keyframes text-focus-in{
   0%{filter:blur(12px);opacity:0}
