@@ -51,14 +51,14 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(170deg,#8cc8ff,#2c79ff);
+    background: linear-gradient(170deg,#42c2ff,#2c79ff);
   }
 
   .shell {
     position: relative;
     width: 1000px;
     padding: 33px;
-    background-color: #75b8ff;
+    background-color: #009EFF;
     border-radius: 20px;
     box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
@@ -104,7 +104,7 @@ export default {
     position: relative;
     width: 750px;
     padding: 33px;
-    background-color: #75b8ff;
+    background-color: #009EFF;
     border-radius: 20px;
     box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
@@ -114,7 +114,7 @@ export default {
     position: relative;
     width: 480px;
     padding: 30px;
-    background-color: #75b8ff;
+    background-color: #009EFF;
     border-radius: 20px;
     box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
@@ -142,7 +142,7 @@ export default {
     position: relative;
     width: 270px;
     padding: 30px;
-    background-color: #75b8ff;
+    background-color: #009EFF;
     border-radius: 20px;
     box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }
@@ -174,7 +174,7 @@ export default {
     position: relative;
     width: 190px;
     padding: 20px;
-    background-color: #75b8ff;
+    background-color: #009EFF;
     border-radius: 20px;
     box-shadow: 0 10px 50px #154b88,0 0 0 20px #fff;
   }

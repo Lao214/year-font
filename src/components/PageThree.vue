@@ -127,7 +127,7 @@ export default {
       // } else {
         this.javaScriptCanvas()
         this.$message({
-          message: '生成成功，点击右下角缩略图进行预览保存即可。',
+          message: '生成成功，可点击右下角缩略图进行查看。',
           type: 'success',
           center: true
         })
