@@ -5,11 +5,9 @@
     <p class="flip-horizontal-top">你今年学习最用功的是<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.mon}}</a>月，超越了<a style="font-size: 2rem;color: rgb(255,215,0);">{{dataObj.rate2}}%</a>的小伙伴。</p>
   </div>
     <div id="background-wrap">
-      <div class="bubble x1"></div>
       <div class="bubble x2"></div>
       <div class="bubble x3"></div>
       <div class="bubble x6"></div>
-      <div class="bubble x7"></div>
     </div>
   </div>
 </template>
@@ -105,16 +103,6 @@ props:['dataObj']
     }
 }
 /* ANIMATIONS */
-.x1 {
-  -webkit-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	-moz-animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	left: 15%;
-	top: 5%;
-	-webkit-transform: scale(0.6);
-	-moz-transform: scale(0.6);
-	transform: scale(0.6);
-}
 .x2 {
   -webkit-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
 	-moz-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
@@ -144,16 +132,6 @@ props:['dataObj']
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
 	transform: scale(1);
-}
-.x7 {
-  -webkit-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	-moz-animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
-	left: 25%;
-	top: 70%;
-	-webkit-transform: scale(0.9);
-	-moz-transform: scale(0.9);
-	transform: scale(0.9);
 }
 /* OBJECTS */
 

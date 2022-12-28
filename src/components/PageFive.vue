@@ -9,8 +9,6 @@
   </div>
   <div id="background-wrap">
       <div class="bubble x1"></div>
-      <div class="bubble x2"></div>
-      <div class="bubble x3"></div>
       <div class="bubble x6"></div>
       <div class="bubble x7"></div>
     </div>
@@ -120,26 +118,6 @@ props:['dataObj']
 	-webkit-transform: scale(0.6);
 	-moz-transform: scale(0.6);
 	transform: scale(0.6);
-}
-.x2 {
-  -webkit-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
-	-moz-animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
-	animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
-	left: 65%;
-	top: 80%;
-	-webkit-transform: scale(0.4);
-	-moz-transform: scale(0.4);
-	transform: scale(0.4);
-}
-.x3 {
-  -webkit-animation: animateBubble 28s linear infinite, sideWays 5s ease-in-out infinite alternate;
-	-moz-animation: animateBubble 28s linear infinite, sideWays 5s ease-in-out infinite alternate;
-	animation: animateBubble 28s linear infinite, sideWays 5s ease-in-out infinite alternate;
-	left: 70%;
-	top: 10%;
-	-webkit-transform: scale(0.3);
-	-moz-transform: scale(0.3);
-	transform: scale(0.3);
 }
 .x6 {
   -webkit-animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;

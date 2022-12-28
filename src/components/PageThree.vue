@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <img id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ;border: 8px solid #fff;">
+    <img @click="tip" id="showPhotos" v-show="imgUrl" :src="imgUrl" preview="1" :preview-text="browser" style="width: 12%;height:12%;position: absolute; right:0%;bottom: 0%; z-index:200 ;border: 8px solid #fff;">
         <div class="shadow"></div>
             <div id="test" class="test" ref="imageDom">
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
@@ -133,6 +133,13 @@ export default {
         })
       // }
     },
+    tip() {
+      this.$message({
+          message: '若应用无法保存，可尝试用浏览器打开。',
+          type: 'success',
+          center: true
+        })
+    },
     //获取截图方法
     // getPrintScreen(browser) {
     //   html2canvas(this.$refs.imageDom,
@@ -251,6 +258,7 @@ export default {
         eleLink.href = base64 // 转换后的图片地址
         eleLink.download =  this.browser + 'canvasOrigin'
         this.imgUrl = base64
+        // console.log(this.imgUrl)
         if(this.browser === 'Chrome'){
           document.body.appendChild(eleLink)
           eleLink.click()
