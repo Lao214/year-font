@@ -135,7 +135,7 @@ export default {
     },
     tip() {
       this.$message({
-          message: '若应用无法保存，可尝试用浏览器打开。',
+          message: '若长按保存失败，可尝试用浏览器打开。',
           type: 'success',
           center: true
         })
