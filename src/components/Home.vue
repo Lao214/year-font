@@ -1,35 +1,162 @@
 <template>
-  <div>
-    <el-tree
-      :data="data"
-      show-checkbox
-      node-key="id"
-      :props="defaultProps"
-      @check-change="handleCheckChange">
-    </el-tree>
+  <div class="view">
+    <div v-show="choose" class="body">
+      <div class="box">
+        <div class="box-item">
+            <p class="title">龙华园区</p>
+            <ul class="box-item-content">
+                <li @click="chooseTip = true">language</li>
+                <li @click="chooseTip = true">love</li>
+                <li @click="chooseTip = true">picture</li>
+            </ul>
+        </div>
+        <div class="box-item">
+            <p class="title">观澜园区</p>
+            <ul class="box-item-content">
+              <li @click="chooseTip = true">language</li>
+              <li @click="chooseTip = true">love</li>
+              <li @click="chooseTip = true">picture</li>
+            </ul>
+        </div>
+        <div  class="box-item ">
+            <p class="title">南宁园区</p>
+            <ul class="box-item-content">
+              <li @click="chooseTip = true">language</li>
+              <li @click="chooseTip = true">love</li>
+              <li @click="chooseTip = true">picture</li>
+            </ul>
+        </div>
+        <div class="box-item">
+            <p class="title">杭州园区</p>
+            <ul class="box-item-content">
+              <li @click="chooseTip = true">language</li>
+              <li @click="chooseTip = true">love</li>
+              <li @click="chooseTip = true">picture</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <div v-show="chooseTip" id="winmsg" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);z-index: 999;">
+      <!-- 创建主窗口 -->
+      <div style="position: fixed;top: 50%;left: 50%;width: 60%;max-width: 500px;background: #FFF;transform: translate(-50%,-50%);border-radius: 30px;padding: 30px 40px;">
+          <!-- 标题 -->
+          <!-- <h3 style="font-weight: bold;text-align:center;font-size: 30px;">声明</h3> -->
+          <!-- 内容 -->
+          <div style="text-align: center;font-size: 16px;margin-top: 26px;line-height: 30px;color: #999;">您确定要查看XXX厂区XXX事业群的报告吗？</div>
+          <!-- 按钮 -->
+          <div class="dialogbtns">
+            <a class="dialogBtn" style="background: #C00000;" @click="chooseTip = false" >
+              取消
+            </a>
+            <a  class="dialogBtn" style="background: #008f00;" @click="confirm" >
+              确定
+            </a>
+          </div>
+      </div>
+    </div>
+    <div v-show="!choose" class="ban">
+      <div class="text">
+        xxx厂区xxx事业群
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { getArray } from '../utils/course'
 
    export default {
     data() {
       return {
-        data: [],
-        defaultProps: {
-          children: 'children',
-          label: 'label'
-        }
-      };
+        choose: true,
+        chooseTip: false
+      }
     },
     methods: {
-      handleCheckChange(data, checked, indeterminate) {
-        console.log(data, checked, indeterminate);
+      confirm() {
+        this.choose = false
+        this.chooseTip = false
       }
     },
     created() {
-      this.data = getArray()
+
     }
   }
 </script>
+
+<style scoped>
+.view {
+  width: 100%;
+  height: 100%;
+  /* position: absolute; */
+  left: 0;
+  top: 0;
+  /* overflow: auto; */
+}
+
+.body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow-y: scroll;
+  background: linear-gradient(170deg,#359cfc,#004ed4);
+}
+.box {
+  margin: 41px auto;
+  width: 70%;
+  background-color:  #2a9ead00;
+  font-size: 14px;
+}
+.box .box-item {
+  border-bottom: 1px solid #666;
+  color: #eee;
+}
+.box .title {
+  margin: 0;
+  padding: 10px;
+  background-color: #2a9ead00;
+}
+.box-item-content{
+  height: 0;
+  overflow: hidden;
+  background-color: rgba(165, 192, 242, 0.144);
+  margin: 0;
+  padding-left: 20px;
+  transition: 0.5s;
+}
+ul{
+  list-style: none;
+}
+ul li{
+  padding-top: 5px;
+  cursor: pointer;
+}
+.box:hover .box-item:hover .box-item-content {
+  height: 100px;
+}
+
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.dialogbtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialogBtn {
+  color: #FFF;
+  text-align: center;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 60px;
+  margin: 0 auto;
+  margin-top: 25px;
+  border-radius: 11px;
+  width: 40%;
+}
+</style>
