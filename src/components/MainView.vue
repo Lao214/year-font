@@ -6,14 +6,27 @@
         <source src="../assets/music.mp3" />
       </audio>
       <div class="music-icon">
-        <i ref="off" class="fa fa-bell-slash fa-lg" @click="change1" style="display: block"></i>
-        <i ref="on" class="fa fa-bell fa-lg" @click="change2" style="display: none"></i>
+        <i
+          ref="off"
+          class="fa fa-bell-slash fa-lg"
+          @click="change1"
+          style="display: block"
+        ></i>
+        <i
+          ref="on"
+          class="fa fa-bell fa-lg"
+          @click="change2"
+          style="display: none"
+        ></i>
       </div>
     </div>
     <transition appear>
-    <div v-if="!dataObj" style="position: absolute;z-index: 999; width: 100%; height: 100%">
-      <job-no-input :job-no="jobNo"  @inputJobNo="inputJobNo"></job-no-input>
-    </div>
+      <div
+        v-if="!dataObj"
+        style="position: absolute; z-index: 999; width: 100%; height: 100%"
+      >
+        <job-no-input :job-no="jobNo" @inputJobNo="inputJobNo"></job-no-input>
+      </div>
     </transition>
     <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
@@ -21,21 +34,33 @@
           <home></home>
         </swiper-slide> -->
         <swiper-slide class="page01">
-          <page-one :one="thisActiveIndex" :dataObj="dataObj"></page-one>
+          <page-one
+            :one="thisActiveIndex"
+            :dataObj="dataObj"
+            :type="type"
+          ></page-one>
         </swiper-slide>
         <swiper-slide class="page02">
-          <page-two :dataObj="dataObj"></page-two>
+          <page-two :dataObj="dataObj" :type="type"></page-two>
         </swiper-slide>
         <swiper-slide class="page03">
-          <page-four :dataObj="dataObj"></page-four>
+          <page-four :dataObj="dataObj" :type="type"></page-four>
         </swiper-slide>
         <swiper-slide class="page04">
-          <page-five :dataObj="dataObj"></page-five>
+          <page-five :dataObj="dataObj" :type="type"></page-five>
         </swiper-slide>
         <swiper-slide class="page05">
-          <page-three :stuLab="dataObj.stuLab" :timeLab="dataObj.timeLab" :examLab="dataObj.examLab" :three="thisActiveIndex" :username="dataObj.username" :dataObj="dataObj" @sumbit="sumbit" :browser="browser"></page-three>
+          <page-three
+            :stuLab="dataObj.stuLab"
+            :timeLab="dataObj.timeLab"
+            :examLab="dataObj.examLab"
+            :three="thisActiveIndex"
+            :username="dataObj.username"
+            :dataObj="dataObj"
+            @sumbit="sumbit"
+            :browser="browser"
+          ></page-three>
         </swiper-slide>
-
       </swiper>
     </div>
     <!-- <audio id="audio" controls="controls" autoplay loop>
@@ -50,32 +75,43 @@ import "swiper/dist/css/swiper.css";
 import dataApi from "@/api/data";
 import viewApi from "@/api/view";
 import PageOne from "./PageOne.vue";
-import PageTwo from "./PageTwo.vue"
+import PageTwo from "./PageTwo.vue";
 import PageThree from "./PageThree.vue";
 import JobNoInput from "./jobNoInput.vue";
-import PageFour from './PageFour.vue';
-import PageFive from './PageFive.vue';
-import Home from './Home.vue';
+import PageFour from "./PageFour.vue";
+import PageFive from "./PageFive.vue";
+import Home from "./Home.vue";
 
 export default {
   name: "app",
-  components: { swiper, swiperSlide,Home, PageOne, PageTwo, PageThree, JobNoInput, PageFour, PageFive },
+  components: {
+    swiper,
+    swiperSlide,
+    Home,
+    PageOne,
+    PageTwo,
+    PageThree,
+    JobNoInput,
+    PageFour,
+    PageFive,
+  },
   data() {
-   return {
+    return {
+      type: 0,
       jobNo: "",
       jobNoCheck: false,
       sumbitCheck: false,
-      dataObj: '',
-      viewId: '',
-      ua: '',
-      code: '',
-      browser: '',
+      dataObj: "",
+      viewId: "",
+      ua: "",
+      code: "",
+      browser: "",
       showFixedHint: true,
       beforeSlideIndex: 0,
       thisActiveIndex: 0,
-      source: '',
-      device: '',
-      appId: 'GSZDIv6rmA8d2LujhLa30g2',
+      source: "",
+      device: "",
+      appId: "GSZDIv6rmA8d2LujhLa30g2",
       swiperOption: {
         //  effect: "fade",
         direction: "horizontal", //垂直切换选项
@@ -98,135 +134,137 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    }
+    },
   },
   mounted() {
     setTimeout(() => {
-        console.log('1s')
-        if(this.$jobNo) {
-          this.source = '富学宝典'
-          this.jobNo  = this.$jobNo
-          // console.log('nei' + this.$store.getters.username)
-          // console.log('nei' + this.$jobNo)
-          if(this.jobNo) {
-            this.getData()
-            // this.swiper.slideTo(0, 1000, false)
-          }
+      console.log("1s");
+      if (this.$jobNo) {
+        this.source = "富学宝典";
+        this.jobNo = this.$jobNo;
+        // console.log('nei' + this.$store.getters.username)
+        // console.log('nei' + this.$jobNo)
+        if (this.jobNo) {
+          this.getData();
+          // this.swiper.slideTo(0, 1000, false)
         }
-      }, 1000)
+      }
+    }, 1000);
     // if(this.jobNo) {
     //   this.getData()
     //   this.swiper.slideTo(0, 1000, false)
     // }
     document.addEventListener("WeixinJSBridgeReady", function () {
-      document.getElementById("audio").play()
-    })
+      document.getElementById("audio").play();
+    });
   },
   created() {
-    this.browser = this.getBrowser()
-    this.getSystem()
-     /* 相信数据begin */
-    var test = window.location.href
-    let arr  = test.split('?code=')
-    this.code = arr[1]
+    this.browser = this.getBrowser();
+    this.getSystem();
+    /* 相信数据begin */
+    var test = window.location.href;
+    let arr = test.split("?code=");
+    this.code = arr[1];
     if (this.code) {
       setTimeout(() => {
-      viewApi.getUserInfoByBelieve('code=' + this.code + '&appid=' + this.appId).then(res => {
-        console.log(this.code)
-        this.jobNo = res.data.civetno
-        console.log(res.data)
-        this.source = '相信'
-        if(this.jobNo) {
-          this.getData()
-        }
-      })
-    },1000)
+        viewApi
+          .getUserInfoByBelieve("code=" + this.code + "&appid=" + this.appId)
+          .then((res) => {
+            console.log(this.code);
+            this.jobNo = res.data.civetno;
+            console.log(res.data);
+            this.source = "相信";
+            if (this.jobNo) {
+              this.getData();
+            }
+          });
+      }, 1000);
     }
     /* 相信数据end */
   },
   methods: {
     getData() {
       dataApi.getDataByJobNo(this.jobNo).then((res) => {
-        this.dataObj = res.data.data.data
-        console.log(res.data.data.data)
+        this.dataObj = res.data.data.data;
+        console.log(res.data.data.data);
         if (this.dataObj) {
-          this.sendViewRecords()
+          this.sendViewRecords();
         } else if (!this.dataObj) {
           this.$message({
-            message: '抱歉，暂时找不到您的学习报告！',
-            type: 'warning',
-            center: true
-          })
+            message: "抱歉，暂时找不到您的学习报告！",
+            type: "warning",
+            center: true,
+          });
         }
-      })
+      });
     },
     change1() {
       this.$refs.on.style.display = "block";
       this.$refs.off.style.display = "none";
-      this.$refs.audio.play()
+      this.$refs.audio.play();
     },
     change2() {
       this.$refs.on.style.display = "none";
       this.$refs.off.style.display = "block";
-      this.$refs.audio.pause()
+      this.$refs.audio.pause();
     },
     inputJobNo(jobNo) {
       if (jobNo) {
-        this.jobNo = jobNo
-        this.getData()
+        this.jobNo = jobNo;
+        this.getData();
       }
     },
     sendViewRecords() {
       if (this.jobNo) {
-        let viewData ={
+        let viewData = {
           jobNo: this.jobNo,
           device: this.device,
           // ua: this.ua,
-          browser: this.browser
+          browser: this.browser,
+        };
+        if (this.source) {
+          viewData["source"] = this.source;
         }
-        if(this.source) {
-          viewData['source'] = this.source
-        }
-        viewApi.view(viewData).then(res =>{
-          this.viewId = res.data.data.data.id
-        })
+        viewApi.view(viewData).then((res) => {
+          this.viewId = res.data.data.data.id;
+        });
       }
     },
     sumbit(view) {
-      view['id'] = this.viewId
-      console.log(view)
-      viewApi.update(view).then(res => {
-        if(res) {
+      view["id"] = this.viewId;
+      console.log(view);
+      viewApi.update(view).then((res) => {
+        if (res) {
           this.$message({
-            message: '提交成功，感谢您的留言。',
-            type: 'success',
-            center: true
-          })
+            message: "提交成功，感谢您的留言。",
+            type: "success",
+            center: true,
+          });
         }
-      })
+      });
     },
     getSystem() {
-      var system = navigator.userAgent
-      this.ua = system
+      var system = navigator.userAgent;
+      this.ua = system;
       //判断android ios windows
-      var android = system.indexOf("Android")
-      var iphone = system.indexOf("iPhone")
-      var ipad = system.indexOf("ipad")
-      var windows = system.indexOf("windows")
-      var isMac = /macintosh|mac os x/i.test(navigator.userAgent)
+      var android = system.indexOf("Android");
+      var iphone = system.indexOf("iPhone");
+      var ipad = system.indexOf("ipad");
+      var windows = system.indexOf("windows");
+      var isMac = /macintosh|mac os x/i.test(navigator.userAgent);
       if (android !== -1) {
-        console.log("Android")
-        this.device = 'Android'
+        console.log("Android");
+        this.device = "Android";
         // return 'android'
       }
       if (iphone !== -1 || ipad !== -1 || isMac) {
-        console.log("ios")
-        this.device = 'ios'
+        console.log("ios");
+        this.device = "ios";
         // return 'ios'
       }
       if (windows !== -1) {
-        console.log("windows")
-        this.device = 'windows'
+        console.log("windows");
+        this.device = "windows";
         // return 'windows'
       }
     },
@@ -235,47 +273,53 @@ export default {
       // console.log("loginuserAgent:", userAgent)
       //判断是否Opera浏览器
       if (userAgent.indexOf("Opera") > -1) {
-        return "Opera"
+        return "Opera";
       }
       //判断微信浏览器
-      else if(userAgent.indexOf('MicroMessenger') > -1 || userAgent.indexOf('micromessenger') > -1) {
+      else if (
+        userAgent.indexOf("MicroMessenger") > -1 ||
+        userAgent.indexOf("micromessenger") > -1
+      ) {
         return "MicroMessenger";
       }
       //判断是否是QQ浏览器
       else if (userAgent.indexOf("MQQBrowser") > -1) {
-        return "MQQBrowser"
+        return "MQQBrowser";
       }
       //判断是否Edge浏览器
-      else if (userAgent.indexOf("Edg") > -1){
-        return 'Edge'
+      else if (userAgent.indexOf("Edg") > -1) {
+        return "Edge";
       }
       //判断是否Firefox浏览器
       else if (userAgent.indexOf("Firefox") > -1) {
         return "firefox";
       }
       // 判断是否是小米浏览器
-      else if ( userAgent.indexOf("MiuiBrowser") > -1){
+      else if (userAgent.indexOf("MiuiBrowser") > -1) {
         return "MiuiBrowser";
       }
       //判断是否Chrome浏览器
-      else if (userAgent.indexOf("Chrome") > -1){
+      else if (userAgent.indexOf("Chrome") > -1) {
         return "Chrome";
       }
 
       //判断是否Chrome浏览器
-      else if (userAgent.indexOf("360SE") > -1){
+      else if (userAgent.indexOf("360SE") > -1) {
         return "360SE";
       }
-    
+
       //判断是否Safari浏览器
       else if (userAgent.indexOf("Safari") > -1) {
         return "Safari";
       }
       //判断是否IE浏览器
-      else if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+      else if (
+        userAgent.indexOf("compatible") > -1 &&
+        userAgent.indexOf("MSIE") > -1 &&
+        !isOpera
+      ) {
         return "IE";
-      }
-      else if ( userAgent.indexOf("Trident") > -1){
+      } else if (userAgent.indexOf("Trident") > -1) {
         return "IE";
       }
       // else{
@@ -341,11 +385,11 @@ h2 {
   color: black;
   font-weight: 600;
 }
-.music-icon{
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: rgb(229, 236, 240);
+.music-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: rgb(229, 236, 240);
 }
 
 p {
@@ -372,9 +416,9 @@ p {
   }
 }
 .v-enter-active {
-  animation: input .7s ;
+  animation: input 0.7s;
 }
 .v-leave-active {
-  animation: input .5s reverse;
+  animation: input 0.5s reverse;
 }
 </style>
