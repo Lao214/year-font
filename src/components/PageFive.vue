@@ -30,20 +30,31 @@
           sunShineData.passR
         }}</a>
       </p>
-      <p style="font-size: 1.2rem; color: rgb(255, 215, 0); text-align: center">
+      <p
+        style="
+          font-size: 1.2rem;
+          color: rgb(255, 215, 0);
+          text-align: center;
+          line-height: 10px;
+        "
+      >
         为您点赞加油！
       </p>
-      <p style="font-size: 1.2rem; color: rgb(255, 215, 0); text-align: center">
+      <p
+        style="
+          font-size: 1.2rem;
+          color: rgb(255, 215, 0);
+          text-align: center;
+          line-height: 10px;
+        "
+      >
         期待2023年更上一层楼
       </p>
+      <p>2023年是充满希望的一年，您期待学习的课程方向是，请您填写:</p>
       <!-- <img src="../assets/person.png" style="width:400px;height:400px"> -->
     </div>
     <div class="search-box">
-      <input
-        v-model="comment"
-        type="text"
-        placeholder="我想要学......"
-      />
+      <input v-model="comment" type="text" placeholder="我想要学......" />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
     </div>
     <div id="background-wrap">
@@ -276,7 +287,7 @@ export default {
 /*阳光专区*/
 .sunshine-container {
   /* display: inline-block; */
-  padding-top: 90px;
+  padding-top: 120px;
   padding-left: 21px;
   padding-right: 21px;
 }
@@ -296,7 +307,7 @@ export default {
   position: absolute;
   bottom: 40%;
   left: 50%;
-  transform:translateX(-50%); /*百分比的参照物是自身*/
+  transform: translateX(-50%); /*百分比的参照物是自身*/
 }
 .search-box input {
   width: 100%;

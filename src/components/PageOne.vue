@@ -188,7 +188,7 @@ export default {
 /*阳光专区*/
 .sunshine-container {
   /* display: inline-block; */
-  padding-top: 90px;
+  padding-top: 100px;
   padding-left: 21px;
   padding-right: 21px;
 }
