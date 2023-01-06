@@ -20,7 +20,7 @@
       <p class="slide-in-blurred-top" v-else>请继续坚持，不懈努力💪</p>
       <!-- <img src="../assets/person.png" style="width:400px;height:400px"> -->
     </div>
-    <div class="sunshine-container" v-if="type == 1">
+    <div class="sunshine-container" v-if="type === 1">
       <p>工欲善其事，必先利其器！</p>
       <p>
         通过您的不懈努力，2022收获良多，共参与考试<a
@@ -30,14 +30,7 @@
           sunShineData.passR
         }}</a>
       </p>
-      <p
-        style="
-          font-size: 1.2rem;
-          color: rgb(255, 215, 0);
-          text-align: center;
-          line-height: 10px;
-        "
-      >
+      <p style=" font-size: 1.2rem; color: rgb(255, 215, 0); text-align: center;line-height: 10px;">
         为您点赞加油！
       </p>
       <p
@@ -53,7 +46,7 @@
       <p>2023年是充满希望的一年，您期待学习的课程方向是，请您填写:</p>
       <!-- <img src="../assets/person.png" style="width:400px;height:400px"> -->
     </div>
-    <div class="search-box">
+    <div class="search-box" v-if="type === 1">
       <input v-model="comment" type="text" placeholder="我想要学......" />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
     </div>
@@ -308,6 +301,7 @@ export default {
   bottom: 40%;
   left: 50%;
   transform: translateX(-50%); /*百分比的参照物是自身*/
+  z-index: 999;
 }
 .search-box input {
   width: 100%;
