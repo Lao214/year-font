@@ -21,30 +21,29 @@
       </p>
     </div>
     <div class="sunshine-container" v-if="type == 1">
-      <p class="flip-horizontal-top">
-        亲爱的<a style="font-size: 2rem; color: rgb(255, 215, 0)">{{
+      <p>
+        亲爱的<a style="font-size: 1.2rem; color: rgb(255, 215, 0)">{{
           sunShineData.stuname
         }}</a
         >小伙伴：
       </p>
-      <p class="flip-horizontal-top2">回顾2022年，感谢您一直以来与阳光</p>
-      <p class="flip-horizontal-top2">培训中心相伴成长！</p>
-      <p class="flip-horizontal-top2">从相识到相知，从陌生变成熟悉，</p>
-      <p class="flip-horizontal-top2">一直奋斗不止的您，</p>
-      <p class="flip-horizontal-top2">没有停下学习的脚步，</p>
-      <p class="flip-horizontal-top2">
+      <p>回顾2022年，感谢您一直以来与阳光</p>
+      <p>培训中心相伴成长！</p>
+      <p>从相识到相知，从陌生变成熟悉，</p>
+      <p>一直奋斗不止的您，</p>
+      <p>没有停下学习的脚步，</p>
+      <p>
         这一年，您在平台学习的天数为<a
-          style="font-size: 2rem; color: rgb(255, 215, 0)"
+          style="font-size: 1.2rem; color: rgb(255, 215, 0)"
           >{{ sunShineData.studate }}</a
         >天
       </p>
-      <p class="flip-horizontal-top2">
-        超越了<a style="font-size: 2rem; color: rgb(255, 215, 0)">{{
-          sunShineData.rate1
-        }}</a
+      <p>
+        超越了<a style="font-size: 1.2rem; color: rgb(255, 215, 0)"
+          >{{ sunShineData.rate1 }}%</a
         >同行小伙伴
       </p>
-      <p class="flip-horizontal-top2">快来看看您的学习报告吧</p>
+      <p>快来看看您的学习报告吧</p>
     </div>
     <img src="../assets/peaco.webp" class="imggundam" alt="" />
 
@@ -117,7 +116,6 @@ export default {
   padding-left: 21px;
   padding-right: 21px;
 }
-
 .imggundam {
   margin-top: 47px;
   width: 338px;
@@ -186,5 +184,17 @@ export default {
   100% {
     clip-path: ellipse(100% 2% at 50% 48%);
   }
+}
+/*阳光专区*/
+.sunshine-container {
+  /* display: inline-block; */
+  padding-top: 90px;
+  padding-left: 21px;
+  padding-right: 21px;
+}
+.sunshine-container p {
+  color: white;
+  text-align: center;
+  line-height: 12px;
 }
 </style>
