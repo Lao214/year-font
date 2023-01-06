@@ -42,7 +42,7 @@
       <input
         v-model="comment"
         type="text"
-        placeholder="请输入您想要学习的课程名"
+        placeholder="我想要学......"
       />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
     </div>
@@ -66,19 +66,11 @@ export default {
   methods: {
     sumbit() {
       this.studyList = "";
-      let array = this.$refs.tree.getCheckedNodes();
-      for (let i = 0; i < array.length; i++) {
-        if (!array[i].children) {
-          this.studyList =
-            this.studyList + "," + array[i].class + array[i].label;
-        }
-      }
       const view = {
         comment: this.comment,
         studyList: this.studyList,
       };
       this.$emit("sumbit", view);
-      // console.log('提交我的留言' + this.comment)
     },
   },
 };
@@ -294,14 +286,17 @@ export default {
   line-height: 25px;
 }
 .search-box {
+  min-width: 270px;
   height: 40px;
   display: flex;
+  /* justify-content: space-around; */
   border-bottom: 3px solid #fff;
   overflow: hidden;
   transition: 0.3s;
   position: absolute;
   bottom: 40%;
-  left: 12%;
+  left: 50%;
+  transform:translateX(-50%); /*百分比的参照物是自身*/
 }
 .search-box input {
   width: 100%;

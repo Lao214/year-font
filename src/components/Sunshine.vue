@@ -47,16 +47,10 @@
           <page-four :sunShineData="sunShineData" :type="type"></page-four>
         </swiper-slide>
         <swiper-slide class="page04">
-          <page-five :sunShineData="sunShineData" :type="type"></page-five>
+          <page-five :sunShineData="sunShineData" :type="type" @sumbit="sumbit"></page-five>
         </swiper-slide>
-        <!-- <swiper-slide class="page05">
-          <page-three :stuLab="sunShineData.stuLab" :timeLab="sunShineData.timeLab" :examLab="sunShineData.examLab" :three="thisActiveIndex" :username="sunShineData.username" :sunShineData="sunShineData" @sumbit="sumbit" :browser="browser"></page-three>
-        </swiper-slide> -->
       </swiper>
     </div>
-    <!-- <audio id="audio" controls="controls" autoplay loop>
-        <source src="../assets/music.mp3">
-    </audio> -->
   </div>
 </template>
 
