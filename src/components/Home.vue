@@ -34,6 +34,15 @@
               <li @click="chooseTip = true" style="padding: 7px;">picture</li>
             </ul>
         </div>
+        <div class="circle">
+          <ul>
+              <li class="li"></li>
+              <li class="li"></li>
+              <li class="li"></li>
+              <li class="li"></li>
+              <li class="li"></li>
+          </ul>
+        </div>
       </div>
     </div>
     <div v-show="chooseTip" id="winmsg" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);z-index: 999;">
@@ -197,5 +206,57 @@ ul li{
   margin-top: 25px;
   border-radius: 11px;
   width: 40%;
+}
+
+.li{
+    position: absolute;
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 17px;
+    height: 17px;
+    list-style: none;
+    opacity: 0;
+}
+.circle li{
+    bottom: 0;
+    left: 15vw;
+    /* 执行动画 */
+    animation: circle 10s linear infinite;
+}
+.circle li:nth-child(2){
+    left: 25vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 2s;
+}
+.circle li:nth-child(3){
+    left: 45vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 6s;
+}
+.circle li:nth-child(4){
+    left: 75vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 4s;
+}
+.circle li:nth-child(5){
+    left: 70vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 8s;
+}
+
+/* 定义动画 */
+@keyframes circle {
+    0%{
+        transform: scale(0) rotateY(0deg);
+        opacity: 1;
+        bottom: 0;
+        border-radius: 10%;
+    }
+    100%{
+        transform: scale(5) rotateY(1000deg);
+        opacity: 0;
+        bottom: 90vh;
+        border-radius: 80%;
+    }
 }
 </style>
