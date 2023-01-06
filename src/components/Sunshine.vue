@@ -210,7 +210,7 @@ export default {
         let viewData = {
           jobNo: this.jobNo,
           device: this.device,
-          // ua: this.ua,
+          type: 1,
           browser: this.browser,
         };
         if (this.source) {

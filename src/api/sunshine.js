@@ -4,8 +4,8 @@ import request from '@/utils/ request'
 const api_name = '/year/sunshine'
 
 export default {
-   // 列表
-   getDataByJobNo(jobNo) {
+  // 列表
+  getDataByJobNo(jobNo) {
     return request({
       // 接口路径
       url: `${api_name}/getOneByJobNo/${jobNo}`,

@@ -5,33 +5,33 @@
         <div class="box-item">
             <p class="title">龙华园区</p>
             <ul class="box-item-content">
-                <li @click="chooseTip = true">language</li>
-                <li @click="chooseTip = true">love</li>
-                <li @click="chooseTip = true">picture</li>
+                <li @click="chooseTip = true" style="padding: 7px;">language</li>
+                <li @click="chooseTip = true" style="padding: 7px;">love</li>
+                <li @click="chooseTip = true" style="padding: 7px;">picture</li>
             </ul>
         </div>
         <div class="box-item">
             <p class="title">观澜园区</p>
             <ul class="box-item-content">
-              <li @click="chooseTip = true">language</li>
-              <li @click="chooseTip = true">love</li>
-              <li @click="chooseTip = true">picture</li>
+              <li @click="chooseTip = true" style="padding: 7px;">language</li>
+              <li @click="chooseTip = true" style="padding: 7px;">love</li>
+              <li @click="chooseTip = true" style="padding: 7px;">picture</li>
             </ul>
         </div>
         <div  class="box-item ">
             <p class="title">南宁园区</p>
             <ul class="box-item-content">
-              <li @click="chooseTip = true">language</li>
-              <li @click="chooseTip = true">love</li>
-              <li @click="chooseTip = true">picture</li>
+              <li @click="chooseTip = true" style="padding: 7px;">language</li>
+              <li @click="chooseTip = true" style="padding: 7px;">love</li>
+              <li @click="chooseTip = true" style="padding: 7px;">picture</li>
             </ul>
         </div>
         <div class="box-item">
             <p class="title">杭州园区</p>
             <ul class="box-item-content">
-              <li @click="chooseTip = true">language</li>
-              <li @click="chooseTip = true">love</li>
-              <li @click="chooseTip = true">picture</li>
+              <li @click="chooseTip = true" style="padding: 7px;">language</li>
+              <li @click="chooseTip = true" style="padding: 7px;">love</li>
+              <li @click="chooseTip = true" style="padding: 7px;">picture</li>
             </ul>
         </div>
       </div>
@@ -58,6 +58,26 @@
       <div class="text">
         xxx厂区xxx事业群
       </div>
+      <div class="chart">
+        <div class="cart">
+          1
+        </div>
+        <div class="cart">
+          2
+        </div>
+        <div class="cart">
+          3
+        </div>
+        <div class="cart">
+          4
+        </div>
+        <div class="cart">
+          5
+        </div>
+        <div class="cart">
+          6
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,7 +88,8 @@
     data() {
       return {
         choose: true,
-        chooseTip: false
+        chooseTip: false,
+        height: 40
       }
     },
     methods: {
@@ -100,27 +121,29 @@
   left: 0;
   top: 0;
   overflow-y: scroll;
-  background: linear-gradient(170deg,#359cfc,#004ed4);
+  background: linear-gradient(150deg,#FFCF71,#2376DD);
 }
 .box {
   margin: 41px auto;
   width: 70%;
   background-color:  #2a9ead00;
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: bold;
 }
 .box .box-item {
-  border-bottom: 1px solid #666;
-  color: #eee;
+  border-bottom: 1px solid #06283D;
+  color: #f19f26;
 }
 .box .title {
   margin: 0;
   padding: 10px;
+  color: #283149;
   background-color: #2a9ead00;
 }
 .box-item-content{
   height: 0;
   overflow: hidden;
-  background-color: rgba(165, 192, 242, 0.144);
+  background-color: #06283D;
   margin: 0;
   padding-left: 20px;
   transition: 0.5s;
@@ -132,8 +155,8 @@ ul li{
   padding-top: 5px;
   cursor: pointer;
 }
-.box:hover .box-item:hover .box-item-content {
-  height: 100px;
+ .box-item:hover .box-item-content {
+  height: 120px;
 }
 
 .text{
@@ -141,6 +164,22 @@ ul li{
   justify-content: center;
   align-items: center;
   height: 10vh;
+}
+
+.chart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  width: 100%;
+}
+.cart {
+  border: 1px solid forestgreen;
+  width: 32%;
+  min-height: 300px;
+  min-width: 337px;
+  /* padding: 7px; */
+  margin-bottom: 17px;
 }
 
 .dialogbtns {

@@ -219,8 +219,8 @@ export default {
         let viewData = {
           jobNo: this.jobNo,
           device: this.device,
-          // ua: this.ua,
-          browser: this.browser,
+          type: 0,
+          browser: this.browser
         };
         if (this.source) {
           viewData["source"] = this.source;
