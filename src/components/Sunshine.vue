@@ -47,7 +47,7 @@
           <page-four :sunShineData="sunShineData" :type="type"></page-four>
         </swiper-slide>
         <swiper-slide class="page04">
-          <page-five :sunShineData="sunShineData" :type="type" @sumbit="sumbit"></page-five>
+          <page-five :sunShineData="sunShineData" :device="device" :type="type" @sumbit="sumbit"></page-five>
         </swiper-slide>
       </swiper>
     </div>
