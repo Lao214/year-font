@@ -43,7 +43,7 @@
         <i class="fa fa-close" style="position:absolute; z-index:980; bottom: 91%; color: #FFF;font-size: 37px;left: 5%;" @click="chooseTip = false"></i>
     </div>
     <div class="search-box" v-if="type === 1">
-      <input v-model="comment" type="text" placeholder="我想要学......" @click="chooseTip = true" />
+      <input v-model="comment" type="text" placeholder="我想要学......" @click="tip" />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
     </div>
     <div id="background-wrap">
@@ -74,6 +74,11 @@ export default {
       };
       this.$emit("sumbit", view);
     },
+    tip() {
+      if (this.device === 'Android') {
+        this.chooseTip = true
+      }
+    }
   },
 };
 </script>

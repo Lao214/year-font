@@ -21,25 +21,25 @@
     <div class="sunshine-container" v-if="type == 1">
       <p>看看您2022年最喜欢的学习行为吧！</p>
       <p>
-        <i class="fa fa-check"></i>您最喜欢在<a
+        <i class="fa fa-check" style="color: rgb(108, 234, 243)"></i>您最喜欢在<a
           style="font-size: 1.2rem; color: rgb(255, 215, 0)"
           >{{ sunShineData.device }}</a
         >登陆阳光中心
       </p>
       <p>
-        <i class="fa fa-check"></i>您最喜欢在<a
+        <i class="fa fa-check" style="color: rgb(108, 234, 243)"></i>您最喜欢在<a
           style="font-size: 1.2rem; color: rgb(255, 215, 0)"
           >{{ sunShineData.mon }}</a
         >月进行学习
       </p>
       <p>
-        <i class="fa fa-check"></i>您最喜欢在<a
+        <i class="fa fa-check" style="color: rgb(108, 234, 243)"></i>您最喜欢在<a
           style="font-size: 1.2rem; color: rgb(255, 215, 0)"
-          >{{ sunShineData.time }}</a
+          >{{ sunShineData.time }}：00</a
         >时间段进行学习
       </p>
       <p>
-        <i class="fa fa-check"></i>您最喜欢的课程类别是<a
+        <i class="fa fa-check" style="color: rgb(108, 234, 243)"></i>您最喜欢的课程类别是<a
           style="font-size: 1.2rem; color: rgb(255, 215, 0)"
           >{{ sunShineData.creditTypeCode }}</a
         >

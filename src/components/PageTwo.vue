@@ -43,7 +43,7 @@
       <p>
         <i class="fa fa-check"></i>参与专题学习<a
           style="font-size: 1.2rem; color: rgb(255, 215, 0)"
-          >{{ sunShineData.projectnun }}</a
+          >{{ sunShineData.projectnum }}</a
         >个
       </p>
       <p>
