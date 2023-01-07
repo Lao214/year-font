@@ -20,7 +20,7 @@
       <p class="slide-in-blurred-top" v-else>请继续坚持，不懈努力💪</p>
       <!-- <img src="../assets/person.png" style="width:400px;height:400px"> -->
     </div>
-    <div class="sunshine-container" v-if="type === 1 && chooseTip === false ">
+    <div class="sunshine-container" v-if="type === 1 && chooseTip === false">
       <p>工欲善其事，必先利其器！</p>
       <p>
         通过您的不懈努力，2022收获良多，共参与考试<a
@@ -30,20 +30,61 @@
           sunShineData.passR
         }}</a>
       </p>
-      <p style=" font-size: 1.2rem; color: rgb(255, 215, 0); text-align: center;line-height: 10px;">
+      <p
+        style="
+          font-size: 1.2rem;
+          color: rgb(255, 215, 0);
+          text-align: center;
+          line-height: 10px;
+        "
+      >
         为您点赞加油！
       </p>
-      <p  style=" font-size: 1.2rem;  color: rgb(255, 215, 0);  text-align: center;  line-height: 10px;">
+      <p
+        style="
+          font-size: 1.2rem;
+          color: rgb(255, 215, 0);
+          text-align: center;
+          line-height: 10px;
+        "
+      >
         期待2023年更上一层楼
       </p>
       <p>2023年是充满希望的一年，您期待学习的课程方向是，请您填写:</p>
       <!-- <img src="../assets/person.png" style="width:400px;height:400px"> -->
     </div>
-    <div v-show="chooseTip && device === 'Android'" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.578);z-index: 979;">
-        <i class="fa fa-close" style="position:absolute; z-index:980; bottom: 91%; color: #FFF;font-size: 37px;left: 5%;" @click="chooseTip = false"></i>
+    <div
+      v-show="chooseTip && device === 'Android'"
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.578);
+        z-index: 979;
+      "
+    >
+      <i
+        class="fa fa-close"
+        style="
+          position: absolute;
+          z-index: 980;
+          bottom: 91%;
+          color: #fff;
+          font-size: 37px;
+          left: 5%;
+        "
+        @click="chooseTip = false"
+      ></i>
     </div>
     <div class="search-box" v-if="type === 1">
-      <input v-model="comment" type="text" placeholder="我想要学......" @click="tip" />
+      <input
+        v-model="comment"
+        type="text"
+        placeholder="我想要学......"
+        @click="chooseTip = true"
+      />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
     </div>
     <div id="background-wrap">
@@ -56,17 +97,17 @@
 
 <script>
 export default {
-  props: ["dataObj", "type", "sunShineData",'device'],
+  props: ["dataObj", "type", "sunShineData", "device"],
   data() {
     return {
       comment: "",
       studyList: "",
-      chooseTip: false
+      chooseTip: false,
     };
   },
   methods: {
     sumbit() {
-      this.chooseTip = false
+      this.chooseTip = false;
       this.studyList = "";
       const view = {
         comment: this.comment,
@@ -74,11 +115,6 @@ export default {
       };
       this.$emit("sumbit", view);
     },
-    tip() {
-      if (this.device === 'Android') {
-        this.chooseTip = true
-      }
-    }
   },
 };
 </script>
