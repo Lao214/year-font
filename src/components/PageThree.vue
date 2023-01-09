@@ -40,13 +40,13 @@
           <h2>课程列表</h2><hr />
           <div class="outer">
             <div class="inter">
-              <el-tree :data="thisCourseList"  ref="tree"  show-checkbox  node-key="id"  :props="defaultProps"  @check-change="handleCheckChange"></el-tree>
+              <el-tree :data="thisCourseList" :default-expanded-keys="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]"  ref="tree"  show-checkbox  node-key="id"  :props="defaultProps"  @check-change="handleCheckChange"></el-tree>
             </div>
           </div>
         </div>          
       </div>
         <div class="search-box">
-            <input v-model="comment" type="text" placeholder="我还想要学...">
+            <input v-model="comment" type="text"  placeholder="定一个2023学习小目标吧">
             <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
         </div>
     </div>

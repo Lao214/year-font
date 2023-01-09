@@ -82,7 +82,7 @@
       <input
         v-model="comment"
         type="text"
-        placeholder="我想要学......"
+        placeholder="定一个2023学习小目标吧"
         @click="chooseTip = true"
       />
       <i class="fa fa-paper-plane" aria-hidden="true" @click="sumbit"></i>
