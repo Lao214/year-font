@@ -30,26 +30,26 @@
     </transition>
     <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
-        <!-- <swiper-slide class="home">
-          <home></home>
-        </swiper-slide> -->
-        <swiper-slide class="page01">
+        <swiper-slide class="defaultPage" v-if="dataObj.playtime === 0">
+          <defaultPage></defaultPage>
+        </swiper-slide>
+        <swiper-slide class="page01" v-if="dataObj.playtime !== 0">
           <page-one
             :one="thisActiveIndex"
             :dataObj="dataObj"
             :type="type"
           ></page-one>
         </swiper-slide>
-        <swiper-slide class="page02">
+        <swiper-slide class="page02" v-if="dataObj.playtime !== 0">
           <page-two :dataObj="dataObj" :type="type"></page-two>
         </swiper-slide>
-        <swiper-slide class="page03">
+        <swiper-slide class="page03" v-if="dataObj.playtime !== 0">
           <page-four :dataObj="dataObj" :type="type"></page-four>
         </swiper-slide>
-        <swiper-slide class="page04">
+        <swiper-slide class="page04" v-if="dataObj.playtime !== 0">
           <page-five :dataObj="dataObj" :type="type"></page-five>
         </swiper-slide>
-        <swiper-slide class="page05">
+        <swiper-slide class="page05" v-if="dataObj.playtime !== 0">
           <page-three
             :stuLab="dataObj.stuLab"
             :timeLab="dataObj.timeLab"
@@ -81,6 +81,7 @@ import JobNoInput from "./jobNoInput.vue";
 import PageFour from "./PageFour.vue";
 import PageFive from "./PageFive.vue";
 import Home from "./Home.vue";
+import DefaultPage from "./DefaultPage.vue";
 
 export default {
   name: "app",
@@ -94,6 +95,7 @@ export default {
     JobNoInput,
     PageFour,
     PageFive,
+    DefaultPage,
   },
   data() {
     return {
@@ -220,7 +222,7 @@ export default {
           jobNo: this.jobNo,
           device: this.device,
           type: 0,
-          browser: this.browser
+          browser: this.browser,
         };
         if (this.source) {
           viewData["source"] = this.source;
