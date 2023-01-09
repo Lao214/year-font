@@ -7,6 +7,10 @@ import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
 Vue.use(preview)
 
+import Vconsole from 'vconsole' 
+let vConsole = new Vconsole()
+Vue.use(vConsole)
+
 Vue.component(Tree.name, Tree)
 Vue.component(Message.name, Message)
 
