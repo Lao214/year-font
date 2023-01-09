@@ -31,7 +31,7 @@
     <div v-if="dataObj">
       <swiper :options="swiperOption" ref="mySwiper">
         <swiper-slide class="defaultPage" v-if="dataObj.playtime === 0">
-          <defaultPage></defaultPage>
+          <defaultPage :dataObj="dataObj"></defaultPage>
         </swiper-slide>
         <swiper-slide class="page01" v-if="dataObj.playtime !== 0">
           <page-one
